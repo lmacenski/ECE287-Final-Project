@@ -1,3 +1,27 @@
 |topmodule
+clk => ~NO_FANOUT~
+rst => ~NO_FANOUT~
+start_btn => ~NO_FANOUT~
+select_btn => ~NO_FANOUT~
+up_btn => ~NO_FANOUT~
+down_btn => ~NO_FANOUT~
+lane_btn[0] => ~NO_FANOUT~
+lane_btn[1] => ~NO_FANOUT~
+lane_btn[2] => ~NO_FANOUT~
+lane_btn[3] => ~NO_FANOUT~
+hsync <= <GND>
+vsync <= <GND>
+vga_r[0] <= <GND>
+vga_r[1] <= <GND>
+vga_r[2] <= <GND>
+vga_r[3] <= <GND>
+vga_g[0] <= <GND>
+vga_g[1] <= <GND>
+vga_g[2] <= <GND>
+vga_g[3] <= <GND>
+vga_b[0] <= <GND>
+vga_b[1] <= <GND>
+vga_b[2] <= <GND>
+vga_b[3] <= <GND>
 
 
