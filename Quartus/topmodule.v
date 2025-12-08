@@ -32,8 +32,37 @@ module topmodule(
 			state <= next;
 	end
 	
-	
-	
-	
+	always@(*) begin
+		
+	next_state = state;
+        
+        case (state)
+            START: begin
+                // Any button press advances to song selection
+                if (any_button_pulse)
+                    next_state = SELECT;
+            end
+            
+            SELECT: begin
+                // Select button confirms song choice and starts game
+                if (select_pulse)
+                    next_state = GAME;
+            end
+            
+            GAME: begin
+                // Escape or game completion goes to game over
+                if (escape_pulse || game_complete || game_failed)
+                    next_state = GAME_OVER;
+            end
+            
+            GAME_OVER: begin
+                // Any button returns to song selection
+                if (any_button_pulse)
+                    next_state = SELECT;
+            end
+            
+            default: next_state = START;
+        endcase
+    end
 
 endmodule
