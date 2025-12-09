@@ -1,68 +1,725 @@
+// topmodule.v - Top-level module for Piano Tiles with FSM
 module topmodule(
-	input clk,
-	input rst,
-	input start_btn,
-	input select_btn,
-	input up_btn,
-	input down_btn,
-	input [3:0] lane_btn,
-	
-	output hsync,
-	output vsync,
-	output [3:0] vga_r,
-	output [3:0] vga_g,
-	output [3:0] vga_b
+    input CLOCK_50,           // 50 MHz clock
+    input [3:0] KEY,          // Push buttons (active low)
+    input [9:0] SW,           // Switches
+    output [9:0] LEDR,        // Red LEDs for score
+    output [6:0] HEX0,        // 7-segment display 0
+    output [6:0] HEX1,        // 7-segment display 1
+    output [6:0] HEX2,        // 7-segment display 2
+    output [6:0] HEX3,        // 7-segment display 3 (neg sign)
+
+    //Ins and outs required for VGA
+    output VGA_CLK,           // VGA clock
+    output VGA_HS,            // VGA horizontal sync
+    output VGA_VS,            // VGA vertical sync
+    output VGA_BLANK_N,       // VGA blank
+    output VGA_SYNC_N,        // VGA sync
+    output [7:0] VGA_R,       // VGA red
+    output [7:0] VGA_G,       // VGA green
+    output [7:0] VGA_B,        // VGA blue
+
+	// Ins and Outs required for audio
+    output AUD_ADCDAT,
+    inout AUD_BCLK,
+	inout AUD_ADCLRCK,
+	inout AUD_DACLRCK,
+	output AUD_DACDAT,
+	output AUD_XCK,
+	inout FPGA_I2C_SDAT,
+	output FPGA_I2C_SCLK
 );
-	
-	//FSM GAME STATES
-	localparam START = 3'd0;
-	localparam SELECT = 3'd1;
-	localparam GAME = 3'd2;
-	localparam GAME_OVER = 3'd3;
-	
-	//DEFINE STATE REGISTERS
-	reg[2:0] state;
-	reg[2:0] next;
-	
-	
-	always@(posedge clk or negedge rst) begin
-		if (rst)
-			state <= START;
-		else
-			state <= next;
-	end
-	
-	always@(*) begin
-		
-	next_state = state;
+    // -------------------------------
+    // FSM States
+    // -------------------------------
+    localparam STATE_START_MENU = 2'b00;
+    localparam STATE_PLAYING    = 2'b01;
+    localparam STATE_GAME_OVER  = 2'b10;
+    
+    reg [1:0] game_state = STATE_START_MENU;
+    reg [1:0] next_state;
+    
+    // Reset and buttons
+    wire reset_n = SW[9];
+    wire [3:0] buttons = ~KEY;  // Invert because keys are active low
+    
+    // Button edge detection for any key press
+    reg [3:0] buttons_prev = 0;
+    wire any_button_pressed = |(buttons & ~buttons_prev); // Any button pressed
+    
+    always @(posedge CLOCK_50 or negedge reset_n) begin
+        if (!reset_n)
+            buttons_prev <= 0;
+        else
+            buttons_prev <= buttons;
+    end
+    
+    // -------------------------------
+    // FSM State Register
+    // -------------------------------
+    always @(posedge CLOCK_50 or negedge reset_n) begin
+        if (!reset_n)
+            game_state <= STATE_START_MENU;
+        else
+            game_state <= next_state;
+    end
+    
+    // -------------------------------
+    // FSM Next State Logic
+    // -------------------------------
+    always @(*) begin
+        next_state = game_state;
         
-        case (state)
-            START: begin
-                // Any button press advances to song selection
-                if (any_button_pulse)
-                    next_state = SELECT;
+        case (game_state)
+            STATE_START_MENU: begin
+                if (any_button_pressed)
+                    next_state = STATE_PLAYING;
             end
             
-            SELECT: begin
-                // Select button confirms song choice and starts game
-                if (select_pulse)
-                    next_state = GAME;
+            STATE_PLAYING: begin
+                // Add game over condition here
+                // if (game_over_condition)
+                //     next_state = STATE_GAME_OVER;
+					 if (SW[8])
+                    next_state = STATE_GAME_OVER;
             end
             
-            GAME: begin
-                // Escape or game completion goes to game over
-                if (escape_pulse || game_complete || game_failed)
-                    next_state = GAME_OVER;
+            STATE_GAME_OVER: begin
+                if (any_button_pressed)
+                    next_state = STATE_START_MENU;
             end
             
-            GAME_OVER: begin
-                // Any button returns to song selection
-                if (any_button_pulse)
-                    next_state = SELECT;
-            end
-            
-            default: next_state = START;
+            default: next_state = STATE_START_MENU;
         endcase
     end
+    
+    // Control signal for game - only active during playing state
+    wire game_active = (game_state == STATE_PLAYING);
+    
+    // VGA signals
+    wire clk_25MHz;
+    wire [9:0] x, y;
+    wire video_on;
+    wire [7:0] red_game, green_game, blue_game;
+    
+    // Score
+    wire [9:0] score;
+    assign LEDR = score;
+    
+    // 25 MHz clock divider
+    reg clk_div;
+    always @(posedge CLOCK_50 or negedge reset_n) begin
+        if (!reset_n)
+            clk_div <= 0;
+        else
+            clk_div <= ~clk_div;
+    end
+    assign clk_25MHz = clk_div;
+    assign VGA_CLK = clk_25MHz;
+    
+    // VGA controller
+    vga_controller vga(
+        .clk(clk_25MHz),
+        .reset_n(reset_n),
+        .hsync(VGA_HS),
+        .vsync(VGA_VS),
+        .video_on(video_on),
+        .x(x),
+        .y(y)
+    );
+    
+	// Game logic (only active when playing)
+    game game(
+        .clk(CLOCK_50),
+        .reset_n(reset_n && game_active), // Reset game when not playing
+        .buttons(buttons),
+        .x(x),
+        .y(y),
+        .video_on(video_on),
+        .red(red_game),
+        .green(green_game),
+        .blue(blue_game),
+        .score(score)
+    );
+	 
+	// Audio controller
+    audio audio_inst(
+    .CLOCK_50(CLOCK_50),
+    .reset_n(reset_n),
+    .buttons(buttons),  // Your 4 buttons signal
+    .AUD_ADCDAT(AUD_ADCDAT),
+    .AUD_BCLK(AUD_BCLK),
+    .AUD_ADCLRCK(AUD_ADCLRCK),
+    .AUD_DACLRCK(AUD_DACLRCK),
+    .AUD_DACDAT(AUD_DACDAT),
+    .AUD_XCK(AUD_XCK),
+    .FPGA_I2C_SDAT(FPGA_I2C_SDAT),
+    .FPGA_I2C_SCLK(FPGA_I2C_SCLK)
+);
+    
+    // 7-segment display for score
+    three_decimal_vals_w_neg score_display(
+        .val(score[7:0]),
+        .seg7_dig0(HEX0),
+        .seg7_dig1(HEX1),
+        .seg7_dig2(HEX2),
+        .seg7_neg_sign(HEX3)
+    );
+    
+    // VGA Output Multiplexer
+    reg [7:0] red_out, green_out, blue_out;
+    
+    always @(*) begin
+        case (game_state)
+            STATE_START_MENU: begin
+				//START MENU CODE BEGIN =====================================================================================
+				 if (!video_on) begin
+                    red_out   = 8'h00;
+                    green_out = 8'h00;
+                    blue_out  = 8'h00;
+                end else begin
+                    // ---------- Base background (dark blue) ----------
+                    red_out   = 8'h00;
+                    green_out = 8'h00;
+                    blue_out  = 8'h60;
 
+                    // ---------- Checkerboard border (brighter blue) ----------
+                    if ( (x < 20) || (x > 620) || (y < 20) || (y > 460) ) begin
+                        if (x[4] ^ y[4]) begin
+                            red_out   = 8'h00;
+                            green_out = 8'hA0;
+                            blue_out  = 8'hFF;
+                        end else begin
+                            red_out   = 8'h00;
+                            green_out = 8'h40;
+                            blue_out  = 8'hC0;
+                        end
+                    end
+
+                    // ---------- Big title bar background ----------
+                    if (y >= 40 && y <= 120 && x >= 60 && x <= 580) begin
+                        red_out   = 8'h20;
+                        green_out = 8'h20;
+                        blue_out  = 8'h40;
+                    end
+
+                    // ---------- "L&P PIANO TILES" Text (Large, Pixelated Style) ----------
+                    // L
+                    if ((y >= 60 && y <= 100) && ((x >= 80 && x <= 90) || (y >= 90 && x >= 80 && x <= 110))) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // &
+                    if (y >= 60 && y <= 100) begin
+                        if ((y >= 65 && y <= 75 && x >= 120 && x <= 140) ||
+                            (y >= 75 && y <= 85 && x >= 115 && x <= 125) ||
+                            (y >= 85 && y <= 95 && x >= 120 && x <= 145) ||
+                            (x >= 135 && x <= 145 && y >= 70 && y <= 90)) begin
+                            red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                        end
+                    end
+                    
+                    // P
+                    if ((y >= 60 && y <= 100 && x >= 155 && x <= 165) ||
+                        (y >= 60 && y <= 70 && x >= 155 && x <= 180) ||
+                        (y >= 75 && y <= 85 && x >= 155 && x <= 180) ||
+                        (x >= 175 && x <= 180 && y >= 60 && y <= 85)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+
+                    // Space between L&P and PIANO
+
+                    // P (second)
+                    if ((y >= 60 && y <= 100 && x >= 210 && x <= 220) ||
+                        (y >= 60 && y <= 70 && x >= 210 && x <= 235) ||
+                        (y >= 75 && y <= 85 && x >= 210 && x <= 235) ||
+                        (x >= 230 && x <= 235 && y >= 60 && y <= 85)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // I
+                    if ((y >= 60 && y <= 100 && x >= 248 && x <= 258)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // A
+                    if ((y >= 60 && y <= 100 && x >= 270 && x <= 280) ||
+                        (y >= 60 && y <= 100 && x >= 290 && x <= 300) ||
+                        (y >= 60 && y <= 70 && x >= 270 && x <= 300) ||
+                        (y >= 78 && y <= 82 && x >= 270 && x <= 300)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // N
+                    if ((y >= 60 && y <= 100 && x >= 312 && x <= 322) ||
+                        (y >= 60 && y <= 100 && x >= 337 && x <= 347) ||
+                        ((y - 60) == (x - 322) && x >= 322 && x <= 337 && y >= 60 && y <= 100)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // O
+                    if ((y >= 60 && y <= 100 && (x >= 360 && x <= 370 || x >= 380 && x <= 390)) ||
+                        (y >= 60 && y <= 70 && x >= 360 && x <= 390) ||
+                        (y >= 90 && y <= 100 && x >= 360 && x <= 390)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+
+                    // Space before TILES
+
+                    // T
+                    if ((y >= 60 && y <= 70 && x >= 415 && x <= 445) ||
+                        (y >= 60 && y <= 100 && x >= 427 && x <= 437)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // I
+                    if ((y >= 60 && y <= 100 && x >= 455 && x <= 465)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // L
+                    if ((y >= 60 && y <= 100 && x >= 477 && x <= 487) ||
+                        (y >= 90 && y <= 100 && x >= 477 && x <= 505)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // E
+                    if ((y >= 60 && y <= 100 && x >= 517 && x <= 527) ||
+                        (y >= 60 && y <= 70 && x >= 517 && x <= 545) ||
+                        (y >= 78 && y <= 82 && x >= 517 && x <= 540) ||
+                        (y >= 90 && y <= 100 && x >= 517 && x <= 545)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // S
+                    if ((y >= 60 && y <= 70 && x >= 555 && x <= 575) ||
+                        (y >= 78 && y <= 82 && x >= 555 && x <= 575) ||
+                        (y >= 90 && y <= 100 && x >= 555 && x <= 575) ||
+                        (x >= 555 && x <= 565 && y >= 60 && y <= 82) ||
+                        (x >= 565 && x <= 575 && y >= 78 && y <= 100)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+
+                    // ---------- Colored vertical "piano tiles" in middle ----------
+                    if (y >= 150 && y <= 320) begin
+                        if      (x >= 100 && x < 180) begin
+                            red_out   = 8'h20;
+                            green_out = 8'hFF;
+                            blue_out  = 8'hFF;
+                        end else if (x >= 180 && x < 260) begin
+                            red_out   = 8'hFF;
+                            green_out = 8'h80;
+                            blue_out  = 8'hC0;
+                        end else if (x >= 260 && x < 340) begin
+                            red_out   = 8'h50;
+                            green_out = 8'h70;
+                            blue_out  = 8'hFF;
+                        end else if (x >= 340 && x < 420) begin
+                            red_out   = 8'hFF;
+                            green_out = 8'h20;
+                            blue_out  = 8'hD0;
+                        end else if (x >= 420 && x < 500) begin
+                            red_out   = 8'h20;
+                            green_out = 8'hFF;
+                            blue_out  = 8'h90;
+                        end
+                    end
+
+                    // ---------- Button background for "PRESS ANY KEY TO START" ----------
+                    if (y >= 340 && y <= 390 && x >= 80 && x <= 560) begin
+                        red_out   = 8'h30;
+                        green_out = 8'h30;
+                        blue_out  = 8'h30;
+                    end
+
+                    // ---------- "PRESS ANY KEY TO START" Text (Smaller) ----------
+                    // P
+                    if ((y >= 350 && y <= 380 && x >= 130 && x <= 135) ||
+                        (y >= 350 && y <= 355 && x >= 130 && x <= 145) ||
+                        (y >= 362 && y <= 367 && x >= 130 && x <= 145) ||
+                        (x >= 140 && x <= 145 && y >= 350 && y <= 367)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    // R
+                    if ((y >= 350 && y <= 380 && x >= 150 && x <= 155) ||
+                        (y >= 350 && y <= 355 && x >= 150 && x <= 165) ||
+                        (y >= 362 && y <= 367 && x >= 150 && x <= 165) ||
+                        (x >= 160 && x <= 165 && y >= 350 && y <= 367) ||
+                        ((y - 367) * 2 == (x - 155) && x >= 155 && x <= 165 && y >= 367 && y <= 380)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    // E
+                    if ((y >= 350 && y <= 380 && x >= 170 && x <= 175) ||
+                        (y >= 350 && y <= 355 && x >= 170 && x <= 185) ||
+                        (y >= 362 && y <= 367 && x >= 170 && x <= 183) ||
+                        (y >= 375 && y <= 380 && x >= 170 && x <= 185)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    // S
+                    if ((y >= 350 && y <= 355 && x >= 190 && x <= 203) ||
+                        (y >= 362 && y <= 367 && x >= 190 && x <= 203) ||
+                        (y >= 375 && y <= 380 && x >= 190 && x <= 203) ||
+                        (x >= 190 && x <= 195 && y >= 350 && y <= 367) ||
+                        (x >= 198 && x <= 203 && y >= 362 && y <= 380)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    // S (second)
+                    if ((y >= 350 && y <= 355 && x >= 208 && x <= 221) ||
+                        (y >= 362 && y <= 367 && x >= 208 && x <= 221) ||
+                        (y >= 375 && y <= 380 && x >= 208 && x <= 221) ||
+                        (x >= 208 && x <= 213 && y >= 350 && y <= 367) ||
+                        (x >= 216 && x <= 221 && y >= 362 && y <= 380)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    
+                    // Space
+                    
+                    // A
+                    if ((y >= 350 && y <= 380 && x >= 235 && x <= 240) ||
+                        (y >= 350 && y <= 380 && x >= 248 && x <= 253) ||
+                        (y >= 350 && y <= 355 && x >= 235 && x <= 253) ||
+                        (y >= 363 && y <= 367 && x >= 235 && x <= 253)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    // N
+                    if ((y >= 350 && y <= 380 && x >= 258 && x <= 263) ||
+                        (y >= 350 && y <= 380 && x >= 271 && x <= 276) ||
+                        ((y - 350) == (x - 263) && x >= 263 && x <= 271 && y >= 350 && y <= 380)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    // Y
+                    if ((y >= 350 && y <= 365 && x >= 281 && x <= 286) ||
+                        (y >= 350 && y <= 365 && x >= 294 && x <= 299) ||
+                        (y >= 365 && y <= 380 && x >= 287 && x <= 292) ||
+                        ((y - 350) == (x - 281) && x >= 281 && x <= 287 && y >= 350 && y <= 365) ||
+                        ((y - 350) == -(x - 299) + 15 && x >= 292 && x <= 299 && y >= 350 && y <= 365)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    
+                    // Space
+                    
+                    // K
+                    if ((y >= 350 && y <= 380 && x >= 313 && x <= 318) ||
+                        (x >= 323 && x <= 328 && y >= 350 && y <= 365) ||
+                        ((y - 365) * 2 == (x - 318) && x >= 318 && x <= 328 && y >= 365 && y <= 380) ||
+                        ((y - 350) * -2 == (x - 318) - 30 && x >= 318 && x <= 328 && y >= 350 && y <= 365)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    // E
+                    if ((y >= 350 && y <= 380 && x >= 333 && x <= 338) ||
+                        (y >= 350 && y <= 355 && x >= 333 && x <= 348) ||
+                        (y >= 362 && y <= 367 && x >= 333 && x <= 346) ||
+                        (y >= 375 && y <= 380 && x >= 333 && x <= 348)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    // Y (second)
+                    if ((y >= 350 && y <= 365 && x >= 353 && x <= 358) ||
+                        (y >= 350 && y <= 365 && x >= 366 && x <= 371) ||
+                        (y >= 365 && y <= 380 && x >= 359 && x <= 364) ||
+                        ((y - 350) == (x - 353) && x >= 353 && x <= 359 && y >= 350 && y <= 365) ||
+                        ((y - 350) == -(x - 371) + 18 && x >= 364 && x <= 371 && y >= 350 && y <= 365)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    
+                    // Space
+                    
+                    // T
+                    if ((y >= 350 && y <= 355 && x >= 385 && x <= 400) ||
+                        (y >= 350 && y <= 380 && x >= 390 && x <= 395)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    // O
+                    if ((y >= 350 && y <= 380 && (x >= 405 && x <= 410 || x >= 418 && x <= 423)) ||
+                        (y >= 350 && y <= 355 && x >= 405 && x <= 423) ||
+                        (y >= 375 && y <= 380 && x >= 405 && x <= 423)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    
+                    // Space
+                    
+                    // S
+                    if ((y >= 350 && y <= 355 && x >= 437 && x <= 450) ||
+                        (y >= 362 && y <= 367 && x >= 437 && x <= 450) ||
+                        (y >= 375 && y <= 380 && x >= 437 && x <= 450) ||
+                        (x >= 437 && x <= 442 && y >= 350 && y <= 367) ||
+                        (x >= 445 && x <= 450 && y >= 362 && y <= 380)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    // T
+                    if ((y >= 350 && y <= 355 && x >= 455 && x <= 470) ||
+                        (y >= 350 && y <= 380 && x >= 460 && x <= 465)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    // A
+                    if ((y >= 350 && y <= 380 && x >= 475 && x <= 480) ||
+                        (y >= 350 && y <= 380 && x >= 488 && x <= 493) ||
+                        (y >= 350 && y <= 355 && x >= 475 && x <= 493) ||
+                        (y >= 363 && y <= 367 && x >= 475 && x <= 493)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    // R
+                    if ((y >= 350 && y <= 380 && x >= 498 && x <= 503) ||
+                        (y >= 350 && y <= 355 && x >= 498 && x <= 513) ||
+                        (y >= 362 && y <= 367 && x >= 498 && x <= 513) ||
+                        (x >= 508 && x <= 513 && y >= 350 && y <= 367) ||
+                        ((y - 367) * 2 == (x - 503) && x >= 503 && x <= 513 && y >= 367 && y <= 380)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+                    // T
+                    if ((y >= 350 && y <= 355 && x >= 518 && x <= 533) ||
+                        (y >= 350 && y <= 380 && x >= 523 && x <= 528)) begin
+                        red_out = 8'h00; green_out = 8'hFF; blue_out = 8'h00;
+                    end
+
+                    // Border outline on button
+                    if (y >= 340 && y <= 345 && x >= 80 && x <= 560) begin
+                        red_out   = 8'h00;
+                        green_out = 8'h00;
+                        blue_out  = 8'h00;
+                    end
+                    if (y >= 385 && y <= 390 && x >= 80 && x <= 560) begin
+                        red_out   = 8'h00;
+                        green_out = 8'h00;
+                        blue_out  = 8'h00;
+                    end
+                    if (x >= 80 && x <= 85 && y >= 340 && y <= 390) begin
+                        red_out   = 8'h00;
+                        green_out = 8'h00;
+                        blue_out  = 8'h00;
+                    end
+                    if (x >= 555 && x <= 560 && y >= 340 && y <= 390) begin
+                        red_out   = 8'h00;
+                        green_out = 8'h00;
+                        blue_out  = 8'h00;
+                    end
+                end
+                // START MENU CODE END =======================================================================================
+            end				
+            
+            STATE_PLAYING: begin
+                // Display game
+                red_out = red_game;
+                green_out = green_game;
+                blue_out = blue_game;
+            end
+            
+            STATE_GAME_OVER: begin
+                // Game Over Screen Drawing Block
+
+                if (!video_on) begin
+                    red_out   = 8'h00;
+                    green_out = 8'h00;
+                    blue_out  = 8'h00;
+                end else begin
+                    // ---------- Base background (dark red tint for game over) ----------
+                    red_out   = 8'h40;
+                    green_out = 8'h00;
+                    blue_out  = 8'h00;
+
+                    // ---------- Checkerboard border (red themed) ----------
+                    if ( (x < 20) || (x > 620) || (y < 20) || (y > 460) ) begin
+                        if (x[4] ^ y[4]) begin
+                            red_out   = 8'hFF;
+                            green_out = 8'h20;
+                            blue_out  = 8'h20;
+                        end else begin
+                            red_out   = 8'hA0;
+                            green_out = 8'h10;
+                            blue_out  = 8'h10;
+                        end
+                    end
+
+                    // ---------- "GAME OVER" Title Bar ----------
+                    if (y >= 80 && y <= 160 && x >= 100 && x <= 540) begin
+                        red_out   = 8'h60;
+                        green_out = 8'h10;
+                        blue_out  = 8'h10;
+                    end
+
+                    // ---------- "GAME OVER" Text (Large, White) ----------
+                    // G
+                    if ((y >= 95 && y <= 145 && x >= 120 && x <= 130) ||
+                        (y >= 95 && y <= 105 && x >= 120 && x <= 155) ||
+                        (y >= 135 && y <= 145 && x >= 120 && x <= 155) ||
+                        (y >= 118 && y <= 145 && x >= 145 && x <= 155) ||
+                        (y >= 118 && y <= 128 && x >= 135 && x <= 155)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // A
+                    if ((y >= 95 && y <= 145 && x >= 165 && x <= 175) ||
+                        (y >= 95 && y <= 145 && x >= 190 && x <= 200) ||
+                        (y >= 95 && y <= 105 && x >= 165 && x <= 200) ||
+                        (y >= 118 && y <= 123 && x >= 165 && x <= 200)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // M
+                    if ((y >= 95 && y <= 145 && x >= 210 && x <= 220) ||
+                        (y >= 95 && y <= 145 && x >= 250 && x <= 260) ||
+                        (y >= 95 && y <= 145 && x >= 230 && x <= 240) ||
+                        (y >= 95 && y <= 115 && x >= 220 && x <= 230) ||
+                        (y >= 95 && y <= 115 && x >= 240 && x <= 250)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // E
+                    if ((y >= 95 && y <= 145 && x >= 270 && x <= 280) ||
+                        (y >= 95 && y <= 105 && x >= 270 && x <= 305) ||
+                        (y >= 118 && y <= 123 && x >= 270 && x <= 300) ||
+                        (y >= 135 && y <= 145 && x >= 270 && x <= 305)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+
+                    // Space between GAME and OVER
+
+                    // O
+                    if ((y >= 95 && y <= 145 && (x >= 330 && x <= 340 || x >= 360 && x <= 370)) ||
+                        (y >= 95 && y <= 105 && x >= 330 && x <= 370) ||
+                        (y >= 135 && y <= 145 && x >= 330 && x <= 370)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // V
+                    if ((y >= 95 && y <= 130 && x >= 380 && x <= 390) ||
+                        (y >= 95 && y <= 130 && x >= 405 && x <= 415) ||
+                        ((y - 130) * 2 == (x - 390) && x >= 390 && x <= 397 && y >= 130 && y <= 145) ||
+                        ((y - 130) * -2 == (x - 405) - 30 && x >= 398 && x <= 405 && y >= 130 && y <= 145)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // E (second)
+                    if ((y >= 95 && y <= 145 && x >= 425 && x <= 435) ||
+                        (y >= 95 && y <= 105 && x >= 425 && x <= 460) ||
+                        (y >= 118 && y <= 123 && x >= 425 && x <= 455) ||
+                        (y >= 135 && y <= 145 && x >= 425 && x <= 460)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // R
+                    if ((y >= 95 && y <= 145 && x >= 470 && x <= 480) ||
+                        (y >= 95 && y <= 105 && x >= 470 && x <= 500) ||
+                        (y >= 118 && y <= 123 && x >= 470 && x <= 500) ||
+                        (x >= 490 && x <= 500 && y >= 95 && y <= 123) ||
+                        ((y - 123) * 2 == (x - 480) && x >= 480 && x <= 500 && y >= 123 && y <= 145)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+
+                    // ---------- Score display area (optional - placeholder) ----------
+                    if (y >= 200 && y <= 250 && x >= 220 && x <= 420) begin
+                        red_out   = 8'h30;
+                        green_out = 8'h10;
+                        blue_out  = 8'h10;
+                    end
+                    
+                    // "YOUR SCORE" text could go here - simplified version
+                    // You can add actual score display later
+
+                    // ---------- "TRY AGAIN" Button ----------
+                    if (y >= 320 && y <= 380 && x >= 150 && x <= 490) begin
+                        red_out   = 8'h20;
+                        green_out = 8'h60;
+                        blue_out  = 8'h20;
+                    end
+
+                    // ---------- "TRY AGAIN" Text ----------
+                    // T
+                    if ((y >= 335 && y <= 342 && x >= 180 && x <= 205) ||
+                        (y >= 335 && y <= 365 && x >= 190 && x <= 197)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // R
+                    if ((y >= 335 && y <= 365 && x >= 212 && x <= 219) ||
+                        (y >= 335 && y <= 342 && x >= 212 && x <= 235) ||
+                        (y >= 348 && y <= 353 && x >= 212 && x <= 235) ||
+                        (x >= 228 && x <= 235 && y >= 335 && y <= 353) ||
+                        ((y - 353) * 2 == (x - 219) && x >= 219 && x <= 235 && y >= 353 && y <= 365)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // Y
+                    if ((y >= 335 && y <= 350 && x >= 242 && x <= 249) ||
+                        (y >= 335 && y <= 350 && x >= 259 && x <= 266) ||
+                        (y >= 350 && y <= 365 && x >= 250 && x <= 257) ||
+                        ((y - 335) == (x - 242) && x >= 242 && x <= 250 && y >= 335 && y <= 350) ||
+                        ((y - 335) == -(x - 266) + 24 && x >= 257 && x <= 266 && y >= 335 && y <= 350)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+
+                    // Space
+
+                    // A
+                    if ((y >= 335 && y <= 365 && x >= 290 && x <= 297) ||
+                        (y >= 335 && y <= 365 && x >= 310 && x <= 317) ||
+                        (y >= 335 && y <= 342 && x >= 290 && x <= 317) ||
+                        (y >= 349 && y <= 353 && x >= 290 && x <= 317)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // G
+                    if ((y >= 335 && y <= 365 && x >= 324 && x <= 331) ||
+                        (y >= 335 && y <= 342 && x >= 324 && x <= 350) ||
+                        (y >= 358 && y <= 365 && x >= 324 && x <= 350) ||
+                        (y >= 348 && y <= 365 && x >= 343 && x <= 350) ||
+                        (y >= 348 && y <= 353 && x >= 337 && x <= 350)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // A (second)
+                    if ((y >= 335 && y <= 365 && x >= 357 && x <= 364) ||
+                        (y >= 335 && y <= 365 && x >= 377 && x <= 384) ||
+                        (y >= 335 && y <= 342 && x >= 357 && x <= 384) ||
+                        (y >= 349 && y <= 353 && x >= 357 && x <= 384)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // I
+                    if ((y >= 335 && y <= 365 && x >= 391 && x <= 398)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+                    
+                    // N
+                    if ((y >= 335 && y <= 365 && x >= 405 && x <= 412) ||
+                        (y >= 335 && y <= 365 && x >= 428 && x <= 435) ||
+                        ((y - 335) == (x - 412) && x >= 412 && x <= 428 && y >= 335 && y <= 365)) begin
+                        red_out = 8'hFF; green_out = 8'hFF; blue_out = 8'hFF;
+                    end
+
+                    // ---------- "PRESS ANY BUTTON" subtitle ----------
+                    // Smaller text below TRY AGAIN
+                    if (y >= 400 && y <= 415 && x >= 210 && x <= 430) begin
+                        // Simple text representation
+                        if ((x >= 215 && x <= 218) || (x >= 232 && x <= 235) || 
+                            (x >= 250 && x <= 253) || (x >= 268 && x <= 271) ||
+                            (x >= 286 && x <= 289) || (x >= 304 && x <= 307) ||
+                            (x >= 322 && x <= 325) || (x >= 340 && x <= 343) ||
+                            (x >= 358 && x <= 361) || (x >= 376 && x <= 379) ||
+                            (x >= 394 && x <= 397) || (x >= 412 && x <= 415)) begin
+                            red_out = 8'hAA; green_out = 8'hFF; blue_out = 8'hAA;
+                        end
+                    end
+
+                    // Button border
+                    if ((y >= 320 && y <= 325 && x >= 150 && x <= 490) ||
+                        (y >= 375 && y <= 380 && x >= 150 && x <= 490) ||
+                        (x >= 150 && x <= 155 && y >= 320 && y <= 380) ||
+                        (x >= 485 && x <= 490 && y >= 320 && y <= 380)) begin
+                        red_out   = 8'h00;
+                        green_out = 8'hFF;
+                        blue_out  = 8'h00;
+                    end
+                end
+            end
+        
+        endcase
+    end
+    
+    // VGA outputs
+    assign VGA_R = red_out;
+    assign VGA_G = green_out;
+    assign VGA_B = blue_out;
+    assign VGA_BLANK_N = video_on;
+    assign VGA_SYNC_N = 1'b0;
+    
 endmodule

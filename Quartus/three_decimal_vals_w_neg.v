@@ -1,3 +1,5 @@
+// This code is a direct exerpt from our code used within the labs.
+// This code is being used to display the current game score on the FPGA's 7 segment displays.
 module three_decimal_vals_w_neg (
     input signed [7:0] val,
     output [6:0] seg7_dig0,

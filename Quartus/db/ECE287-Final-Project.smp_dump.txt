@@ -1,0 +1,16 @@
+
+State Machine - |topmodule|game_state
+Name game_state.STATE_START_MENU game_state.STATE_GAME_OVER game_state.STATE_PLAYING 
+game_state.STATE_START_MENU 0 0 0 
+game_state.STATE_PLAYING 1 0 1 
+game_state.STATE_GAME_OVER 1 1 0 
+
+State Machine - |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|state
+Name state.DONE state.STOP state.ACK state.WRITE state.ADDR state.START state.IDLE 
+state.IDLE 0 0 0 0 0 0 0 
+state.START 0 0 0 0 0 1 1 
+state.ADDR 0 0 0 0 1 0 1 
+state.WRITE 0 0 0 1 0 0 1 
+state.ACK 0 0 1 0 0 0 1 
+state.STOP 0 1 0 0 0 0 1 
+state.DONE 1 0 0 0 0 0 1 

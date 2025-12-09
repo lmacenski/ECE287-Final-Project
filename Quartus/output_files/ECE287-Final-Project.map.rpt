@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ECE287-Final-Project
-Fri Dec  5 10:46:20 2025
+Mon Dec  8 20:56:33 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -13,10 +13,35 @@ Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Post-Synthesis Netlist Statistics for Top Partition
- 10. Elapsed Time Per Partition
- 11. Analysis & Synthesis Messages
+  8. State Machine - |topmodule|game_state
+  9. State Machine - |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|state
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Inverted Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Parameter Settings for User Entity Instance: vga_controller:vga
+ 16. Parameter Settings for User Entity Instance: game:game
+ 17. Parameter Settings for User Entity Instance: game:game|column:col0
+ 18. Parameter Settings for User Entity Instance: game:game|column:col1
+ 19. Parameter Settings for User Entity Instance: game:game|column:col2
+ 20. Parameter Settings for User Entity Instance: game:game|column:col3
+ 21. Parameter Settings for User Entity Instance: audio:audio_inst|audio_and_video_config:cfg_inst
+ 22. Parameter Settings for Inferred Entity Instance: three_decimal_vals_w_neg:score_display|lpm_divide:Mod0
+ 23. Parameter Settings for Inferred Entity Instance: three_decimal_vals_w_neg:score_display|lpm_divide:Div0
+ 24. Parameter Settings for Inferred Entity Instance: three_decimal_vals_w_neg:score_display|lpm_divide:Mod1
+ 25. Parameter Settings for Inferred Entity Instance: three_decimal_vals_w_neg:score_display|lpm_divide:Div1
+ 26. Parameter Settings for Inferred Entity Instance: three_decimal_vals_w_neg:score_display|lpm_divide:Mod2
+ 27. Parameter Settings for Inferred Entity Instance: game:game|lpm_divide:Mod0
+ 28. Port Connectivity Checks: "audio:audio_inst|audio_codec:codec_inst"
+ 29. Port Connectivity Checks: "audio:audio_inst|audio_and_video_config:cfg_inst"
+ 30. Port Connectivity Checks: "game:game|column:col3"
+ 31. Port Connectivity Checks: "game:game|column:col2"
+ 32. Port Connectivity Checks: "game:game|column:col1"
+ 33. Port Connectivity Checks: "game:game|column:col0"
+ 34. Post-Synthesis Netlist Statistics for Top Partition
+ 35. Elapsed Time Per Partition
+ 36. Analysis & Synthesis Messages
 
 
 
@@ -43,14 +68,14 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Fri Dec  5 10:46:20 2025          ;
+; Analysis & Synthesis Status     ; Successful - Mon Dec  8 20:56:33 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; ECE287-Final-Project                           ;
 ; Top-level Entity Name           ; topmodule                                      ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 0                                              ;
-; Total pins                      ; 24                                             ;
+; Total registers                 ; 290                                            ;
+; Total pins                      ; 90                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 0                                              ;
 ; Total DSP Blocks                ; 0                                              ;
@@ -159,57 +184,186 @@ https://fpgasoftware.intel.com/eula.
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
+; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processors 4-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                              ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                ; Library ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------+---------+
-; topmodule.v                      ; yes             ; User Verilog HDL File  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v ;         ;
-+----------------------------------+-----------------+------------------------+-----------------------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                   ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                               ; Library ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
+; topmodule.v                      ; yes             ; User Verilog HDL File        ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v                ;         ;
+; vga.v                            ; yes             ; User Verilog HDL File        ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v                      ;         ;
+; game.v                           ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v                     ;         ;
+; column.v                         ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v                   ;         ;
+; audio.v                          ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v                    ;         ;
+; three_decimal_vals_w_neg.v       ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v ;         ;
+; seven_segment.v                  ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/seven_segment.v            ;         ;
+; seven_segment_negative.v         ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/seven_segment_negative.v   ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_divide.tdf                   ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/abs_divider.inc                  ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sign_div_unsign.inc              ;         ;
+; aglobal231.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc                   ;         ;
+; db/lpm_divide_82m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_82m.tdf      ;         ;
+; db/sign_div_unsign_bkh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_bkh.tdf ;         ;
+; db/alt_u_div_sse.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_sse.tdf       ;         ;
+; db/lpm_divide_5am.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_5am.tdf      ;         ;
+; db/lpm_divide_8am.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_8am.tdf      ;         ;
+; db/sign_div_unsign_ekh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_ekh.tdf ;         ;
+; db/alt_u_div_2te.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_2te.tdf       ;         ;
+; db/lpm_divide_l3m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_l3m.tdf      ;         ;
+; db/sign_div_unsign_olh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_olh.tdf ;         ;
+; db/alt_u_div_mve.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_mve.tdf       ;         ;
++----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-; Estimate of Logic utilization (ALMs needed) ; 0     ;
-;                                             ;       ;
-; Combinational ALUT usage for logic          ; 0     ;
-;     -- 7 input functions                    ; 0     ;
-;     -- 6 input functions                    ; 0     ;
-;     -- 5 input functions                    ; 0     ;
-;     -- 4 input functions                    ; 0     ;
-;     -- <=3 input functions                  ; 0     ;
-;                                             ;       ;
-; Dedicated logic registers                   ; 0     ;
-;                                             ;       ;
-; I/O pins                                    ; 24    ;
-;                                             ;       ;
-; Total DSP Blocks                            ; 0     ;
-;                                             ;       ;
-; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 1     ;
-; Total fan-out                               ; 24    ;
-; Average fan-out                             ; 0.50  ;
-+---------------------------------------------+-------+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimate of Logic utilization (ALMs needed) ; 1057           ;
+;                                             ;                ;
+; Combinational ALUT usage for logic          ; 1805           ;
+;     -- 7 input functions                    ; 4              ;
+;     -- 6 input functions                    ; 302            ;
+;     -- 5 input functions                    ; 301            ;
+;     -- 4 input functions                    ; 419            ;
+;     -- <=3 input functions                  ; 779            ;
+;                                             ;                ;
+; Dedicated logic registers                   ; 290            ;
+;                                             ;                ;
+; I/O pins                                    ; 90             ;
+;                                             ;                ;
+; Total DSP Blocks                            ; 0              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 255            ;
+; Total fan-out                               ; 8324           ;
+; Average fan-out                             ; 3.65           ;
++---------------------------------------------+----------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; |topmodule                 ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 24   ; 0            ; |topmodule          ; topmodule   ; work         ;
-+----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                ;
++---------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
+; Compilation Hierarchy Node                  ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                               ; Entity Name              ; Library Name ;
++---------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
+; |topmodule                                  ; 1805 (1033)         ; 290 (8)                   ; 0                 ; 0          ; 90   ; 0            ; |topmodule                                                                                                                                        ; topmodule                ; work         ;
+;    |audio:audio_inst|                       ; 176 (60)            ; 131 (41)                  ; 0                 ; 0          ; 0    ; 0            ; |topmodule|audio:audio_inst                                                                                                                       ; audio                    ; work         ;
+;       |audio_and_video_config:cfg_inst|     ; 88 (88)             ; 65 (65)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst                                                                                       ; audio_and_video_config   ; work         ;
+;       |audio_codec:codec_inst|              ; 28 (28)             ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|audio:audio_inst|audio_codec:codec_inst                                                                                                ; audio_codec              ; work         ;
+;    |game:game|                              ; 339 (129)           ; 129 (81)                  ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game                                                                                                                              ; game                     ; work         ;
+;       |column:col0|                         ; 41 (41)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col0                                                                                                                  ; column                   ; work         ;
+;       |column:col1|                         ; 38 (38)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col1                                                                                                                  ; column                   ; work         ;
+;       |column:col2|                         ; 36 (36)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col2                                                                                                                  ; column                   ; work         ;
+;       |column:col3|                         ; 52 (52)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col3                                                                                                                  ; column                   ; work         ;
+;       |lpm_divide:Mod0|                     ; 43 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0                                                                                                              ; lpm_divide               ; work         ;
+;          |lpm_divide_l3m:auto_generated|    ; 43 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated                                                                                ; lpm_divide_l3m           ; work         ;
+;             |sign_div_unsign_olh:divider|   ; 43 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated|sign_div_unsign_olh:divider                                                    ; sign_div_unsign_olh      ; work         ;
+;                |alt_u_div_mve:divider|      ; 43 (43)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated|sign_div_unsign_olh:divider|alt_u_div_mve:divider                              ; alt_u_div_mve            ; work         ;
+;    |three_decimal_vals_w_neg:score_display| ; 208 (13)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display                                                                                                 ; three_decimal_vals_w_neg ; work         ;
+;       |lpm_divide:Div0|                     ; 49 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Div0                                                                                 ; lpm_divide               ; work         ;
+;          |lpm_divide_5am:auto_generated|    ; 49 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Div0|lpm_divide_5am:auto_generated                                                   ; lpm_divide_5am           ; work         ;
+;             |sign_div_unsign_bkh:divider|   ; 49 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Div0|lpm_divide_5am:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh      ; work         ;
+;                |alt_u_div_sse:divider|      ; 49 (49)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Div0|lpm_divide_5am:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider ; alt_u_div_sse            ; work         ;
+;       |lpm_divide:Div1|                     ; 25 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Div1                                                                                 ; lpm_divide               ; work         ;
+;          |lpm_divide_8am:auto_generated|    ; 25 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Div1|lpm_divide_8am:auto_generated                                                   ; lpm_divide_8am           ; work         ;
+;             |sign_div_unsign_ekh:divider|   ; 25 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Div1|lpm_divide_8am:auto_generated|sign_div_unsign_ekh:divider                       ; sign_div_unsign_ekh      ; work         ;
+;                |alt_u_div_2te:divider|      ; 25 (25)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Div1|lpm_divide_8am:auto_generated|sign_div_unsign_ekh:divider|alt_u_div_2te:divider ; alt_u_div_2te            ; work         ;
+;       |lpm_divide:Mod0|                     ; 53 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Mod0                                                                                 ; lpm_divide               ; work         ;
+;          |lpm_divide_82m:auto_generated|    ; 53 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Mod0|lpm_divide_82m:auto_generated                                                   ; lpm_divide_82m           ; work         ;
+;             |sign_div_unsign_bkh:divider|   ; 53 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Mod0|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh      ; work         ;
+;                |alt_u_div_sse:divider|      ; 53 (53)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Mod0|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider ; alt_u_div_sse            ; work         ;
+;       |lpm_divide:Mod1|                     ; 38 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Mod1                                                                                 ; lpm_divide               ; work         ;
+;          |lpm_divide_82m:auto_generated|    ; 38 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Mod1|lpm_divide_82m:auto_generated                                                   ; lpm_divide_82m           ; work         ;
+;             |sign_div_unsign_bkh:divider|   ; 38 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Mod1|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh      ; work         ;
+;                |alt_u_div_sse:divider|      ; 38 (38)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Mod1|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider ; alt_u_div_sse            ; work         ;
+;       |lpm_divide:Mod2|                     ; 9 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Mod2                                                                                 ; lpm_divide               ; work         ;
+;          |lpm_divide_82m:auto_generated|    ; 9 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Mod2|lpm_divide_82m:auto_generated                                                   ; lpm_divide_82m           ; work         ;
+;             |sign_div_unsign_bkh:divider|   ; 9 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Mod2|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh      ; work         ;
+;                |alt_u_div_sse:divider|      ; 9 (9)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Mod2|lpm_divide_82m:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider ; alt_u_div_sse            ; work         ;
+;       |seven_segment:u0|                    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|seven_segment:u0                                                                                ; seven_segment            ; work         ;
+;       |seven_segment:u1|                    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|seven_segment:u1                                                                                ; seven_segment            ; work         ;
+;       |seven_segment:u2|                    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|seven_segment:u2                                                                                ; seven_segment            ; work         ;
+;    |vga_controller:vga|                     ; 49 (49)             ; 22 (22)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|vga_controller:vga                                                                                                                     ; vga_controller           ; work         ;
++---------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------+
+; State Machine - |topmodule|game_state                                                                             ;
++-----------------------------+-----------------------------+----------------------------+--------------------------+
+; Name                        ; game_state.STATE_START_MENU ; game_state.STATE_GAME_OVER ; game_state.STATE_PLAYING ;
++-----------------------------+-----------------------------+----------------------------+--------------------------+
+; game_state.STATE_START_MENU ; 0                           ; 0                          ; 0                        ;
+; game_state.STATE_PLAYING    ; 1                           ; 0                          ; 1                        ;
+; game_state.STATE_GAME_OVER  ; 1                           ; 1                          ; 0                        ;
++-----------------------------+-----------------------------+----------------------------+--------------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------+
+; State Machine - |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|state                       ;
++-------------+------------+------------+-----------+-------------+------------+-------------+------------+
+; Name        ; state.DONE ; state.STOP ; state.ACK ; state.WRITE ; state.ADDR ; state.START ; state.IDLE ;
++-------------+------------+------------+-----------+-------------+------------+-------------+------------+
+; state.IDLE  ; 0          ; 0          ; 0         ; 0           ; 0          ; 0           ; 0          ;
+; state.START ; 0          ; 0          ; 0         ; 0           ; 0          ; 1           ; 1          ;
+; state.ADDR  ; 0          ; 0          ; 0         ; 0           ; 1          ; 0           ; 1          ;
+; state.WRITE ; 0          ; 0          ; 0         ; 1           ; 0          ; 0           ; 1          ;
+; state.ACK   ; 0          ; 0          ; 1         ; 0           ; 0          ; 0           ; 1          ;
+; state.STOP  ; 0          ; 1          ; 0         ; 0           ; 0          ; 0           ; 1          ;
+; state.DONE  ; 1          ; 0          ; 0         ; 0           ; 0          ; 0           ; 1          ;
++-------------+------------+------------+-----------+-------------+------------+-------------+------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                 ;
++-----------------------------------------------------------+----------------------------------------+
+; Register name                                             ; Reason for Removal                     ;
++-----------------------------------------------------------+----------------------------------------+
+; game:game|column:col3|tile_y[0]                           ; Stuck at GND due to stuck port data_in ;
+; game:game|column:col2|tile_y[0]                           ; Stuck at GND due to stuck port data_in ;
+; game:game|column:col1|tile_y[0]                           ; Stuck at GND due to stuck port data_in ;
+; game:game|column:col0|tile_y[0]                           ; Stuck at GND due to stuck port data_in ;
+; audio:audio_inst|audio_codec:codec_inst|shift_data[0..13] ; Stuck at GND due to stuck port data_in ;
+; audio:audio_inst|audio_and_video_config:cfg_inst|state~9  ; Lost fanout                            ;
+; audio:audio_inst|audio_and_video_config:cfg_inst|state~10 ; Lost fanout                            ;
+; audio:audio_inst|audio_and_video_config:cfg_inst|state~11 ; Lost fanout                            ;
+; audio:audio_inst|audio_and_video_config:cfg_inst|state~12 ; Lost fanout                            ;
+; audio:audio_inst|audio_codec:codec_inst|bit_counter[5]    ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 23                    ;                                        ;
++-----------------------------------------------------------+----------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                 ;
++-------------------------------------------------------+---------------------------+---------------------------------------------------------+
+; Register name                                         ; Reason for Removal        ; Registers Removed due to This Register                  ;
++-------------------------------------------------------+---------------------------+---------------------------------------------------------+
+; audio:audio_inst|audio_codec:codec_inst|shift_data[0] ; Stuck at GND              ; audio:audio_inst|audio_codec:codec_inst|shift_data[1],  ;
+;                                                       ; due to stuck port data_in ; audio:audio_inst|audio_codec:codec_inst|shift_data[2],  ;
+;                                                       ;                           ; audio:audio_inst|audio_codec:codec_inst|shift_data[3],  ;
+;                                                       ;                           ; audio:audio_inst|audio_codec:codec_inst|shift_data[4],  ;
+;                                                       ;                           ; audio:audio_inst|audio_codec:codec_inst|shift_data[5],  ;
+;                                                       ;                           ; audio:audio_inst|audio_codec:codec_inst|shift_data[6],  ;
+;                                                       ;                           ; audio:audio_inst|audio_codec:codec_inst|shift_data[7],  ;
+;                                                       ;                           ; audio:audio_inst|audio_codec:codec_inst|shift_data[8],  ;
+;                                                       ;                           ; audio:audio_inst|audio_codec:codec_inst|shift_data[9],  ;
+;                                                       ;                           ; audio:audio_inst|audio_codec:codec_inst|shift_data[10], ;
+;                                                       ;                           ; audio:audio_inst|audio_codec:codec_inst|shift_data[11], ;
+;                                                       ;                           ; audio:audio_inst|audio_codec:codec_inst|shift_data[12], ;
+;                                                       ;                           ; audio:audio_inst|audio_codec:codec_inst|shift_data[13]  ;
++-------------------------------------------------------+---------------------------+---------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -217,14 +371,377 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Total registers                              ; 290   ;
+; Number of registers using Synchronous Clear  ; 178   ;
+; Number of registers using Synchronous Load   ; 11    ;
+; Number of registers using Asynchronous Clear ; 282   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 140   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------+
+; Inverted Register Statistics                                               ;
++------------------------------------------------------------------+---------+
+; Inverted Register                                                ; Fan out ;
++------------------------------------------------------------------+---------+
+; vga_controller:vga|hsync                                         ; 1       ;
+; vga_controller:vga|vsync                                         ; 1       ;
+; audio:audio_inst|audio_and_video_config:cfg_inst|i2c_clk_prev[0] ; 9       ;
+; audio:audio_inst|audio_and_video_config:cfg_inst|i2c_clk_prev[1] ; 8       ;
+; audio:audio_inst|audio_and_video_config:cfg_inst|sda_out         ; 4       ;
+; Total number of inverted registers = 5                           ;         ;
++------------------------------------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |topmodule|audio:audio_inst|audio_codec:codec_inst|shift_count[2]        ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |topmodule|audio:audio_inst|tone_counter[27]                             ;
+; 5:1                ; 18 bits   ; 54 LEs        ; 18 LEs               ; 36 LEs                 ; Yes        ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|bit_count[3] ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|shift_reg[5] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|green_out                                                     ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|game:game|current_col.11                                      ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|game:game|blue[0]                                             ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|game:game|green[6]                                            ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|red_out                                                       ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |topmodule|Selector26                                                    ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |topmodule|red_out                                                       ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |topmodule|Selector15                                                    ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |topmodule|Selector9                                                     ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |topmodule|Selector1                                                     ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |topmodule|red_out                                                       ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|Selector6    ;
+; 29:1               ; 2 bits    ; 38 LEs        ; 38 LEs               ; 0 LEs                  ; No         ; |topmodule|red_out                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: vga_controller:vga ;
++----------------+-------+----------------------------------------+
+; Parameter Name ; Value ; Type                                   ;
++----------------+-------+----------------------------------------+
+; H_DISPLAY      ; 640   ; Signed Integer                         ;
+; H_FRONT        ; 16    ; Signed Integer                         ;
+; H_SYNC         ; 96    ; Signed Integer                         ;
+; H_BACK         ; 48    ; Signed Integer                         ;
+; H_TOTAL        ; 800   ; Signed Integer                         ;
+; V_DISPLAY      ; 480   ; Signed Integer                         ;
+; V_FRONT        ; 10    ; Signed Integer                         ;
+; V_SYNC         ; 2     ; Signed Integer                         ;
+; V_BACK         ; 33    ; Signed Integer                         ;
+; V_TOTAL        ; 525   ; Signed Integer                         ;
++----------------+-------+----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------+
+; Parameter Settings for User Entity Instance: game:game ;
++----------------+-------+-------------------------------+
+; Parameter Name ; Value ; Type                          ;
++----------------+-------+-------------------------------+
+; COL_WIDTH      ; 160   ; Signed Integer                ;
+; TILE_HEIGHT    ; 80    ; Signed Integer                ;
+; SCREEN_HEIGHT  ; 480   ; Signed Integer                ;
++----------------+-------+-------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: game:game|column:col0 ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; TILE_HEIGHT    ; 80    ; Signed Integer                            ;
+; SCREEN_HEIGHT  ; 480   ; Signed Integer                            ;
+; FALL_SPEED     ; 2     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: game:game|column:col1 ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; TILE_HEIGHT    ; 80    ; Signed Integer                            ;
+; SCREEN_HEIGHT  ; 480   ; Signed Integer                            ;
+; FALL_SPEED     ; 2     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: game:game|column:col2 ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; TILE_HEIGHT    ; 80    ; Signed Integer                            ;
+; SCREEN_HEIGHT  ; 480   ; Signed Integer                            ;
+; FALL_SPEED     ; 2     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: game:game|column:col3 ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; TILE_HEIGHT    ; 80    ; Signed Integer                            ;
+; SCREEN_HEIGHT  ; 480   ; Signed Integer                            ;
+; FALL_SPEED     ; 2     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: audio:audio_inst|audio_and_video_config:cfg_inst ;
++----------------+----------+-------------------------------------------------------------------+
+; Parameter Name ; Value    ; Type                                                              ;
++----------------+----------+-------------------------------------------------------------------+
+; CLK_FREQ       ; 50000000 ; Signed Integer                                                    ;
+; I2C_FREQ       ; 20000    ; Signed Integer                                                    ;
++----------------+----------+-------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: three_decimal_vals_w_neg:score_display|lpm_divide:Mod0 ;
++------------------------+----------------+---------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                          ;
++------------------------+----------------+---------------------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                                       ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                       ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                       ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                       ;
+; CBXI_PARAMETER         ; lpm_divide_82m ; Untyped                                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                ;
++------------------------+----------------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: three_decimal_vals_w_neg:score_display|lpm_divide:Div0 ;
++------------------------+----------------+---------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                          ;
++------------------------+----------------+---------------------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                                       ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                       ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                       ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                       ;
+; CBXI_PARAMETER         ; lpm_divide_5am ; Untyped                                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                ;
++------------------------+----------------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: three_decimal_vals_w_neg:score_display|lpm_divide:Mod1 ;
++------------------------+----------------+---------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                          ;
++------------------------+----------------+---------------------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                                       ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                       ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                       ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                       ;
+; CBXI_PARAMETER         ; lpm_divide_82m ; Untyped                                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                ;
++------------------------+----------------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: three_decimal_vals_w_neg:score_display|lpm_divide:Div1 ;
++------------------------+----------------+---------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                          ;
++------------------------+----------------+---------------------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                                       ;
+; LPM_WIDTHD             ; 7              ; Untyped                                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                       ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                       ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                       ;
+; CBXI_PARAMETER         ; lpm_divide_8am ; Untyped                                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                ;
++------------------------+----------------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: three_decimal_vals_w_neg:score_display|lpm_divide:Mod2 ;
++------------------------+----------------+---------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                          ;
++------------------------+----------------+---------------------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                                       ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                       ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                       ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                       ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                       ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                       ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                       ;
+; CBXI_PARAMETER         ; lpm_divide_82m ; Untyped                                                       ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                       ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                       ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                    ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                  ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                  ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                                ;
++------------------------+----------------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: game:game|lpm_divide:Mod0 ;
++------------------------+----------------+----------------------------------+
+; Parameter Name         ; Value          ; Type                             ;
++------------------------+----------------+----------------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                          ;
+; LPM_WIDTHD             ; 8              ; Untyped                          ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                          ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                          ;
+; LPM_PIPELINE           ; 0              ; Untyped                          ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                          ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                          ;
+; CBXI_PARAMETER         ; lpm_divide_l3m ; Untyped                          ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                          ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                          ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                       ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                     ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                     ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                   ;
++------------------------+----------------+----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "audio:audio_inst|audio_codec:codec_inst" ;
++---------------------+-------+----------+----------------------------+
+; Port                ; Type  ; Severity ; Details                    ;
++---------------------+-------+----------+----------------------------+
+; audio_sample[13..0] ; Input ; Info     ; Stuck at GND               ;
++---------------------+-------+----------+----------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "audio:audio_inst|audio_and_video_config:cfg_inst"                                        ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; init_done ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "game:game|column:col3"                                                                                                                                                                           ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                                                                                                                             ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; col_x_start       ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (10 bits) it drives.  The 22 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; col_x_start[8..5] ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; col_x_start[4..0] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_start[9]    ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_end         ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (10 bits) it drives.  The 22 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; col_x_end[6..0]   ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_end[9]      ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; col_x_end[8]      ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_end[7]      ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; tile_y            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                 ;
+; active            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                 ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "game:game|column:col2"                                                                                                                                                                           ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                                                                                                                             ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; col_x_start       ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (10 bits) it drives.  The 22 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; col_x_start[5..0] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_start[9]    ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_start[8]    ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; col_x_start[7]    ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_start[6]    ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; col_x_end         ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (10 bits) it drives.  The 22 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; col_x_end[8..5]   ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; col_x_end[4..0]   ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_end[9]      ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; tile_y            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                 ;
+; active            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                 ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "game:game|column:col1"                                                                                                                                                                           ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port              ; Type   ; Severity ; Details                                                                                                                                                                             ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; col_x_start       ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (10 bits) it drives.  The 22 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; col_x_start[9..8] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_start[4..0] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_start[7]    ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; col_x_start[6]    ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_start[5]    ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; col_x_end         ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (10 bits) it drives.  The 22 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; col_x_end[5..0]   ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_end[9]      ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_end[8]      ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; col_x_end[7]      ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_end[6]      ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; tile_y            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                 ;
+; active            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                 ;
++-------------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "game:game|column:col0"                                                                                                                                                                         ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                                                                                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; col_x_start     ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_end       ; Input  ; Warning  ; Input port expression (32 bits) is wider than the input port (10 bits) it drives.  The 22 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
+; col_x_end[9..8] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_end[4..0] ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_end[7]    ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; col_x_end[6]    ; Input  ; Info     ; Stuck at GND                                                                                                                                                                        ;
+; col_x_end[5]    ; Input  ; Info     ; Stuck at VCC                                                                                                                                                                        ;
+; tile_y          ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                 ;
+; active          ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                                                                 ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------+
@@ -232,13 +749,40 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_lcell_comb     ; 1                           ;
-;     normal            ; 1                           ;
-;         0 data inputs ; 1                           ;
-; boundary_port         ; 24                          ;
+; arriav_ff             ; 290                         ;
+;     CLR               ; 41                          ;
+;     CLR SCLR          ; 100                         ;
+;     CLR SLD           ; 1                           ;
+;     ENA CLR           ; 52                          ;
+;     ENA CLR SCLR      ; 78                          ;
+;     ENA CLR SLD       ; 10                          ;
+;     plain             ; 8                           ;
+; arriav_io_obuf        ; 4                           ;
+; arriav_lcell_comb     ; 1813                        ;
+;     arith             ; 673                         ;
+;         0 data inputs ; 67                          ;
+;         1 data inputs ; 285                         ;
+;         2 data inputs ; 59                          ;
+;         3 data inputs ; 75                          ;
+;         4 data inputs ; 176                         ;
+;         5 data inputs ; 11                          ;
+;     extend            ; 4                           ;
+;         7 data inputs ; 4                           ;
+;     normal            ; 1126                        ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 22                          ;
+;         2 data inputs ; 126                         ;
+;         3 data inputs ; 141                         ;
+;         4 data inputs ; 243                         ;
+;         5 data inputs ; 290                         ;
+;         6 data inputs ; 302                         ;
+;     shared            ; 10                          ;
+;         0 data inputs ; 6                           ;
+;         1 data inputs ; 4                           ;
+; boundary_port         ; 90                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 0.00                        ;
-; Average LUT depth     ; 0.00                        ;
+; Max LUT depth         ; 14.60                       ;
+; Average LUT depth     ; 7.85                        ;
 +-----------------------+-----------------------------+
 
 
@@ -247,7 +791,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -257,58 +801,144 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Fri Dec  5 10:46:15 2025
+    Info: Processing started: Mon Dec  8 20:56:26 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ECE287-Final-Project -c ECE287-Final-Project
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 20 processors detected
 Warning (12019): Can't analyze file -- file main.v is missing
 Warning (12019): Can't analyze file -- file ECE287-Final-Project.v is missing
 Info (12021): Found 1 design units, including 1 entities, in source file topmodule.v
-    Info (12023): Found entity 1: topmodule File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 1
+    Info (12023): Found entity 1: topmodule File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file vga.v
-    Info (12023): Found entity 1: vga File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v Line: 1
+    Info (12023): Found entity 1: vga_controller File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v Line: 1
 Info (12127): Elaborating entity "topmodule" for the top level hierarchy
-Warning (10034): Output port "vga_r" at topmodule.v(12) has no driver File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 12
-Warning (10034): Output port "vga_g" at topmodule.v(13) has no driver File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 13
-Warning (10034): Output port "vga_b" at topmodule.v(15) has no driver File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 15
-Warning (10034): Output port "hsync" at topmodule.v(10) has no driver File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
-Warning (10034): Output port "vsync" at topmodule.v(11) has no driver File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 11
-Warning (12158): Entity "topmodule" contains only dangling pins
+Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:vga" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 129
+Warning (10230): Verilog HDL assignment warning at vga.v(35): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v Line: 35
+Warning (10230): Verilog HDL assignment warning at vga.v(46): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v Line: 46
+Warning (12125): Using design file game.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: game File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 1
+Info (12128): Elaborating entity "game" for hierarchy "game:game" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 143
+Warning (10230): Verilog HDL assignment warning at game.v(53): truncated value with size 32 to match size of target (2) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 53
+Warning (10230): Verilog HDL assignment warning at game.v(167): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 167
+Warning (10230): Verilog HDL assignment warning at game.v(170): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 170
+Warning (12125): Using design file column.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: column File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 2
+Info (12128): Elaborating entity "column" for hierarchy "game:game|column:col0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 101
+Warning (10230): Verilog HDL assignment warning at column.v(25): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 25
+Warning (10230): Verilog HDL assignment warning at column.v(55): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 55
+Warning (12125): Using design file audio.v, which is not specified as a design file for the current project, but contains definitions for 4 design units and 4 entities in project
+    Info (12023): Found entity 1: audio File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 4
+    Info (12023): Found entity 2: audio_pll File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 125
+    Info (12023): Found entity 3: audio_and_video_config File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 136
+    Info (12023): Found entity 4: audio_codec File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 283
+Info (12128): Elaborating entity "audio" for hierarchy "audio:audio_inst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 158
+Warning (10034): Output port "AUD_ADCDAT" at audio.v(8) has no driver File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 8
+Info (12128): Elaborating entity "audio_pll" for hierarchy "audio:audio_inst|audio_pll:pll_inst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 24
+Info (12128): Elaborating entity "audio_and_video_config" for hierarchy "audio:audio_inst|audio_and_video_config:cfg_inst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 111
+Info (12128): Elaborating entity "audio_codec" for hierarchy "audio:audio_inst|audio_codec:codec_inst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 120
+Warning (12125): Using design file three_decimal_vals_w_neg.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: three_decimal_vals_w_neg File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 3
+Info (12128): Elaborating entity "three_decimal_vals_w_neg" for hierarchy "three_decimal_vals_w_neg:score_display" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 167
+Warning (10230): Verilog HDL assignment warning at three_decimal_vals_w_neg.v(23): truncated value with size 32 to match size of target (4) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 23
+Warning (10230): Verilog HDL assignment warning at three_decimal_vals_w_neg.v(24): truncated value with size 32 to match size of target (4) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
+Warning (10230): Verilog HDL assignment warning at three_decimal_vals_w_neg.v(25): truncated value with size 32 to match size of target (4) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
+Warning (12125): Using design file seven_segment.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: seven_segment File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/seven_segment.v Line: 3
+Info (12128): Elaborating entity "seven_segment" for hierarchy "three_decimal_vals_w_neg:score_display|seven_segment:u0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 28
+Warning (12125): Using design file seven_segment_negative.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
+    Info (12023): Found entity 1: seven_segment_negative File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/seven_segment_negative.v Line: 4
+Info (12128): Elaborating entity "seven_segment_negative" for hierarchy "three_decimal_vals_w_neg:score_display|seven_segment_negative:u3" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 31
+Info (278001): Inferred 6 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Mod0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 23
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Div0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Mod1" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Div1" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Mod2" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "game:game|Mod0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 191
+Info (12130): Elaborated megafunction instantiation "three_decimal_vals_w_neg:score_display|lpm_divide:Mod0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 23
+Info (12133): Instantiated megafunction "three_decimal_vals_w_neg:score_display|lpm_divide:Mod0" with the following parameter: File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 23
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_82m.tdf
+    Info (12023): Found entity 1: lpm_divide_82m File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_82m.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_bkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_bkh File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_bkh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_sse.tdf
+    Info (12023): Found entity 1: alt_u_div_sse File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_sse.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "three_decimal_vals_w_neg:score_display|lpm_divide:Div0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
+Info (12133): Instantiated megafunction "three_decimal_vals_w_neg:score_display|lpm_divide:Div0" with the following parameter: File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_5am.tdf
+    Info (12023): Found entity 1: lpm_divide_5am File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_5am.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "three_decimal_vals_w_neg:score_display|lpm_divide:Div1" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
+Info (12133): Instantiated megafunction "three_decimal_vals_w_neg:score_display|lpm_divide:Div1" with the following parameter: File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "7"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_8am.tdf
+    Info (12023): Found entity 1: lpm_divide_8am File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_8am.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_ekh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_ekh File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_ekh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_2te.tdf
+    Info (12023): Found entity 1: alt_u_div_2te File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_2te.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "game:game|lpm_divide:Mod0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 191
+Info (12133): Instantiated megafunction "game:game|lpm_divide:Mod0" with the following parameter: File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 191
+    Info (12134): Parameter "LPM_WIDTHN" = "10"
+    Info (12134): Parameter "LPM_WIDTHD" = "8"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_l3m.tdf
+    Info (12023): Found entity 1: lpm_divide_l3m File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_l3m.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_olh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_olh File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_olh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_mve.tdf
+    Info (12023): Found entity 1: alt_u_div_mve File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_mve.tdf Line: 23
+Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13034): The following nodes have both tri-state and non-tri-state drivers
+    Warning (13035): Inserted always-enabled tri-state buffer between "AUD_BCLK" and its non-tri-state driver. File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 24
+    Warning (13035): Inserted always-enabled tri-state buffer between "AUD_DACLRCK" and its non-tri-state driver. File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 26
+Warning (13039): The following bidirectional pins have no drivers
+    Warning (13040): bidirectional pin "AUD_ADCLRCK" has no driver File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 25
+Warning (13009): TRI or OPNDRN buffers permanently enabled
+    Warning (13010): Node "AUD_BCLK~synth" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 24
+    Warning (13010): Node "AUD_DACLRCK~synth" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 26
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "hsync" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
-    Warning (13410): Pin "vsync" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 11
-    Warning (13410): Pin "vga_r[0]" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 12
-    Warning (13410): Pin "vga_r[1]" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 12
-    Warning (13410): Pin "vga_r[2]" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 12
-    Warning (13410): Pin "vga_r[3]" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 12
-    Warning (13410): Pin "vga_g[0]" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 13
-    Warning (13410): Pin "vga_g[1]" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 13
-    Warning (13410): Pin "vga_g[2]" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 13
-    Warning (13410): Pin "vga_g[3]" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 13
-    Warning (13410): Pin "vga_b[0]" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 15
-    Warning (13410): Pin "vga_b[1]" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 15
-    Warning (13410): Pin "vga_b[2]" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 15
-    Warning (13410): Pin "vga_b[3]" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 15
+    Warning (13410): Pin "HEX3[0]" is stuck at VCC File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
+    Warning (13410): Pin "HEX3[1]" is stuck at VCC File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
+    Warning (13410): Pin "HEX3[2]" is stuck at VCC File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
+    Warning (13410): Pin "HEX3[3]" is stuck at VCC File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
+    Warning (13410): Pin "HEX3[4]" is stuck at VCC File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
+    Warning (13410): Pin "HEX3[5]" is stuck at VCC File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 17
+    Warning (13410): Pin "AUD_ADCDAT" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 23
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 4 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 10 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "clk" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 2
-    Warning (15610): No output dependent on input pin "rst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 3
-    Warning (15610): No output dependent on input pin "start_btn" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 4
-    Warning (15610): No output dependent on input pin "select_btn" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
-    Warning (15610): No output dependent on input pin "up_btn" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 6
-    Warning (15610): No output dependent on input pin "down_btn" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 7
-    Warning (15610): No output dependent on input pin "lane_btn[0]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 8
-    Warning (15610): No output dependent on input pin "lane_btn[1]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 8
-    Warning (15610): No output dependent on input pin "lane_btn[2]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 8
-    Warning (15610): No output dependent on input pin "lane_btn[3]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 8
-Info (21057): Implemented 24 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 10 input pins
-    Info (21059): Implemented 14 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 35 warnings
-    Info: Peak virtual memory: 4803 megabytes
-    Info: Processing ended: Fri Dec  5 10:46:20 2025
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:03
+Warning (21074): Design contains 8 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+Info (21057): Implemented 1903 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 71 output pins
+    Info (21060): Implemented 4 bidirectional pins
+    Info (21061): Implemented 1813 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 47 warnings
+    Info: Peak virtual memory: 4897 megabytes
+    Info: Processing ended: Mon Dec  8 20:56:33 2025
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:05
 
 

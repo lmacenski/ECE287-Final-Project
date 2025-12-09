@@ -1,3 +1,5 @@
+// This code is a direct exerpt from our code used within the labs.
+// This code is being used to display the current game score on the FPGA's 7 segment displays.
 module seven_segment(
     input  [3:0] digit,
     output reg [6:0] seg
