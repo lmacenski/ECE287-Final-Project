@@ -8,7 +8,7 @@ module game(
     output reg [7:0] red,
     output reg [7:0] green,
     output reg [7:0] blue,
-    output reg [9:0] score
+    output reg [7:0] score
 );
 
     parameter COL_WIDTH = 160;  // 640/4 = 160
@@ -160,7 +160,7 @@ module game(
     // Score tracking - add on hit, subtract on miss
     always @(posedge clk or negedge reset_n) begin
         if (!reset_n)
-            score <= 10'd0;
+            score <= 8'd0;
         else begin
             // Add point for hits
             if (hit_0 || hit_1 || hit_2 || hit_3)

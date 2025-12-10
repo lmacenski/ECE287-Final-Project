@@ -3,7 +3,7 @@ module topmodule(
     input CLOCK_50,           // 50 MHz clock
     input [3:0] KEY,          // Push buttons (active low)
     input [9:0] SW,           // Switches
-    output [9:0] LEDR,        // Red LEDs for score
+    //output [9:0] LEDR,        // Red LEDs for score
     output [6:0] HEX0,        // 7-segment display 0
     output [6:0] HEX1,        // 7-segment display 1
     output [6:0] HEX2,        // 7-segment display 2
@@ -103,8 +103,8 @@ module topmodule(
     wire [7:0] red_game, green_game, blue_game;
     
     // Score
-    wire [9:0] score;
-    assign LEDR = score;
+    wire signed [7:0] score;
+    //assign LEDR = score;
     
     // 25 MHz clock divider
     reg clk_div;

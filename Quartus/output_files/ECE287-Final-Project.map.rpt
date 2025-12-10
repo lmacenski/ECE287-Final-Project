@@ -1,6 +1,6 @@
 Analysis & Synthesis report for ECE287-Final-Project
-Mon Dec  8 20:56:33 2025
-Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Wed Dec 10 18:17:30 2025
+Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
 ---------------------
@@ -48,7 +48,7 @@ Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2024  Intel Corporation. All rights reserved.
+Copyright (C) 2023  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
@@ -68,14 +68,14 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Dec  8 20:56:33 2025          ;
-; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Analysis & Synthesis Status     ; Successful - Wed Dec 10 18:17:30 2025          ;
+; Quartus Prime Version           ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Revision Name                   ; ECE287-Final-Project                           ;
 ; Top-level Entity Name           ; topmodule                                      ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 290                                            ;
-; Total pins                      ; 90                                             ;
+; Total registers                 ; 288                                            ;
+; Total pins                      ; 80                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 0                                              ;
 ; Total DSP Blocks                ; 0                                              ;
@@ -180,48 +180,50 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 28          ;
-; Maximum allowed            ; 16          ;
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
-; Maximum used               ; 16          ;
+; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 ;     Processor 2            ;   0.0%      ;
 ;     Processor 3            ;   0.0%      ;
-;     Processors 4-16        ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                   ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                               ; Library ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
-; topmodule.v                      ; yes             ; User Verilog HDL File        ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v                ;         ;
-; vga.v                            ; yes             ; User Verilog HDL File        ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v                      ;         ;
-; game.v                           ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v                     ;         ;
-; column.v                         ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v                   ;         ;
-; audio.v                          ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v                    ;         ;
-; three_decimal_vals_w_neg.v       ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v ;         ;
-; seven_segment.v                  ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/seven_segment.v            ;         ;
-; seven_segment_negative.v         ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/seven_segment_negative.v   ;         ;
-; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_divide.tdf                   ;         ;
-; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/abs_divider.inc                  ;         ;
-; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sign_div_unsign.inc              ;         ;
-; aglobal231.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc                   ;         ;
-; db/lpm_divide_82m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_82m.tdf      ;         ;
-; db/sign_div_unsign_bkh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_bkh.tdf ;         ;
-; db/alt_u_div_sse.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_sse.tdf       ;         ;
-; db/lpm_divide_5am.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_5am.tdf      ;         ;
-; db/lpm_divide_8am.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_8am.tdf      ;         ;
-; db/sign_div_unsign_ekh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_ekh.tdf ;         ;
-; db/alt_u_div_2te.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_2te.tdf       ;         ;
-; db/lpm_divide_l3m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_l3m.tdf      ;         ;
-; db/sign_div_unsign_olh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_olh.tdf ;         ;
-; db/alt_u_div_mve.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_mve.tdf       ;         ;
-+----------------------------------+-----------------+------------------------------+--------------------------------------------------------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                        ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                    ; Library ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------+---------+
+; topmodule.v                      ; yes             ; User Verilog HDL File        ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v                ;         ;
+; vga.v                            ; yes             ; User Verilog HDL File        ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v                      ;         ;
+; game.v                           ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/game.v                     ;         ;
+; column.v                         ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/column.v                   ;         ;
+; audio.v                          ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v                    ;         ;
+; three_decimal_vals_w_neg.v       ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v ;         ;
+; seven_segment.v                  ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/seven_segment.v            ;         ;
+; seven_segment_negative.v         ; yes             ; Auto-Found Verilog HDL File  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/seven_segment_negative.v   ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/lpm_divide.tdf                        ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/abs_divider.inc                       ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/sign_div_unsign.inc                   ;         ;
+; aglobal231.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/23.1std/quartus/libraries/megafunctions/aglobal231.inc                        ;         ;
+; db/lpm_divide_82m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_82m.tdf      ;         ;
+; db/sign_div_unsign_bkh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_bkh.tdf ;         ;
+; db/alt_u_div_sse.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_sse.tdf       ;         ;
+; db/lpm_divide_5am.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_5am.tdf      ;         ;
+; db/lpm_divide_8am.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_8am.tdf      ;         ;
+; db/sign_div_unsign_ekh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_ekh.tdf ;         ;
+; db/alt_u_div_2te.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_2te.tdf       ;         ;
+; db/lpm_divide_l3m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_l3m.tdf      ;         ;
+; db/sign_div_unsign_olh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_olh.tdf ;         ;
+; db/alt_u_div_mve.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_mve.tdf       ;         ;
++----------------------------------+-----------------+------------------------------+-------------------------------------------------------------------------------------------------+---------+
 
 
 +--------------------------------------------------------------+
@@ -229,24 +231,24 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 1057           ;
+; Estimate of Logic utilization (ALMs needed) ; 1068           ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 1805           ;
+; Combinational ALUT usage for logic          ; 1829           ;
 ;     -- 7 input functions                    ; 4              ;
-;     -- 6 input functions                    ; 302            ;
-;     -- 5 input functions                    ; 301            ;
-;     -- 4 input functions                    ; 419            ;
-;     -- <=3 input functions                  ; 779            ;
+;     -- 6 input functions                    ; 301            ;
+;     -- 5 input functions                    ; 282            ;
+;     -- 4 input functions                    ; 427            ;
+;     -- <=3 input functions                  ; 815            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 290            ;
+; Dedicated logic registers                   ; 288            ;
 ;                                             ;                ;
-; I/O pins                                    ; 90             ;
+; I/O pins                                    ; 80             ;
 ;                                             ;                ;
 ; Total DSP Blocks                            ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 255            ;
-; Total fan-out                               ; 8324           ;
+; Maximum fan-out                             ; 253            ;
+; Total fan-out                               ; 8320           ;
 ; Average fan-out                             ; 3.65           ;
 +---------------------------------------------+----------------+
 
@@ -256,19 +258,19 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
 ; Compilation Hierarchy Node                  ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                               ; Entity Name              ; Library Name ;
 +---------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
-; |topmodule                                  ; 1805 (1033)         ; 290 (8)                   ; 0                 ; 0          ; 90   ; 0            ; |topmodule                                                                                                                                        ; topmodule                ; work         ;
+; |topmodule                                  ; 1829 (1055)         ; 288 (8)                   ; 0                 ; 0          ; 80   ; 0            ; |topmodule                                                                                                                                        ; topmodule                ; work         ;
 ;    |audio:audio_inst|                       ; 176 (60)            ; 131 (41)                  ; 0                 ; 0          ; 0    ; 0            ; |topmodule|audio:audio_inst                                                                                                                       ; audio                    ; work         ;
 ;       |audio_and_video_config:cfg_inst|     ; 88 (88)             ; 65 (65)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst                                                                                       ; audio_and_video_config   ; work         ;
 ;       |audio_codec:codec_inst|              ; 28 (28)             ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|audio:audio_inst|audio_codec:codec_inst                                                                                                ; audio_codec              ; work         ;
-;    |game:game|                              ; 339 (129)           ; 129 (81)                  ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game                                                                                                                              ; game                     ; work         ;
+;    |game:game|                              ; 339 (128)           ; 127 (79)                  ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game                                                                                                                              ; game                     ; work         ;
 ;       |column:col0|                         ; 41 (41)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col0                                                                                                                  ; column                   ; work         ;
 ;       |column:col1|                         ; 38 (38)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col1                                                                                                                  ; column                   ; work         ;
 ;       |column:col2|                         ; 36 (36)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col2                                                                                                                  ; column                   ; work         ;
 ;       |column:col3|                         ; 52 (52)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col3                                                                                                                  ; column                   ; work         ;
-;       |lpm_divide:Mod0|                     ; 43 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0                                                                                                              ; lpm_divide               ; work         ;
-;          |lpm_divide_l3m:auto_generated|    ; 43 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated                                                                                ; lpm_divide_l3m           ; work         ;
-;             |sign_div_unsign_olh:divider|   ; 43 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated|sign_div_unsign_olh:divider                                                    ; sign_div_unsign_olh      ; work         ;
-;                |alt_u_div_mve:divider|      ; 43 (43)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated|sign_div_unsign_olh:divider|alt_u_div_mve:divider                              ; alt_u_div_mve            ; work         ;
+;       |lpm_divide:Mod0|                     ; 44 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0                                                                                                              ; lpm_divide               ; work         ;
+;          |lpm_divide_l3m:auto_generated|    ; 44 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated                                                                                ; lpm_divide_l3m           ; work         ;
+;             |sign_div_unsign_olh:divider|   ; 44 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated|sign_div_unsign_olh:divider                                                    ; sign_div_unsign_olh      ; work         ;
+;                |alt_u_div_mve:divider|      ; 44 (44)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated|sign_div_unsign_olh:divider|alt_u_div_mve:divider                              ; alt_u_div_mve            ; work         ;
 ;    |three_decimal_vals_w_neg:score_display| ; 208 (13)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display                                                                                                 ; three_decimal_vals_w_neg ; work         ;
 ;       |lpm_divide:Div0|                     ; 49 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Div0                                                                                 ; lpm_divide               ; work         ;
 ;          |lpm_divide_5am:auto_generated|    ; 49 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Div0|lpm_divide_5am:auto_generated                                                   ; lpm_divide_5am           ; work         ;
@@ -293,7 +295,7 @@ https://fpgasoftware.intel.com/eula.
 ;       |seven_segment:u0|                    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|seven_segment:u0                                                                                ; seven_segment            ; work         ;
 ;       |seven_segment:u1|                    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|seven_segment:u1                                                                                ; seven_segment            ; work         ;
 ;       |seven_segment:u2|                    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|seven_segment:u2                                                                                ; seven_segment            ; work         ;
-;    |vga_controller:vga|                     ; 49 (49)             ; 22 (22)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|vga_controller:vga                                                                                                                     ; vga_controller           ; work         ;
+;    |vga_controller:vga|                     ; 51 (51)             ; 22 (22)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|vga_controller:vga                                                                                                                     ; vga_controller           ; work         ;
 +---------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -371,12 +373,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 290   ;
+; Total registers                              ; 288   ;
 ; Number of registers using Synchronous Clear  ; 178   ;
 ; Number of registers using Synchronous Load   ; 11    ;
-; Number of registers using Asynchronous Clear ; 282   ;
+; Number of registers using Asynchronous Clear ; 280   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 140   ;
+; Number of registers using Clock Enable       ; 138   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -400,10 +402,10 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                               ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |topmodule|audio:audio_inst|audio_codec:codec_inst|shift_count[2]        ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |topmodule|audio:audio_inst|tone_counter[27]                             ;
-; 5:1                ; 18 bits   ; 54 LEs        ; 18 LEs               ; 36 LEs                 ; Yes        ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|bit_count[3] ;
-; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|shift_reg[5] ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |topmodule|audio:audio_inst|audio_codec:codec_inst|shift_count[0]        ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |topmodule|audio:audio_inst|tone_counter[28]                             ;
+; 5:1                ; 18 bits   ; 54 LEs        ; 18 LEs               ; 36 LEs                 ; Yes        ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|bit_count[4] ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|shift_reg[1] ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|green_out                                                     ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|game:game|current_col.11                                      ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|game:game|blue[0]                                             ;
@@ -411,12 +413,12 @@ Encoding Type:  One-Hot
 ; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|red_out                                                       ;
 ; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |topmodule|Selector26                                                    ;
 ; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |topmodule|red_out                                                       ;
-; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |topmodule|Selector15                                                    ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |topmodule|Selector9                                                     ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |topmodule|Selector8                                                     ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |topmodule|Selector10                                                    ;
 ; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |topmodule|Selector1                                                     ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |topmodule|red_out                                                       ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |topmodule|green_out                                                     ;
 ; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|Selector6    ;
-; 29:1               ; 2 bits    ; 38 LEs        ; 38 LEs               ; 0 LEs                  ; No         ; |topmodule|red_out                                                       ;
+; 29:1               ; 2 bits    ; 38 LEs        ; 38 LEs               ; 0 LEs                  ; No         ; |topmodule|green_out                                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
 
 
@@ -749,40 +751,40 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 290                         ;
+; arriav_ff             ; 288                         ;
 ;     CLR               ; 41                          ;
 ;     CLR SCLR          ; 100                         ;
 ;     CLR SLD           ; 1                           ;
-;     ENA CLR           ; 52                          ;
+;     ENA CLR           ; 50                          ;
 ;     ENA CLR SCLR      ; 78                          ;
 ;     ENA CLR SLD       ; 10                          ;
 ;     plain             ; 8                           ;
 ; arriav_io_obuf        ; 4                           ;
-; arriav_lcell_comb     ; 1813                        ;
-;     arith             ; 673                         ;
+; arriav_lcell_comb     ; 1837                        ;
+;     arith             ; 671                         ;
 ;         0 data inputs ; 67                          ;
-;         1 data inputs ; 285                         ;
-;         2 data inputs ; 59                          ;
+;         1 data inputs ; 286                         ;
+;         2 data inputs ; 57                          ;
 ;         3 data inputs ; 75                          ;
-;         4 data inputs ; 176                         ;
+;         4 data inputs ; 175                         ;
 ;         5 data inputs ; 11                          ;
 ;     extend            ; 4                           ;
 ;         7 data inputs ; 4                           ;
-;     normal            ; 1126                        ;
+;     normal            ; 1152                        ;
 ;         0 data inputs ; 2                           ;
 ;         1 data inputs ; 22                          ;
-;         2 data inputs ; 126                         ;
-;         3 data inputs ; 141                         ;
-;         4 data inputs ; 243                         ;
-;         5 data inputs ; 290                         ;
-;         6 data inputs ; 302                         ;
+;         2 data inputs ; 139                         ;
+;         3 data inputs ; 165                         ;
+;         4 data inputs ; 252                         ;
+;         5 data inputs ; 271                         ;
+;         6 data inputs ; 301                         ;
 ;     shared            ; 10                          ;
 ;         0 data inputs ; 6                           ;
 ;         1 data inputs ; 4                           ;
-; boundary_port         ; 90                          ;
+; boundary_port         ; 80                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 14.60                       ;
-; Average LUT depth     ; 7.85                        ;
+; Average LUT depth     ; 7.93                        ;
 +-----------------------+-----------------------------+
 
 
@@ -791,7 +793,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:05     ;
 +----------------+--------------+
 
 
@@ -800,145 +802,145 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Mon Dec  8 20:56:26 2025
+    Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+    Info: Processing started: Wed Dec 10 18:17:09 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ECE287-Final-Project -c ECE287-Final-Project
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 16 of the 20 processors detected
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
 Warning (12019): Can't analyze file -- file main.v is missing
 Warning (12019): Can't analyze file -- file ECE287-Final-Project.v is missing
 Info (12021): Found 1 design units, including 1 entities, in source file topmodule.v
-    Info (12023): Found entity 1: topmodule File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 2
+    Info (12023): Found entity 1: topmodule File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 2
 Info (12021): Found 1 design units, including 1 entities, in source file vga.v
-    Info (12023): Found entity 1: vga_controller File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v Line: 1
+    Info (12023): Found entity 1: vga_controller File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v Line: 1
 Info (12127): Elaborating entity "topmodule" for the top level hierarchy
-Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:vga" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 129
-Warning (10230): Verilog HDL assignment warning at vga.v(35): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v Line: 35
-Warning (10230): Verilog HDL assignment warning at vga.v(46): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v Line: 46
+Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:vga" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 129
+Warning (10230): Verilog HDL assignment warning at vga.v(35): truncated value with size 32 to match size of target (10) File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v Line: 35
+Warning (10230): Verilog HDL assignment warning at vga.v(46): truncated value with size 32 to match size of target (10) File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v Line: 46
 Warning (12125): Using design file game.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: game File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 1
-Info (12128): Elaborating entity "game" for hierarchy "game:game" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 143
-Warning (10230): Verilog HDL assignment warning at game.v(53): truncated value with size 32 to match size of target (2) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 53
-Warning (10230): Verilog HDL assignment warning at game.v(167): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 167
-Warning (10230): Verilog HDL assignment warning at game.v(170): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 170
+    Info (12023): Found entity 1: game File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 1
+Info (12128): Elaborating entity "game" for hierarchy "game:game" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 143
+Warning (10230): Verilog HDL assignment warning at game.v(53): truncated value with size 32 to match size of target (2) File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 53
+Warning (10230): Verilog HDL assignment warning at game.v(167): truncated value with size 32 to match size of target (8) File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 167
+Warning (10230): Verilog HDL assignment warning at game.v(170): truncated value with size 32 to match size of target (8) File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 170
 Warning (12125): Using design file column.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: column File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 2
-Info (12128): Elaborating entity "column" for hierarchy "game:game|column:col0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 101
-Warning (10230): Verilog HDL assignment warning at column.v(25): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 25
-Warning (10230): Verilog HDL assignment warning at column.v(55): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 55
+    Info (12023): Found entity 1: column File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 2
+Info (12128): Elaborating entity "column" for hierarchy "game:game|column:col0" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 101
+Warning (10230): Verilog HDL assignment warning at column.v(25): truncated value with size 32 to match size of target (10) File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 25
+Warning (10230): Verilog HDL assignment warning at column.v(55): truncated value with size 32 to match size of target (10) File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 55
 Warning (12125): Using design file audio.v, which is not specified as a design file for the current project, but contains definitions for 4 design units and 4 entities in project
-    Info (12023): Found entity 1: audio File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 4
-    Info (12023): Found entity 2: audio_pll File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 125
-    Info (12023): Found entity 3: audio_and_video_config File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 136
-    Info (12023): Found entity 4: audio_codec File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 283
-Info (12128): Elaborating entity "audio" for hierarchy "audio:audio_inst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 158
-Warning (10034): Output port "AUD_ADCDAT" at audio.v(8) has no driver File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 8
-Info (12128): Elaborating entity "audio_pll" for hierarchy "audio:audio_inst|audio_pll:pll_inst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 24
-Info (12128): Elaborating entity "audio_and_video_config" for hierarchy "audio:audio_inst|audio_and_video_config:cfg_inst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 111
-Info (12128): Elaborating entity "audio_codec" for hierarchy "audio:audio_inst|audio_codec:codec_inst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 120
+    Info (12023): Found entity 1: audio File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 4
+    Info (12023): Found entity 2: audio_pll File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 125
+    Info (12023): Found entity 3: audio_and_video_config File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 136
+    Info (12023): Found entity 4: audio_codec File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 283
+Info (12128): Elaborating entity "audio" for hierarchy "audio:audio_inst" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 158
+Warning (10034): Output port "AUD_ADCDAT" at audio.v(8) has no driver File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 8
+Info (12128): Elaborating entity "audio_pll" for hierarchy "audio:audio_inst|audio_pll:pll_inst" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 24
+Info (12128): Elaborating entity "audio_and_video_config" for hierarchy "audio:audio_inst|audio_and_video_config:cfg_inst" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 111
+Info (12128): Elaborating entity "audio_codec" for hierarchy "audio:audio_inst|audio_codec:codec_inst" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 120
 Warning (12125): Using design file three_decimal_vals_w_neg.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: three_decimal_vals_w_neg File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 3
-Info (12128): Elaborating entity "three_decimal_vals_w_neg" for hierarchy "three_decimal_vals_w_neg:score_display" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 167
-Warning (10230): Verilog HDL assignment warning at three_decimal_vals_w_neg.v(23): truncated value with size 32 to match size of target (4) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 23
-Warning (10230): Verilog HDL assignment warning at three_decimal_vals_w_neg.v(24): truncated value with size 32 to match size of target (4) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
-Warning (10230): Verilog HDL assignment warning at three_decimal_vals_w_neg.v(25): truncated value with size 32 to match size of target (4) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
+    Info (12023): Found entity 1: three_decimal_vals_w_neg File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 3
+Info (12128): Elaborating entity "three_decimal_vals_w_neg" for hierarchy "three_decimal_vals_w_neg:score_display" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 167
+Warning (10230): Verilog HDL assignment warning at three_decimal_vals_w_neg.v(23): truncated value with size 32 to match size of target (4) File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 23
+Warning (10230): Verilog HDL assignment warning at three_decimal_vals_w_neg.v(24): truncated value with size 32 to match size of target (4) File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
+Warning (10230): Verilog HDL assignment warning at three_decimal_vals_w_neg.v(25): truncated value with size 32 to match size of target (4) File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
 Warning (12125): Using design file seven_segment.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: seven_segment File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/seven_segment.v Line: 3
-Info (12128): Elaborating entity "seven_segment" for hierarchy "three_decimal_vals_w_neg:score_display|seven_segment:u0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 28
+    Info (12023): Found entity 1: seven_segment File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/seven_segment.v Line: 3
+Info (12128): Elaborating entity "seven_segment" for hierarchy "three_decimal_vals_w_neg:score_display|seven_segment:u0" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 28
 Warning (12125): Using design file seven_segment_negative.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
-    Info (12023): Found entity 1: seven_segment_negative File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/seven_segment_negative.v Line: 4
-Info (12128): Elaborating entity "seven_segment_negative" for hierarchy "three_decimal_vals_w_neg:score_display|seven_segment_negative:u3" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 31
+    Info (12023): Found entity 1: seven_segment_negative File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/seven_segment_negative.v Line: 4
+Info (12128): Elaborating entity "seven_segment_negative" for hierarchy "three_decimal_vals_w_neg:score_display|seven_segment_negative:u3" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 31
 Info (278001): Inferred 6 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Mod0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 23
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Div0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Mod1" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Div1" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Mod2" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "game:game|Mod0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 191
-Info (12130): Elaborated megafunction instantiation "three_decimal_vals_w_neg:score_display|lpm_divide:Mod0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 23
-Info (12133): Instantiated megafunction "three_decimal_vals_w_neg:score_display|lpm_divide:Mod0" with the following parameter: File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 23
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Mod0" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 23
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Div0" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Mod1" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Div1" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "three_decimal_vals_w_neg:score_display|Mod2" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "game:game|Mod0" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 191
+Info (12130): Elaborated megafunction instantiation "three_decimal_vals_w_neg:score_display|lpm_divide:Mod0" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 23
+Info (12133): Instantiated megafunction "three_decimal_vals_w_neg:score_display|lpm_divide:Mod0" with the following parameter: File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 23
     Info (12134): Parameter "LPM_WIDTHN" = "8"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_82m.tdf
-    Info (12023): Found entity 1: lpm_divide_82m File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_82m.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_82m File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_82m.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_bkh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_bkh File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_bkh.tdf Line: 25
+    Info (12023): Found entity 1: sign_div_unsign_bkh File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_bkh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_sse.tdf
-    Info (12023): Found entity 1: alt_u_div_sse File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_sse.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "three_decimal_vals_w_neg:score_display|lpm_divide:Div0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
-Info (12133): Instantiated megafunction "three_decimal_vals_w_neg:score_display|lpm_divide:Div0" with the following parameter: File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
+    Info (12023): Found entity 1: alt_u_div_sse File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_sse.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "three_decimal_vals_w_neg:score_display|lpm_divide:Div0" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
+Info (12133): Instantiated megafunction "three_decimal_vals_w_neg:score_display|lpm_divide:Div0" with the following parameter: File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
     Info (12134): Parameter "LPM_WIDTHN" = "8"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_5am.tdf
-    Info (12023): Found entity 1: lpm_divide_5am File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_5am.tdf Line: 25
-Info (12130): Elaborated megafunction instantiation "three_decimal_vals_w_neg:score_display|lpm_divide:Div1" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
-Info (12133): Instantiated megafunction "three_decimal_vals_w_neg:score_display|lpm_divide:Div1" with the following parameter: File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
+    Info (12023): Found entity 1: lpm_divide_5am File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_5am.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "three_decimal_vals_w_neg:score_display|lpm_divide:Div1" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
+Info (12133): Instantiated megafunction "three_decimal_vals_w_neg:score_display|lpm_divide:Div1" with the following parameter: File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
     Info (12134): Parameter "LPM_WIDTHN" = "8"
     Info (12134): Parameter "LPM_WIDTHD" = "7"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_8am.tdf
-    Info (12023): Found entity 1: lpm_divide_8am File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_8am.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_8am File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_8am.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_ekh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_ekh File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_ekh.tdf Line: 25
+    Info (12023): Found entity 1: sign_div_unsign_ekh File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_ekh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_2te.tdf
-    Info (12023): Found entity 1: alt_u_div_2te File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_2te.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "game:game|lpm_divide:Mod0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 191
-Info (12133): Instantiated megafunction "game:game|lpm_divide:Mod0" with the following parameter: File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 191
+    Info (12023): Found entity 1: alt_u_div_2te File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_2te.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "game:game|lpm_divide:Mod0" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 191
+Info (12133): Instantiated megafunction "game:game|lpm_divide:Mod0" with the following parameter: File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 191
     Info (12134): Parameter "LPM_WIDTHN" = "10"
     Info (12134): Parameter "LPM_WIDTHD" = "8"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_l3m.tdf
-    Info (12023): Found entity 1: lpm_divide_l3m File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_l3m.tdf Line: 25
+    Info (12023): Found entity 1: lpm_divide_l3m File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/lpm_divide_l3m.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_olh.tdf
-    Info (12023): Found entity 1: sign_div_unsign_olh File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_olh.tdf Line: 25
+    Info (12023): Found entity 1: sign_div_unsign_olh File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/sign_div_unsign_olh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_mve.tdf
-    Info (12023): Found entity 1: alt_u_div_mve File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_mve.tdf Line: 23
+    Info (12023): Found entity 1: alt_u_div_mve File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/db/alt_u_div_mve.tdf Line: 23
 Warning (12241): 4 hierarchies have connectivity warnings - see the Connectivity Checks report folder
 Warning (13034): The following nodes have both tri-state and non-tri-state drivers
-    Warning (13035): Inserted always-enabled tri-state buffer between "AUD_BCLK" and its non-tri-state driver. File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 24
-    Warning (13035): Inserted always-enabled tri-state buffer between "AUD_DACLRCK" and its non-tri-state driver. File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 26
+    Warning (13035): Inserted always-enabled tri-state buffer between "AUD_BCLK" and its non-tri-state driver. File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 24
+    Warning (13035): Inserted always-enabled tri-state buffer between "AUD_DACLRCK" and its non-tri-state driver. File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 26
 Warning (13039): The following bidirectional pins have no drivers
-    Warning (13040): bidirectional pin "AUD_ADCLRCK" has no driver File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 25
+    Warning (13040): bidirectional pin "AUD_ADCLRCK" has no driver File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 25
 Warning (13009): TRI or OPNDRN buffers permanently enabled
-    Warning (13010): Node "AUD_BCLK~synth" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 24
-    Warning (13010): Node "AUD_DACLRCK~synth" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 26
+    Warning (13010): Node "AUD_BCLK~synth" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 24
+    Warning (13010): Node "AUD_DACLRCK~synth" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 26
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "HEX3[0]" is stuck at VCC File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
-    Warning (13410): Pin "HEX3[1]" is stuck at VCC File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
-    Warning (13410): Pin "HEX3[2]" is stuck at VCC File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
-    Warning (13410): Pin "HEX3[3]" is stuck at VCC File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
-    Warning (13410): Pin "HEX3[4]" is stuck at VCC File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
-    Warning (13410): Pin "HEX3[5]" is stuck at VCC File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
-    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 17
-    Warning (13410): Pin "AUD_ADCDAT" is stuck at GND File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 23
+    Warning (13410): Pin "HEX3[0]" is stuck at VCC File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
+    Warning (13410): Pin "HEX3[1]" is stuck at VCC File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
+    Warning (13410): Pin "HEX3[2]" is stuck at VCC File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
+    Warning (13410): Pin "HEX3[3]" is stuck at VCC File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
+    Warning (13410): Pin "HEX3[4]" is stuck at VCC File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
+    Warning (13410): Pin "HEX3[5]" is stuck at VCC File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 10
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 17
+    Warning (13410): Pin "AUD_ADCDAT" is stuck at GND File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 23
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 4 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 8 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
-    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
-    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
-    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
-    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
-    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
-    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
-    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
-Info (21057): Implemented 1903 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "SW[0]" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/Luke Macenski/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
+Info (21057): Implemented 1917 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
-    Info (21059): Implemented 71 output pins
+    Info (21059): Implemented 61 output pins
     Info (21060): Implemented 4 bidirectional pins
-    Info (21061): Implemented 1813 logic cells
+    Info (21061): Implemented 1837 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 47 warnings
-    Info: Peak virtual memory: 4897 megabytes
-    Info: Processing ended: Mon Dec  8 20:56:33 2025
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 4880 megabytes
+    Info: Processing ended: Wed Dec 10 18:17:30 2025
+    Info: Elapsed time: 00:00:21
+    Info: Total CPU time (on all processors): 00:00:23
 
 

@@ -1,6 +1,6 @@
 Timing Analyzer report for ECE287-Final-Project
-Mon Dec  8 20:58:25 2025
-Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+Wed Dec 10 18:19:45 2025
+Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
 
 
 ---------------------
@@ -63,7 +63,7 @@ Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 ----------------
 ; Legal Notice ;
 ----------------
-Copyright (C) 2024  Intel Corporation. All rights reserved.
+Copyright (C) 2023  Intel Corporation. All rights reserved.
 Your use of Intel Corporation's design tools, logic functions 
 and other software and tools, and any partner logic 
 functions, and any output files from any of the foregoing 
@@ -83,7 +83,7 @@ https://fpgasoftware.intel.com/eula.
 +--------------------------------------------------------------------------------+
 ; Timing Analyzer Summary                                                        ;
 +-----------------------+--------------------------------------------------------+
-; Quartus Prime Version ; Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Quartus Prime Version ; Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
 ; Timing Analyzer       ; Legacy Timing Analyzer                                 ;
 ; Revision Name         ; ECE287-Final-Project                                   ;
 ; Device Family         ; Cyclone V                                              ;
@@ -99,29 +99,19 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 28          ;
-; Maximum allowed            ; 16          ;
+; Number detected on machine ; 12          ;
+; Maximum allowed            ; 6           ;
 ;                            ;             ;
-; Average used               ; 2.19        ;
-; Maximum used               ; 16          ;
+; Average used               ; 1.80        ;
+; Maximum used               ; 6           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   8.8%      ;
-;     Processor 3            ;   8.6%      ;
-;     Processor 4            ;   8.4%      ;
-;     Processor 5            ;   8.1%      ;
-;     Processor 6            ;   8.1%      ;
-;     Processor 7            ;   8.1%      ;
-;     Processor 8            ;   8.0%      ;
-;     Processor 9            ;   7.6%      ;
-;     Processor 10           ;   7.6%      ;
-;     Processor 11           ;   7.6%      ;
-;     Processor 12           ;   7.6%      ;
-;     Processor 13           ;   7.6%      ;
-;     Processor 14           ;   7.6%      ;
-;     Processor 15           ;   7.6%      ;
-;     Processor 16           ;   7.6%      ;
+;     Processor 2            ;  16.5%      ;
+;     Processor 3            ;  16.3%      ;
+;     Processor 4            ;  16.1%      ;
+;     Processor 5            ;  15.5%      ;
+;     Processor 6            ;  15.5%      ;
 +----------------------------+-------------+
 
 
@@ -141,9 +131,9 @@ https://fpgasoftware.intel.com/eula.
 +------------+-----------------+----------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                   ; Note ;
 +------------+-----------------+----------------------------------------------+------+
-; 170.59 MHz ; 170.59 MHz      ; CLOCK_50                                     ;      ;
-; 183.89 MHz ; 183.89 MHz      ; audio:audio_inst|audio_codec:codec_inst|bclk ;      ;
-; 273.75 MHz ; 273.75 MHz      ; clk_div                                      ;      ;
+; 159.77 MHz ; 159.77 MHz      ; CLOCK_50                                     ;      ;
+; 178.57 MHz ; 178.57 MHz      ; audio:audio_inst|audio_codec:codec_inst|bclk ;      ;
+; 303.67 MHz ; 303.67 MHz      ; clk_div                                      ;      ;
 +------------+-----------------+----------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -159,9 +149,9 @@ HTML report is unavailable in plain text report export.
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -4.970 ; -875.496      ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -4.046 ; -35.965       ;
-; clk_div                                      ; -2.653 ; -69.230       ;
+; CLOCK_50                                     ; -5.259 ; -828.168      ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; -4.314 ; -37.729       ;
+; clk_div                                      ; -2.293 ; -66.584       ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -171,8 +161,8 @@ HTML report is unavailable in plain text report export.
 ; Clock                                        ; Slack ; End Point TNS ;
 +----------------------------------------------+-------+---------------+
 ; CLOCK_50                                     ; 0.361 ; 0.000         ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.576 ; 0.000         ;
-; clk_div                                      ; 0.662 ; 0.000         ;
+; clk_div                                      ; 0.569 ; 0.000         ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.614 ; 0.000         ;
 +----------------------------------------------+-------+---------------+
 
 
@@ -181,7 +171,7 @@ HTML report is unavailable in plain text report export.
 +----------+--------+--------------------+
 ; Clock    ; Slack  ; End Point TNS      ;
 +----------+--------+--------------------+
-; CLOCK_50 ; -1.346 ; -168.999           ;
+; CLOCK_50 ; -1.023 ; -152.973           ;
 +----------+--------+--------------------+
 
 
@@ -199,9 +189,9 @@ HTML report is unavailable in plain text report export.
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -0.801 ; -171.513      ;
-; clk_div                                      ; -0.394 ; -18.688       ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -0.394 ; -10.430       ;
+; CLOCK_50                                     ; -0.805 ; -173.580      ;
+; clk_div                                      ; -0.394 ; -15.483       ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; -0.394 ; -10.374       ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -217,9 +207,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +------------+-----------------+----------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                   ; Note ;
 +------------+-----------------+----------------------------------------------+------+
-; 165.92 MHz ; 165.92 MHz      ; CLOCK_50                                     ;      ;
-; 186.92 MHz ; 186.92 MHz      ; audio:audio_inst|audio_codec:codec_inst|bclk ;      ;
-; 273.37 MHz ; 273.37 MHz      ; clk_div                                      ;      ;
+; 155.35 MHz ; 155.35 MHz      ; CLOCK_50                                     ;      ;
+; 177.05 MHz ; 177.05 MHz      ; audio:audio_inst|audio_codec:codec_inst|bclk ;      ;
+; 311.33 MHz ; 311.33 MHz      ; clk_div                                      ;      ;
 +------------+-----------------+----------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -229,9 +219,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -5.027 ; -854.817      ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -4.195 ; -36.079       ;
-; clk_div                                      ; -2.658 ; -68.212       ;
+; CLOCK_50                                     ; -5.437 ; -810.753      ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; -4.462 ; -37.848       ;
+; clk_div                                      ; -2.212 ; -65.179       ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -240,9 +230,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------------------------------------------+-------+---------------+
 ; Clock                                        ; Slack ; End Point TNS ;
 +----------------------------------------------+-------+---------------+
-; CLOCK_50                                     ; 0.379 ; 0.000         ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.583 ; 0.000         ;
-; clk_div                                      ; 0.660 ; 0.000         ;
+; CLOCK_50                                     ; 0.381 ; 0.000         ;
+; clk_div                                      ; 0.554 ; 0.000         ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.623 ; 0.000         ;
 +----------------------------------------------+-------+---------------+
 
 
@@ -251,7 +241,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------+--------+-------------------+
 ; Clock    ; Slack  ; End Point TNS     ;
 +----------+--------+-------------------+
-; CLOCK_50 ; -1.257 ; -157.265          ;
+; CLOCK_50 ; -0.953 ; -140.750          ;
 +----------+--------+-------------------+
 
 
@@ -260,7 +250,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------+-------+-------------------+
 ; Clock    ; Slack ; End Point TNS     ;
 +----------+-------+-------------------+
-; CLOCK_50 ; 0.972 ; 0.000             ;
+; CLOCK_50 ; 0.986 ; 0.000             ;
 +----------+-------+-------------------+
 
 
@@ -269,9 +259,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -0.823 ; -187.764      ;
-; clk_div                                      ; -0.394 ; -18.128       ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -0.394 ; -10.176       ;
+; CLOCK_50                                     ; -0.822 ; -191.084      ;
+; clk_div                                      ; -0.394 ; -15.435       ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; -0.394 ; -10.101       ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -287,9 +277,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -4.141 ; -396.908      ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -2.130 ; -16.592       ;
-; clk_div                                      ; -1.273 ; -31.061       ;
+; CLOCK_50                                     ; -4.085 ; -357.236      ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; -2.346 ; -18.002       ;
+; clk_div                                      ; -0.983 ; -28.590       ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -298,9 +288,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+-------+---------------+
 ; Clock                                        ; Slack ; End Point TNS ;
 +----------------------------------------------+-------+---------------+
-; CLOCK_50                                     ; 0.177 ; 0.000         ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.344 ; 0.000         ;
-; clk_div                                      ; 0.347 ; 0.000         ;
+; CLOCK_50                                     ; 0.178 ; 0.000         ;
+; clk_div                                      ; 0.261 ; 0.000         ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.336 ; 0.000         ;
 +----------------------------------------------+-------+---------------+
 
 
@@ -309,7 +299,7 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------+--------+--------------------+
 ; Clock    ; Slack  ; End Point TNS      ;
 +----------+--------+--------------------+
-; CLOCK_50 ; -0.575 ; -39.414            ;
+; CLOCK_50 ; -0.278 ; -32.301            ;
 +----------+--------+--------------------+
 
 
@@ -318,7 +308,7 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------+-------+--------------------+
 ; Clock    ; Slack ; End Point TNS      ;
 +----------+-------+--------------------+
-; CLOCK_50 ; 0.553 ; 0.000              ;
+; CLOCK_50 ; 0.580 ; 0.000              ;
 +----------+-------+--------------------+
 
 
@@ -327,9 +317,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -0.732 ; -28.048       ;
-; clk_div                                      ; 0.042  ; 0.000         ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.063  ; 0.000         ;
+; CLOCK_50                                     ; -0.723 ; -27.631       ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.070  ; 0.000         ;
+; clk_div                                      ; 0.123  ; 0.000         ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -345,9 +335,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -3.542 ; -341.700      ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -2.110 ; -15.091       ;
-; clk_div                                      ; -1.124 ; -27.030       ;
+; CLOCK_50                                     ; -3.525 ; -309.096      ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; -2.285 ; -16.253       ;
+; clk_div                                      ; -0.858 ; -25.248       ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -356,9 +346,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+-------+---------------+
 ; Clock                                        ; Slack ; End Point TNS ;
 +----------------------------------------------+-------+---------------+
-; CLOCK_50                                     ; 0.167 ; 0.000         ;
-; clk_div                                      ; 0.316 ; 0.000         ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.322 ; 0.000         ;
+; CLOCK_50                                     ; 0.168 ; 0.000         ;
+; clk_div                                      ; 0.229 ; 0.000         ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.317 ; 0.000         ;
 +----------------------------------------------+-------+---------------+
 
 
@@ -367,7 +357,7 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------+--------+-------------------+
 ; Clock    ; Slack  ; End Point TNS     ;
 +----------+--------+-------------------+
-; CLOCK_50 ; -0.427 ; -24.167           ;
+; CLOCK_50 ; -0.178 ; -17.498           ;
 +----------+--------+-------------------+
 
 
@@ -376,7 +366,7 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------+-------+-------------------+
 ; Clock    ; Slack ; End Point TNS     ;
 +----------+-------+-------------------+
-; CLOCK_50 ; 0.493 ; 0.000             ;
+; CLOCK_50 ; 0.518 ; 0.000             ;
 +----------+-------+-------------------+
 
 
@@ -385,9 +375,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -0.714 ; -28.443       ;
-; clk_div                                      ; 0.070  ; 0.000         ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.087  ; 0.000         ;
+; CLOCK_50                                     ; -0.714 ; -28.584       ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.085  ; 0.000         ;
+; clk_div                                      ; 0.131  ; 0.000         ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -403,14 +393,14 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +-----------------------------------------------+----------+-------+----------+---------+---------------------+
 ; Clock                                         ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
 +-----------------------------------------------+----------+-------+----------+---------+---------------------+
-; Worst-case Slack                              ; -5.027   ; 0.167 ; -1.346   ; 0.493   ; -0.823              ;
-;  CLOCK_50                                     ; -5.027   ; 0.167 ; -1.346   ; 0.493   ; -0.823              ;
-;  audio:audio_inst|audio_codec:codec_inst|bclk ; -4.195   ; 0.322 ; N/A      ; N/A     ; -0.394              ;
-;  clk_div                                      ; -2.658   ; 0.316 ; N/A      ; N/A     ; -0.394              ;
-; Design-wide TNS                               ; -980.691 ; 0.0   ; -168.999 ; 0.0     ; -216.068            ;
-;  CLOCK_50                                     ; -875.496 ; 0.000 ; -168.999 ; 0.000   ; -187.764            ;
-;  audio:audio_inst|audio_codec:codec_inst|bclk ; -36.079  ; 0.000 ; N/A      ; N/A     ; -10.430             ;
-;  clk_div                                      ; -69.230  ; 0.000 ; N/A      ; N/A     ; -18.688             ;
+; Worst-case Slack                              ; -5.437   ; 0.168 ; -1.023   ; 0.518   ; -0.822              ;
+;  CLOCK_50                                     ; -5.437   ; 0.168 ; -1.023   ; 0.518   ; -0.822              ;
+;  audio:audio_inst|audio_codec:codec_inst|bclk ; -4.462   ; 0.317 ; N/A      ; N/A     ; -0.394              ;
+;  clk_div                                      ; -2.293   ; 0.229 ; N/A      ; N/A     ; -0.394              ;
+; Design-wide TNS                               ; -932.481 ; 0.0   ; -152.973 ; 0.0     ; -216.62             ;
+;  CLOCK_50                                     ; -828.168 ; 0.000 ; -152.973 ; 0.000   ; -191.084            ;
+;  audio:audio_inst|audio_codec:codec_inst|bclk ; -37.848  ; 0.000 ; N/A      ; N/A     ; -10.374             ;
+;  clk_div                                      ; -66.584  ; 0.000 ; N/A      ; N/A     ; -15.483             ;
 +-----------------------------------------------+----------+-------+----------+---------+---------------------+
 
 
@@ -419,16 +409,6 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
 ; Pin           ; I/O Standard ; Near Tline Length ; Near Tline L per Length ; Near Tline C per Length ; Near Series R ; Near Differential R ; Near Pull-up R ; Near Pull-down R ; Near C ; Far Tline Length ; Far Tline L per Length ; Far Tline C per Length ; Far Series R ; Far Pull-up R ; Far Pull-down R ; Far C ; Termination Voltage ; Far Differential R ; EBD File Name ; EBD Signal Name ; EBD Far-end ;
 +---------------+--------------+-------------------+-------------------------+-------------------------+---------------+---------------------+----------------+------------------+--------+------------------+------------------------+------------------------+--------------+---------------+-----------------+-------+---------------------+--------------------+---------------+-----------------+-------------+
-; LEDR[0]       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; LEDR[1]       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; LEDR[2]       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; LEDR[3]       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; LEDR[4]       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; LEDR[5]       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; LEDR[6]       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; LEDR[7]       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; LEDR[8]       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
-; LEDR[9]       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; HEX0[0]       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; HEX0[1]       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
 ; HEX0[2]       ; 2.5 V        ; 0 in              ; 0 H/in                  ; 0 F/in                  ; short         ; -                   ; open           ; open             ; open   ; 0 in             ; 0 H/in                 ; 0 F/in                 ; short        ; open          ; open            ; open  ; 0 V                 ; -                  ; n/a           ; n/a             ; n/a         ;
@@ -529,16 +509,6 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
-; LEDR[0]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
-; LEDR[1]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
-; LEDR[2]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
-; LEDR[3]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
-; LEDR[4]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
-; LEDR[5]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
-; LEDR[6]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
-; LEDR[7]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
-; LEDR[8]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.6e-07 V                    ; 2.41 V              ; -0.0463 V           ; 0.201 V                              ; 0.131 V                              ; 4.61e-10 s                  ; 4.53e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.6e-07 V                   ; 2.41 V             ; -0.0463 V          ; 0.201 V                             ; 0.131 V                             ; 4.61e-10 s                 ; 4.53e-10 s                 ; No                        ; Yes                       ;
-; LEDR[9]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.07e-07 V                   ; 2.36 V              ; -0.0231 V           ; 0.14 V                               ; 0.089 V                              ; 4.52e-10 s                  ; 4.35e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.07e-07 V                  ; 2.36 V             ; -0.0231 V          ; 0.14 V                              ; 0.089 V                             ; 4.52e-10 s                 ; 4.35e-10 s                 ; No                        ; Yes                       ;
 ; HEX0[0]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0568 V           ; 0.173 V                              ; 0.113 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0568 V          ; 0.173 V                             ; 0.113 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
 ; HEX0[1]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0568 V           ; 0.173 V                              ; 0.113 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0568 V          ; 0.173 V                             ; 0.113 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
 ; HEX0[2]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.52e-07 V                   ; 2.42 V              ; -0.0557 V           ; 0.175 V                              ; 0.114 V                              ; 4.5e-10 s                   ; 4.35e-10 s                  ; No                         ; No                         ; 2.32 V                      ; 3.52e-07 V                  ; 2.42 V             ; -0.0557 V          ; 0.175 V                             ; 0.114 V                             ; 4.5e-10 s                  ; 4.35e-10 s                 ; No                        ; No                        ;
@@ -612,16 +582,6 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
-; LEDR[0]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
-; LEDR[1]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
-; LEDR[2]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
-; LEDR[3]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
-; LEDR[4]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
-; LEDR[5]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
-; LEDR[6]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
-; LEDR[7]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
-; LEDR[8]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.96e-05 V                   ; 2.38 V              ; -0.0306 V           ; 0.23 V                               ; 0.206 V                              ; 4.83e-10 s                  ; 5.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.96e-05 V                  ; 2.38 V             ; -0.0306 V          ; 0.23 V                              ; 0.206 V                             ; 4.83e-10 s                 ; 5.01e-10 s                 ; No                        ; Yes                       ;
-; LEDR[9]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.49e-05 V                   ; 2.34 V              ; -0.0118 V           ; 0.182 V                              ; 0.051 V                              ; 4.81e-10 s                  ; 4.83e-10 s                  ; Yes                        ; Yes                        ; 2.32 V                      ; 3.49e-05 V                  ; 2.34 V             ; -0.0118 V          ; 0.182 V                             ; 0.051 V                             ; 4.81e-10 s                 ; 4.83e-10 s                 ; Yes                       ; Yes                       ;
 ; HEX0[0]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.0374 V           ; 0.189 V                              ; 0.158 V                              ; 4.66e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.0374 V          ; 0.189 V                             ; 0.158 V                             ; 4.66e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
 ; HEX0[1]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.0374 V           ; 0.189 V                              ; 0.158 V                              ; 4.66e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.0374 V          ; 0.189 V                             ; 0.158 V                             ; 4.66e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
 ; HEX0[2]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 3.88e-05 V                   ; 2.39 V              ; -0.037 V            ; 0.188 V                              ; 0.158 V                              ; 4.67e-10 s                  ; 4.67e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 3.88e-05 V                  ; 2.39 V             ; -0.037 V           ; 0.188 V                             ; 0.158 V                             ; 4.67e-10 s                 ; 4.67e-10 s                 ; No                        ; Yes                       ;
@@ -695,16 +655,6 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
-; LEDR[0]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
-; LEDR[1]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
-; LEDR[2]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
-; LEDR[3]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
-; LEDR[4]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
-; LEDR[5]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
-; LEDR[6]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
-; LEDR[7]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
-; LEDR[8]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
-; LEDR[9]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 3.54e-06 V                   ; 2.81 V              ; -0.0578 V           ; 0.303 V                              ; 0.28 V                               ; 2.93e-10 s                  ; 3.01e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 3.54e-06 V                  ; 2.81 V             ; -0.0578 V          ; 0.303 V                             ; 0.28 V                              ; 2.93e-10 s                 ; 3.01e-10 s                 ; No                        ; No                        ;
 ; HEX0[0]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; HEX0[1]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; HEX0[2]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
@@ -778,16 +728,6 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
 ; Pin           ; I/O Standard ; Board Delay on Rise ; Board Delay on Fall ; Steady State Voh at FPGA Pin ; Steady State Vol at FPGA Pin ; Voh Max at FPGA Pin ; Vol Min at FPGA Pin ; Ringback Voltage on Rise at FPGA Pin ; Ringback Voltage on Fall at FPGA Pin ; 10-90 Rise Time at FPGA Pin ; 90-10 Fall Time at FPGA Pin ; Monotonic Rise at FPGA Pin ; Monotonic Fall at FPGA Pin ; Steady State Voh at Far-end ; Steady State Vol at Far-end ; Voh Max at Far-end ; Vol Min at Far-end ; Ringback Voltage on Rise at Far-end ; Ringback Voltage on Fall at Far-end ; 10-90 Rise Time at Far-end ; 90-10 Fall Time at Far-end ; Monotonic Rise at Far-end ; Monotonic Fall at Far-end ;
 +---------------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
-; LEDR[0]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
-; LEDR[1]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
-; LEDR[2]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
-; LEDR[3]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
-; LEDR[4]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
-; LEDR[5]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
-; LEDR[6]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
-; LEDR[7]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
-; LEDR[8]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
-; LEDR[9]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000213 V                   ; 2.79 V              ; -0.0324 V           ; 0.139 V                              ; 0.119 V                              ; 4.42e-10 s                  ; 4.33e-10 s                  ; No                         ; Yes                        ; 2.75 V                      ; 0.000213 V                  ; 2.79 V             ; -0.0324 V          ; 0.139 V                             ; 0.119 V                             ; 4.42e-10 s                 ; 4.33e-10 s                 ; No                        ; Yes                       ;
 ; HEX0[0]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
 ; HEX0[1]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
 ; HEX0[2]       ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
@@ -863,10 +803,10 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
 ; audio:audio_inst|audio_codec:codec_inst|bclk ; audio:audio_inst|audio_codec:codec_inst|bclk ; 37       ; 0        ; 40       ; 35       ;
 ; CLOCK_50                                     ; audio:audio_inst|audio_codec:codec_inst|bclk ; 0        ; 0        ; 9        ; 0        ;
-; clk_div                                      ; clk_div                                      ; 617      ; 0        ; 0        ; 0        ;
+; clk_div                                      ; clk_div                                      ; 568      ; 0        ; 0        ; 0        ;
 ; audio:audio_inst|audio_codec:codec_inst|bclk ; CLOCK_50                                     ; 1        ; 1        ; 0        ; 0        ;
 ; clk_div                                      ; CLOCK_50                                     ; 1        ; 1        ; 0        ; 0        ;
-; CLOCK_50                                     ; CLOCK_50                                     ; 15636    ; 0        ; 0        ; 0        ;
+; CLOCK_50                                     ; CLOCK_50                                     ; 15286    ; 0        ; 0        ; 0        ;
 +----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -878,10 +818,10 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
 ; audio:audio_inst|audio_codec:codec_inst|bclk ; audio:audio_inst|audio_codec:codec_inst|bclk ; 37       ; 0        ; 40       ; 35       ;
 ; CLOCK_50                                     ; audio:audio_inst|audio_codec:codec_inst|bclk ; 0        ; 0        ; 9        ; 0        ;
-; clk_div                                      ; clk_div                                      ; 617      ; 0        ; 0        ; 0        ;
+; clk_div                                      ; clk_div                                      ; 568      ; 0        ; 0        ; 0        ;
 ; audio:audio_inst|audio_codec:codec_inst|bclk ; CLOCK_50                                     ; 1        ; 1        ; 0        ; 0        ;
 ; clk_div                                      ; CLOCK_50                                     ; 1        ; 1        ; 0        ; 0        ;
-; CLOCK_50                                     ; CLOCK_50                                     ; 15636    ; 0        ; 0        ; 0        ;
+; CLOCK_50                                     ; CLOCK_50                                     ; 15286    ; 0        ; 0        ; 0        ;
 +----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -891,7 +831,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; CLOCK_50   ; CLOCK_50 ; 178      ; 0        ; 0        ; 0        ;
+; CLOCK_50   ; CLOCK_50 ; 172      ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -901,7 +841,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; CLOCK_50   ; CLOCK_50 ; 178      ; 0        ; 0        ; 0        ;
+; CLOCK_50   ; CLOCK_50 ; 172      ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -926,9 +866,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 7     ; 7    ;
-; Unconstrained Input Port Paths  ; 506   ; 506  ;
-; Unconstrained Output Ports      ; 66    ; 66   ;
-; Unconstrained Output Port Paths ; 2215  ; 2215 ;
+; Unconstrained Input Port Paths  ; 499   ; 499  ;
+; Unconstrained Output Ports      ; 56    ; 56   ;
+; Unconstrained Output Port Paths ; 2182  ; 2182 ;
 +---------------------------------+-------+------+
 
 
@@ -991,16 +931,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; HEX2[5]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; HEX2[6]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; HEX3[6]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[0]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[1]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[2]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[3]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[4]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[5]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[6]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[7]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[8]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[9]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; VGA_BLANK_N   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; VGA_B[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; VGA_B[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -1080,16 +1010,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; HEX2[5]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; HEX2[6]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; HEX3[6]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[0]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[1]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[2]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[3]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[4]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[5]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[6]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[7]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[8]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; LEDR[9]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; VGA_BLANK_N   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; VGA_B[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; VGA_B[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -1126,12 +1046,12 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +--------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
-    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Mon Dec  8 20:58:22 2025
+    Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+    Info: Processing started: Wed Dec 10 18:19:38 2025
 Info: Command: quartus_sta ECE287-Final-Project -c ECE287-Final-Project
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 16 of the 20 processors detected
+Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'ECE287-Final-Project.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
@@ -1146,32 +1066,32 @@ Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -4.970
+Info (332146): Worst-case setup slack is -5.259
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.970            -875.496 CLOCK_50 
-    Info (332119):    -4.046             -35.965 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):    -2.653             -69.230 clk_div 
+    Info (332119):    -5.259            -828.168 CLOCK_50 
+    Info (332119):    -4.314             -37.729 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):    -2.293             -66.584 clk_div 
 Info (332146): Worst-case hold slack is 0.361
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     0.361               0.000 CLOCK_50 
-    Info (332119):     0.576               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):     0.662               0.000 clk_div 
-Info (332146): Worst-case recovery slack is -1.346
+    Info (332119):     0.569               0.000 clk_div 
+    Info (332119):     0.614               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+Info (332146): Worst-case recovery slack is -1.023
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.346            -168.999 CLOCK_50 
+    Info (332119):    -1.023            -152.973 CLOCK_50 
 Info (332146): Worst-case removal slack is 1.045
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
     Info (332119):     1.045               0.000 CLOCK_50 
-Info (332146): Worst-case minimum pulse width slack is -0.801
+Info (332146): Worst-case minimum pulse width slack is -0.805
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.801            -171.513 CLOCK_50 
-    Info (332119):    -0.394             -18.688 clk_div 
-    Info (332119):    -0.394             -10.430 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):    -0.805            -173.580 CLOCK_50 
+    Info (332119):    -0.394             -15.483 clk_div 
+    Info (332119):    -0.394             -10.374 audio:audio_inst|audio_codec:codec_inst|bclk 
 Info (332114): Report Metastability: Found 4 synchronizer chains.
     Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info: Analyzing Slow 1100mV 0C Model
@@ -1180,32 +1100,32 @@ Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -5.027
+Info (332146): Worst-case setup slack is -5.437
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -5.027            -854.817 CLOCK_50 
-    Info (332119):    -4.195             -36.079 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):    -2.658             -68.212 clk_div 
-Info (332146): Worst-case hold slack is 0.379
+    Info (332119):    -5.437            -810.753 CLOCK_50 
+    Info (332119):    -4.462             -37.848 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):    -2.212             -65.179 clk_div 
+Info (332146): Worst-case hold slack is 0.381
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.379               0.000 CLOCK_50 
-    Info (332119):     0.583               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):     0.660               0.000 clk_div 
-Info (332146): Worst-case recovery slack is -1.257
+    Info (332119):     0.381               0.000 CLOCK_50 
+    Info (332119):     0.554               0.000 clk_div 
+    Info (332119):     0.623               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+Info (332146): Worst-case recovery slack is -0.953
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.257            -157.265 CLOCK_50 
-Info (332146): Worst-case removal slack is 0.972
+    Info (332119):    -0.953            -140.750 CLOCK_50 
+Info (332146): Worst-case removal slack is 0.986
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.972               0.000 CLOCK_50 
-Info (332146): Worst-case minimum pulse width slack is -0.823
+    Info (332119):     0.986               0.000 CLOCK_50 
+Info (332146): Worst-case minimum pulse width slack is -0.822
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.823            -187.764 CLOCK_50 
-    Info (332119):    -0.394             -18.128 clk_div 
-    Info (332119):    -0.394             -10.176 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):    -0.822            -191.084 CLOCK_50 
+    Info (332119):    -0.394             -15.435 clk_div 
+    Info (332119):    -0.394             -10.101 audio:audio_inst|audio_codec:codec_inst|bclk 
 Info (332114): Report Metastability: Found 4 synchronizer chains.
     Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info: Analyzing Fast 1100mV 85C Model
@@ -1214,72 +1134,72 @@ Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -4.141
+Info (332146): Worst-case setup slack is -4.085
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.141            -396.908 CLOCK_50 
-    Info (332119):    -2.130             -16.592 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):    -1.273             -31.061 clk_div 
-Info (332146): Worst-case hold slack is 0.177
+    Info (332119):    -4.085            -357.236 CLOCK_50 
+    Info (332119):    -2.346             -18.002 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):    -0.983             -28.590 clk_div 
+Info (332146): Worst-case hold slack is 0.178
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.177               0.000 CLOCK_50 
-    Info (332119):     0.344               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):     0.347               0.000 clk_div 
-Info (332146): Worst-case recovery slack is -0.575
+    Info (332119):     0.178               0.000 CLOCK_50 
+    Info (332119):     0.261               0.000 clk_div 
+    Info (332119):     0.336               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+Info (332146): Worst-case recovery slack is -0.278
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.575             -39.414 CLOCK_50 
-Info (332146): Worst-case removal slack is 0.553
+    Info (332119):    -0.278             -32.301 CLOCK_50 
+Info (332146): Worst-case removal slack is 0.580
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.553               0.000 CLOCK_50 
-Info (332146): Worst-case minimum pulse width slack is -0.732
+    Info (332119):     0.580               0.000 CLOCK_50 
+Info (332146): Worst-case minimum pulse width slack is -0.723
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.732             -28.048 CLOCK_50 
-    Info (332119):     0.042               0.000 clk_div 
-    Info (332119):     0.063               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):    -0.723             -27.631 CLOCK_50 
+    Info (332119):     0.070               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):     0.123               0.000 clk_div 
 Info (332114): Report Metastability: Found 4 synchronizer chains.
     Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info: Analyzing Fast 1100mV 0C Model
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -3.542
+Info (332146): Worst-case setup slack is -3.525
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.542            -341.700 CLOCK_50 
-    Info (332119):    -2.110             -15.091 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):    -1.124             -27.030 clk_div 
-Info (332146): Worst-case hold slack is 0.167
+    Info (332119):    -3.525            -309.096 CLOCK_50 
+    Info (332119):    -2.285             -16.253 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):    -0.858             -25.248 clk_div 
+Info (332146): Worst-case hold slack is 0.168
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.167               0.000 CLOCK_50 
-    Info (332119):     0.316               0.000 clk_div 
-    Info (332119):     0.322               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
-Info (332146): Worst-case recovery slack is -0.427
+    Info (332119):     0.168               0.000 CLOCK_50 
+    Info (332119):     0.229               0.000 clk_div 
+    Info (332119):     0.317               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+Info (332146): Worst-case recovery slack is -0.178
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.427             -24.167 CLOCK_50 
-Info (332146): Worst-case removal slack is 0.493
+    Info (332119):    -0.178             -17.498 CLOCK_50 
+Info (332146): Worst-case removal slack is 0.518
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.493               0.000 CLOCK_50 
+    Info (332119):     0.518               0.000 CLOCK_50 
 Info (332146): Worst-case minimum pulse width slack is -0.714
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.714             -28.443 CLOCK_50 
-    Info (332119):     0.070               0.000 clk_div 
-    Info (332119):     0.087               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):    -0.714             -28.584 CLOCK_50 
+    Info (332119):     0.085               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):     0.131               0.000 clk_div 
 Info (332114): Report Metastability: Found 4 synchronizer chains.
     Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 5322 megabytes
-    Info: Processing ended: Mon Dec  8 20:58:25 2025
-    Info: Elapsed time: 00:00:03
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Peak virtual memory: 5398 megabytes
+    Info: Processing ended: Wed Dec 10 18:19:45 2025
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:10
 
 
