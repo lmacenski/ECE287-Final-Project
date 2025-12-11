@@ -46,6 +46,13 @@ module topmodule(
     // Assign Pertinent Buttons on FPGA
     wire reset_n = SW[9];       // Set SW9 to rst
     wire [3:0] buttons = ~KEY;  // Invert buttons for ease of code
+	 
+	 // Define Signals for 1s Wait
+	 localparam ONE_SECOND = 50_000_000 - 1;
+	 reg [25:0] wait_counter = 0;
+	 reg wait_done = 0;
+	 reg waiting;
+
     
 	 
     // Button Edge Detection 
@@ -71,7 +78,8 @@ module topmodule(
 	 // FSM Next State Logic
     always @(*) begin
         next_state = game_state;
-        
+        waiting = 0;
+		  
         case (game_state)
 		  
 				// Start Menu
@@ -82,17 +90,23 @@ module topmodule(
 				
 				// Countdown 3
 				START_WAIT_3: begin
-					next_state = START_WAIT_2;
+					waiting = 1;
+					if (wait_done)
+						next_state = START_WAIT_2;
 				end
 				
 				// Countdown 2
 				START_WAIT_2: begin
-					next_state = START_WAIT_1;
+					waiting = 1;
+					if (wait_done)
+						next_state = START_WAIT_1;
 				end
 				
 				// Countdown 1
 				START_WAIT_1: begin
-					next_state = STATE_PLAYING;
+					waiting = 1;
+					if (wait_done)
+						next_state = STATE_PLAYING;
 				end
             
 				// Game Begins
@@ -131,7 +145,26 @@ module topmodule(
             clk_div <= 0;
         else
             clk_div <= ~clk_div;
+				
+		  if (!reset_n) begin
+				wait_counter <= 0;
+				wait_done <= 0;
+		  end else begin
+				if (waiting) begin
+					if (wait_counter == ONE_SECOND) begin
+						wait_done <= 1;
+						wait_counter <= 0;
+					end else begin
+						wait_done <= 0;
+						wait_counter <= wait_counter + 1;
+					end
+				end else begin
+					wait_done <= 0;
+					wait_counter <= 0;
+				end
+			end
     end
+	 
     assign clk_25MHz = clk_div;
     assign VGA_CLK = clk_25MHz;
     
@@ -514,24 +547,75 @@ module topmodule(
                 end
                 // START MENU CODE END =======================================================================================
             end				
-            
 				
 				START_WAIT_3: begin
-					red_out = red_game;
-                green_out = green_game;
-                blue_out = blue_game;
+					 // Default background: black
+                red_out   = 8'h00;
+                green_out = 8'h00;
+                blue_out  = 8'h00;
+
+                // Big red "3"
+                // Top horizontal bar
+                if ((y >= 100 && y <= 140 && x >= 200 && x <= 440) ||
+                // Middle horizontal bar
+                    (y >= 220 && y <= 260 && x >= 200 && x <= 440) ||
+                // Bottom horizontal bar
+                    (y >= 340 && y <= 380 && x >= 200 && x <= 440) ||
+                // Right vertical bar
+                    (y >= 100 && y <= 380 && x >= 400 && x <= 440))
+                begin
+                    red_out   = 8'hFF;
+                    green_out = 8'h00;
+                    blue_out  = 8'h00;
+                end
 				end
 				
 				START_WAIT_2: begin
-					 red_out = red_game;
-                green_out = green_game;
-                blue_out = blue_game;
+					 // Default background: black
+                red_out   = 8'h00;
+                green_out = 8'h00;
+                blue_out  = 8'h00;
+
+                // Big yellow "2"
+                // Top horizontal bar
+                if ((y >= 100 && y <= 140 && x >= 200 && x <= 440) ||
+                // Middle horizontal bar
+                    (y >= 220 && y <= 260 && x >= 200 && x <= 440) ||
+                // Bottom horizontal bar
+                    (y >= 340 && y <= 380 && x >= 200 && x <= 440) ||
+                // Top-right vertical bar
+                    (y >= 100 && y <= 220 && x >= 400 && x <= 440) ||
+                // Bottom-left vertical bar
+                    (y >= 260 && y <= 380 && x >= 200 && x <= 240))
+                begin
+                    red_out   = 8'hFF;
+                    green_out = 8'hFF;
+                    blue_out  = 8'h00;
+                end
 				end
 				
 				START_WAIT_1: begin
-					 red_out = red_game;
-                green_out = green_game;
-                blue_out = blue_game;
+					 // Default background: black
+                red_out   = 8'h00;
+                green_out = 8'h00;
+                blue_out  = 8'h00;
+
+                // Big green "1" with top slant, main vertical bar, and long bottom base
+                if (
+                    // Main vertical bar
+                    (y >= 100 && y <= 380 && x >= 320 && x <= 360) ||
+
+                    // Top slant
+                    (y >= 100 && y <= 140 && x >= 300 && x <= 320) ||
+
+                    // Bottom base (extended longer)
+                    (y >= 360 && y <= 380 && x >= 280 && x <= 400)
+                )
+                begin
+                    red_out   = 8'h00;
+                    green_out = 8'hFF;
+                    blue_out  = 8'h00;
+                end
 				end
 				
             STATE_PLAYING: begin
