@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at topmodule.v(79): always construct contains both blocking and non-blocking assignments File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 79

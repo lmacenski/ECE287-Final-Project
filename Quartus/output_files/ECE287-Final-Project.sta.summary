@@ -3,179 +3,179 @@ Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow 1100mV 85C Model Setup 'CLOCK_50'
-Slack : -4.888
-TNS   : -892.179
+Slack : -4.971
+TNS   : -1028.867
 
 Type  : Slow 1100mV 85C Model Setup 'audio:audio_inst|audio_codec:codec_inst|bclk'
-Slack : -2.506
-TNS   : -32.555
+Slack : -4.400
+TNS   : -34.039
 
 Type  : Slow 1100mV 85C Model Setup 'clk_div'
-Slack : -2.270
-TNS   : -61.445
+Slack : -2.024
+TNS   : -54.762
 
 Type  : Slow 1100mV 85C Model Hold 'CLOCK_50'
-Slack : 0.357
+Slack : 0.374
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'audio:audio_inst|audio_codec:codec_inst|bclk'
-Slack : 0.510
+Slack : 0.651
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Hold 'clk_div'
-Slack : 0.578
+Slack : 0.694
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Recovery 'CLOCK_50'
-Slack : -1.244
-TNS   : -153.184
+Slack : -1.372
+TNS   : -187.930
 
 Type  : Slow 1100mV 85C Model Removal 'CLOCK_50'
-Slack : 1.031
+Slack : 0.794
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : -0.828
-TNS   : -193.470
-
-Type  : Slow 1100mV 85C Model Minimum Pulse Width 'audio:audio_inst|audio_codec:codec_inst|bclk'
-Slack : -0.510
-TNS   : -13.772
+Slack : -0.858
+TNS   : -200.367
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clk_div'
 Slack : -0.394
-TNS   : -15.639
+TNS   : -14.687
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'audio:audio_inst|audio_codec:codec_inst|bclk'
+Slack : -0.394
+TNS   : -8.974
 
 Type  : Slow 1100mV 0C Model Setup 'CLOCK_50'
-Slack : -4.938
-TNS   : -871.895
+Slack : -5.146
+TNS   : -1000.458
 
 Type  : Slow 1100mV 0C Model Setup 'audio:audio_inst|audio_codec:codec_inst|bclk'
-Slack : -2.796
-TNS   : -32.479
+Slack : -4.524
+TNS   : -33.726
 
 Type  : Slow 1100mV 0C Model Setup 'clk_div'
-Slack : -2.207
-TNS   : -59.922
+Slack : -2.114
+TNS   : -53.177
 
 Type  : Slow 1100mV 0C Model Hold 'CLOCK_50'
-Slack : 0.375
+Slack : 0.390
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'audio:audio_inst|audio_codec:codec_inst|bclk'
-Slack : 0.453
+Slack : 0.633
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Hold 'clk_div'
-Slack : 0.576
+Slack : 0.679
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Recovery 'CLOCK_50'
-Slack : -1.161
-TNS   : -139.649
+Slack : -1.272
+TNS   : -173.945
 
 Type  : Slow 1100mV 0C Model Removal 'CLOCK_50'
-Slack : 0.967
+Slack : 0.749
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
-Slack : -0.843
-TNS   : -213.590
-
-Type  : Slow 1100mV 0C Model Minimum Pulse Width 'audio:audio_inst|audio_codec:codec_inst|bclk'
-Slack : -0.490
-TNS   : -14.077
+Slack : -0.882
+TNS   : -220.631
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clk_div'
 Slack : -0.394
-TNS   : -15.422
+TNS   : -14.577
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'audio:audio_inst|audio_codec:codec_inst|bclk'
+Slack : -0.394
+TNS   : -8.760
 
 Type  : Fast 1100mV 85C Model Setup 'CLOCK_50'
-Slack : -3.207
-TNS   : -382.564
+Slack : -4.044
+TNS   : -468.193
 
 Type  : Fast 1100mV 85C Model Setup 'audio:audio_inst|audio_codec:codec_inst|bclk'
-Slack : -1.238
-TNS   : -14.704
+Slack : -2.387
+TNS   : -16.525
 
 Type  : Fast 1100mV 85C Model Setup 'clk_div'
-Slack : -0.959
-TNS   : -24.933
-
-Type  : Fast 1100mV 85C Model Hold 'audio:audio_inst|audio_codec:codec_inst|bclk'
-Slack : 0.163
-TNS   : 0.000
+Slack : -0.945
+TNS   : -23.174
 
 Type  : Fast 1100mV 85C Model Hold 'CLOCK_50'
-Slack : 0.177
+Slack : 0.182
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'audio:audio_inst|audio_codec:codec_inst|bclk'
+Slack : 0.349
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Hold 'clk_div'
-Slack : 0.273
+Slack : 0.358
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Recovery 'CLOCK_50'
-Slack : -0.423
-TNS   : -29.132
+Slack : -0.612
+TNS   : -54.937
 
 Type  : Fast 1100mV 85C Model Removal 'CLOCK_50'
-Slack : 0.572
+Slack : 0.429
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'CLOCK_50'
-Slack : -0.758
-TNS   : -30.770
+Slack : -0.772
+TNS   : -32.624
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'audio:audio_inst|audio_codec:codec_inst|bclk'
-Slack : -0.205
-TNS   : -3.106
+Slack : 0.059
+TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clk_div'
-Slack : 0.061
+Slack : 0.082
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'CLOCK_50'
-Slack : -2.751
-TNS   : -328.318
+Slack : -3.466
+TNS   : -400.276
 
 Type  : Fast 1100mV 0C Model Setup 'audio:audio_inst|audio_codec:codec_inst|bclk'
-Slack : -1.293
-TNS   : -13.328
+Slack : -2.323
+TNS   : -14.915
 
 Type  : Fast 1100mV 0C Model Setup 'clk_div'
-Slack : -0.836
-TNS   : -21.636
-
-Type  : Fast 1100mV 0C Model Hold 'audio:audio_inst|audio_codec:codec_inst|bclk'
-Slack : 0.159
-TNS   : 0.000
+Slack : -0.784
+TNS   : -19.896
 
 Type  : Fast 1100mV 0C Model Hold 'CLOCK_50'
-Slack : 0.167
+Slack : 0.172
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'audio:audio_inst|audio_codec:codec_inst|bclk'
+Slack : 0.318
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Hold 'clk_div'
-Slack : 0.241
+Slack : 0.322
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Recovery 'CLOCK_50'
-Slack : -0.305
-TNS   : -13.750
+Slack : -0.458
+TNS   : -36.653
 
 Type  : Fast 1100mV 0C Model Removal 'CLOCK_50'
-Slack : 0.513
+Slack : 0.387
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'CLOCK_50'
-Slack : -0.730
-TNS   : -31.366
+Slack : -0.746
+TNS   : -33.045
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'audio:audio_inst|audio_codec:codec_inst|bclk'
-Slack : -0.156
-TNS   : -2.486
+Slack : 0.079
+TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clk_div'
-Slack : 0.090
+Slack : 0.099
 TNS   : 0.000
 
 ------------------------------------------------------------

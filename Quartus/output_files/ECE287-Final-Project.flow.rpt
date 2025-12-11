@@ -1,5 +1,5 @@
 Flow report for ECE287-Final-Project
-Wed Dec 10 23:23:37 2025
+Thu Dec 11 15:49:43 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -41,15 +41,15 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +---------------------------------+------------------------------------------------+
-; Flow Status                     ; Successful - Wed Dec 10 23:23:37 2025          ;
+; Flow Status                     ; Successful - Thu Dec 11 15:49:43 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; ECE287-Final-Project                           ;
 ; Top-level Entity Name           ; topmodule                                      ;
 ; Family                          ; Cyclone V                                      ;
 ; Device                          ; 5CSEMA5F31C6                                   ;
 ; Timing Models                   ; Final                                          ;
-; Logic utilization (in ALMs)     ; 1,084 / 32,070 ( 3 % )                         ;
-; Total registers                 ; 413                                            ;
+; Logic utilization (in ALMs)     ; 1,079 / 32,070 ( 3 % )                         ;
+; Total registers                 ; 422                                            ;
 ; Total pins                      ; 80 / 457 ( 18 % )                              ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 0 / 4,065,280 ( 0 % )                          ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+----------------------+
 ; Option            ; Setting              ;
 +-------------------+----------------------+
-; Start date & time ; 12/10/2025 23:21:26  ;
+; Start date & time ; 12/11/2025 15:47:38  ;
 ; Main task         ; Compilation          ;
 ; Revision Name     ; ECE287-Final-Project ;
 +-------------------+----------------------+
@@ -79,7 +79,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+----------------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value        ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+----------------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 184978422678548.176542688607376        ; --                   ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 184978422678119.176548605809664        ; --                   ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --                   ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --                   ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --                   ; --          ; eda_board_design_signal_integrity ;
@@ -104,12 +104,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:08     ; 1.0                     ; 4910 MB             ; 00:00:05                           ;
-; Fitter               ; 00:01:51     ; 1.0                     ; 7848 MB             ; 00:01:14                           ;
-; Assembler            ; 00:00:04     ; 1.0                     ; 4883 MB             ; 00:00:03                           ;
-; Timing Analyzer      ; 00:00:04     ; 2.3                     ; 5323 MB             ; 00:00:04                           ;
+; Analysis & Synthesis ; 00:00:08     ; 1.0                     ; 4884 MB             ; 00:00:06                           ;
+; Fitter               ; 00:01:46     ; 1.0                     ; 7853 MB             ; 00:01:12                           ;
+; Assembler            ; 00:00:03     ; 1.0                     ; 4887 MB             ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:03     ; 2.2                     ; 5333 MB             ; 00:00:03                           ;
 ; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4747 MB             ; 00:00:01                           ;
-; Total                ; 00:02:08     ; --                      ; --                  ; 00:01:27                           ;
+; Total                ; 00:02:01     ; --                      ; --                  ; 00:01:25                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -118,11 +118,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; CEC-EGB267-02    ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; CEC-EGB267-02    ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; CEC-EGB267-02    ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; CEC-EGB267-02    ; Windows 10 ; 10.0       ; x86_64         ;
-; EDA Netlist Writer   ; CEC-EGB267-02    ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; CEC-EGB267-03    ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; CEC-EGB267-03    ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; CEC-EGB267-03    ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; CEC-EGB267-03    ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; CEC-EGB267-03    ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 

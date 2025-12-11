@@ -1,5 +1,5 @@
 Timing Analyzer report for ECE287-Final-Project
-Wed Dec 10 23:23:35 2025
+Thu Dec 11 15:49:41 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -102,26 +102,26 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 28          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
-; Average used               ; 2.26        ;
+; Average used               ; 2.17        ;
 ; Maximum used               ; 16          ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   9.5%      ;
-;     Processor 3            ;   9.3%      ;
-;     Processor 4            ;   9.1%      ;
-;     Processor 5            ;   8.6%      ;
-;     Processor 6            ;   8.3%      ;
-;     Processor 7            ;   8.3%      ;
-;     Processor 8            ;   8.1%      ;
-;     Processor 9            ;   8.1%      ;
-;     Processor 10           ;   8.1%      ;
-;     Processor 11           ;   8.1%      ;
-;     Processor 12           ;   8.1%      ;
-;     Processor 13           ;   8.1%      ;
-;     Processor 14           ;   8.0%      ;
-;     Processor 15           ;   8.0%      ;
-;     Processor 16           ;   8.0%      ;
+;     Processor 2            ;   8.9%      ;
+;     Processor 3            ;   8.8%      ;
+;     Processor 4            ;   8.2%      ;
+;     Processor 5            ;   7.8%      ;
+;     Processor 6            ;   7.8%      ;
+;     Processor 7            ;   7.7%      ;
+;     Processor 8            ;   7.7%      ;
+;     Processor 9            ;   7.7%      ;
+;     Processor 10           ;   7.5%      ;
+;     Processor 11           ;   7.5%      ;
+;     Processor 12           ;   7.4%      ;
+;     Processor 13           ;   7.4%      ;
+;     Processor 14           ;   7.4%      ;
+;     Processor 15           ;   7.4%      ;
+;     Processor 16           ;   7.4%      ;
 +----------------------------+-------------+
 
 
@@ -141,9 +141,9 @@ https://fpgasoftware.intel.com/eula.
 +------------+-----------------+----------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                   ; Note ;
 +------------+-----------------+----------------------------------------------+------+
-; 169.84 MHz ; 169.84 MHz      ; CLOCK_50                                     ;      ;
-; 173.55 MHz ; 173.55 MHz      ; audio:audio_inst|audio_codec:codec_inst|bclk ;      ;
-; 305.81 MHz ; 305.81 MHz      ; clk_div                                      ;      ;
+; 167.48 MHz ; 167.48 MHz      ; CLOCK_50                                     ;      ;
+; 168.18 MHz ; 168.18 MHz      ; audio:audio_inst|audio_codec:codec_inst|bclk ;      ;
+; 330.69 MHz ; 330.69 MHz      ; clk_div                                      ;      ;
 +------------+-----------------+----------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -159,9 +159,9 @@ HTML report is unavailable in plain text report export.
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -4.888 ; -892.179      ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -2.506 ; -32.555       ;
-; clk_div                                      ; -2.270 ; -61.445       ;
+; CLOCK_50                                     ; -4.971 ; -1028.867     ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; -4.400 ; -34.039       ;
+; clk_div                                      ; -2.024 ; -54.762       ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -170,9 +170,9 @@ HTML report is unavailable in plain text report export.
 +----------------------------------------------+-------+---------------+
 ; Clock                                        ; Slack ; End Point TNS ;
 +----------------------------------------------+-------+---------------+
-; CLOCK_50                                     ; 0.357 ; 0.000         ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.510 ; 0.000         ;
-; clk_div                                      ; 0.578 ; 0.000         ;
+; CLOCK_50                                     ; 0.374 ; 0.000         ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.651 ; 0.000         ;
+; clk_div                                      ; 0.694 ; 0.000         ;
 +----------------------------------------------+-------+---------------+
 
 
@@ -181,7 +181,7 @@ HTML report is unavailable in plain text report export.
 +----------+--------+--------------------+
 ; Clock    ; Slack  ; End Point TNS      ;
 +----------+--------+--------------------+
-; CLOCK_50 ; -1.244 ; -153.184           ;
+; CLOCK_50 ; -1.372 ; -187.930           ;
 +----------+--------+--------------------+
 
 
@@ -190,7 +190,7 @@ HTML report is unavailable in plain text report export.
 +----------+-------+--------------------+
 ; Clock    ; Slack ; End Point TNS      ;
 +----------+-------+--------------------+
-; CLOCK_50 ; 1.031 ; 0.000              ;
+; CLOCK_50 ; 0.794 ; 0.000              ;
 +----------+-------+--------------------+
 
 
@@ -199,9 +199,9 @@ HTML report is unavailable in plain text report export.
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -0.828 ; -193.470      ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -0.510 ; -13.772       ;
-; clk_div                                      ; -0.394 ; -15.639       ;
+; CLOCK_50                                     ; -0.858 ; -200.367      ;
+; clk_div                                      ; -0.394 ; -14.687       ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; -0.394 ; -8.974        ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -217,9 +217,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +------------+-----------------+----------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                   ; Note ;
 +------------+-----------------+----------------------------------------------+------+
-; 168.41 MHz ; 168.41 MHz      ; CLOCK_50                                     ;      ;
-; 175.62 MHz ; 175.62 MHz      ; audio:audio_inst|audio_codec:codec_inst|bclk ;      ;
-; 311.82 MHz ; 311.82 MHz      ; clk_div                                      ;      ;
+; 162.71 MHz ; 162.71 MHz      ; CLOCK_50                                     ;      ;
+; 168.18 MHz ; 168.18 MHz      ; audio:audio_inst|audio_codec:codec_inst|bclk ;      ;
+; 321.13 MHz ; 321.13 MHz      ; clk_div                                      ;      ;
 +------------+-----------------+----------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -229,9 +229,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -4.938 ; -871.895      ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -2.796 ; -32.479       ;
-; clk_div                                      ; -2.207 ; -59.922       ;
+; CLOCK_50                                     ; -5.146 ; -1000.458     ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; -4.524 ; -33.726       ;
+; clk_div                                      ; -2.114 ; -53.177       ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -240,9 +240,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------------------------------------------+-------+---------------+
 ; Clock                                        ; Slack ; End Point TNS ;
 +----------------------------------------------+-------+---------------+
-; CLOCK_50                                     ; 0.375 ; 0.000         ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.453 ; 0.000         ;
-; clk_div                                      ; 0.576 ; 0.000         ;
+; CLOCK_50                                     ; 0.390 ; 0.000         ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.633 ; 0.000         ;
+; clk_div                                      ; 0.679 ; 0.000         ;
 +----------------------------------------------+-------+---------------+
 
 
@@ -251,7 +251,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------+--------+-------------------+
 ; Clock    ; Slack  ; End Point TNS     ;
 +----------+--------+-------------------+
-; CLOCK_50 ; -1.161 ; -139.649          ;
+; CLOCK_50 ; -1.272 ; -173.945          ;
 +----------+--------+-------------------+
 
 
@@ -260,7 +260,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------+-------+-------------------+
 ; Clock    ; Slack ; End Point TNS     ;
 +----------+-------+-------------------+
-; CLOCK_50 ; 0.967 ; 0.000             ;
+; CLOCK_50 ; 0.749 ; 0.000             ;
 +----------+-------+-------------------+
 
 
@@ -269,9 +269,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -0.843 ; -213.590      ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -0.490 ; -14.077       ;
-; clk_div                                      ; -0.394 ; -15.422       ;
+; CLOCK_50                                     ; -0.882 ; -220.631      ;
+; clk_div                                      ; -0.394 ; -14.577       ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; -0.394 ; -8.760        ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -287,9 +287,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -3.207 ; -382.564      ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -1.238 ; -14.704       ;
-; clk_div                                      ; -0.959 ; -24.933       ;
+; CLOCK_50                                     ; -4.044 ; -468.193      ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; -2.387 ; -16.525       ;
+; clk_div                                      ; -0.945 ; -23.174       ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -298,9 +298,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+-------+---------------+
 ; Clock                                        ; Slack ; End Point TNS ;
 +----------------------------------------------+-------+---------------+
-; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.163 ; 0.000         ;
-; CLOCK_50                                     ; 0.177 ; 0.000         ;
-; clk_div                                      ; 0.273 ; 0.000         ;
+; CLOCK_50                                     ; 0.182 ; 0.000         ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.349 ; 0.000         ;
+; clk_div                                      ; 0.358 ; 0.000         ;
 +----------------------------------------------+-------+---------------+
 
 
@@ -309,7 +309,7 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------+--------+--------------------+
 ; Clock    ; Slack  ; End Point TNS      ;
 +----------+--------+--------------------+
-; CLOCK_50 ; -0.423 ; -29.132            ;
+; CLOCK_50 ; -0.612 ; -54.937            ;
 +----------+--------+--------------------+
 
 
@@ -318,7 +318,7 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------+-------+--------------------+
 ; Clock    ; Slack ; End Point TNS      ;
 +----------+-------+--------------------+
-; CLOCK_50 ; 0.572 ; 0.000              ;
+; CLOCK_50 ; 0.429 ; 0.000              ;
 +----------+-------+--------------------+
 
 
@@ -327,9 +327,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -0.758 ; -30.770       ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -0.205 ; -3.106        ;
-; clk_div                                      ; 0.061  ; 0.000         ;
+; CLOCK_50                                     ; -0.772 ; -32.624       ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.059  ; 0.000         ;
+; clk_div                                      ; 0.082  ; 0.000         ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -345,9 +345,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -2.751 ; -328.318      ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -1.293 ; -13.328       ;
-; clk_div                                      ; -0.836 ; -21.636       ;
+; CLOCK_50                                     ; -3.466 ; -400.276      ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; -2.323 ; -14.915       ;
+; clk_div                                      ; -0.784 ; -19.896       ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -356,9 +356,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+-------+---------------+
 ; Clock                                        ; Slack ; End Point TNS ;
 +----------------------------------------------+-------+---------------+
-; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.159 ; 0.000         ;
-; CLOCK_50                                     ; 0.167 ; 0.000         ;
-; clk_div                                      ; 0.241 ; 0.000         ;
+; CLOCK_50                                     ; 0.172 ; 0.000         ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.318 ; 0.000         ;
+; clk_div                                      ; 0.322 ; 0.000         ;
 +----------------------------------------------+-------+---------------+
 
 
@@ -367,7 +367,7 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------+--------+-------------------+
 ; Clock    ; Slack  ; End Point TNS     ;
 +----------+--------+-------------------+
-; CLOCK_50 ; -0.305 ; -13.750           ;
+; CLOCK_50 ; -0.458 ; -36.653           ;
 +----------+--------+-------------------+
 
 
@@ -376,7 +376,7 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------+-------+-------------------+
 ; Clock    ; Slack ; End Point TNS     ;
 +----------+-------+-------------------+
-; CLOCK_50 ; 0.513 ; 0.000             ;
+; CLOCK_50 ; 0.387 ; 0.000             ;
 +----------+-------+-------------------+
 
 
@@ -385,9 +385,9 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+--------+---------------+
 ; Clock                                        ; Slack  ; End Point TNS ;
 +----------------------------------------------+--------+---------------+
-; CLOCK_50                                     ; -0.730 ; -31.366       ;
-; audio:audio_inst|audio_codec:codec_inst|bclk ; -0.156 ; -2.486        ;
-; clk_div                                      ; 0.090  ; 0.000         ;
+; CLOCK_50                                     ; -0.746 ; -33.045       ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; 0.079  ; 0.000         ;
+; clk_div                                      ; 0.099  ; 0.000         ;
 +----------------------------------------------+--------+---------------+
 
 
@@ -398,20 +398,20 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 
 
 
-+-------------------------------------------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                                                         ;
-+-----------------------------------------------+----------+-------+----------+---------+---------------------+
-; Clock                                         ; Setup    ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
-+-----------------------------------------------+----------+-------+----------+---------+---------------------+
-; Worst-case Slack                              ; -4.938   ; 0.159 ; -1.244   ; 0.513   ; -0.843              ;
-;  CLOCK_50                                     ; -4.938   ; 0.167 ; -1.244   ; 0.513   ; -0.843              ;
-;  audio:audio_inst|audio_codec:codec_inst|bclk ; -2.796   ; 0.159 ; N/A      ; N/A     ; -0.510              ;
-;  clk_div                                      ; -2.270   ; 0.241 ; N/A      ; N/A     ; -0.394              ;
-; Design-wide TNS                               ; -986.179 ; 0.0   ; -153.184 ; 0.0     ; -243.089            ;
-;  CLOCK_50                                     ; -892.179 ; 0.000 ; -153.184 ; 0.000   ; -213.590            ;
-;  audio:audio_inst|audio_codec:codec_inst|bclk ; -32.555  ; 0.000 ; N/A      ; N/A     ; -14.077             ;
-;  clk_div                                      ; -61.445  ; 0.000 ; N/A      ; N/A     ; -15.639             ;
-+-----------------------------------------------+----------+-------+----------+---------+---------------------+
++--------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                          ;
++-----------------------------------------------+-----------+-------+----------+---------+---------------------+
+; Clock                                         ; Setup     ; Hold  ; Recovery ; Removal ; Minimum Pulse Width ;
++-----------------------------------------------+-----------+-------+----------+---------+---------------------+
+; Worst-case Slack                              ; -5.146    ; 0.172 ; -1.372   ; 0.387   ; -0.882              ;
+;  CLOCK_50                                     ; -5.146    ; 0.172 ; -1.372   ; 0.387   ; -0.882              ;
+;  audio:audio_inst|audio_codec:codec_inst|bclk ; -4.524    ; 0.318 ; N/A      ; N/A     ; -0.394              ;
+;  clk_div                                      ; -2.114    ; 0.322 ; N/A      ; N/A     ; -0.394              ;
+; Design-wide TNS                               ; -1117.668 ; 0.0   ; -187.93  ; 0.0     ; -243.968            ;
+;  CLOCK_50                                     ; -1028.867 ; 0.000 ; -187.930 ; 0.000   ; -220.631            ;
+;  audio:audio_inst|audio_codec:codec_inst|bclk ; -34.039   ; 0.000 ; N/A      ; N/A     ; -8.974              ;
+;  clk_div                                      ; -54.762   ; 0.000 ; N/A      ; N/A     ; -14.687             ;
++-----------------------------------------------+-----------+-------+----------+---------+---------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -811,12 +811,12 @@ Design MTBF is not calculated because the design doesn't meet its timing require
 +----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                   ; To Clock                                     ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
-; audio:audio_inst|audio_codec:codec_inst|bclk ; audio:audio_inst|audio_codec:codec_inst|bclk ; 23       ; 0        ; 45       ; 39       ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; audio:audio_inst|audio_codec:codec_inst|bclk ; 26       ; 0        ; 40       ; 34       ;
 ; CLOCK_50                                     ; audio:audio_inst|audio_codec:codec_inst|bclk ; 0        ; 0        ; 9        ; 0        ;
-; clk_div                                      ; clk_div                                      ; 571      ; 0        ; 0        ; 0        ;
+; clk_div                                      ; clk_div                                      ; 574      ; 0        ; 0        ; 0        ;
 ; audio:audio_inst|audio_codec:codec_inst|bclk ; CLOCK_50                                     ; 1        ; 1        ; 0        ; 0        ;
 ; clk_div                                      ; CLOCK_50                                     ; 1        ; 1        ; 0        ; 0        ;
-; CLOCK_50                                     ; CLOCK_50                                     ; 17122    ; 0        ; 0        ; 0        ;
+; CLOCK_50                                     ; CLOCK_50                                     ; 19033    ; 0        ; 0        ; 0        ;
 +----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -826,12 +826,12 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                   ; To Clock                                     ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
-; audio:audio_inst|audio_codec:codec_inst|bclk ; audio:audio_inst|audio_codec:codec_inst|bclk ; 23       ; 0        ; 45       ; 39       ;
+; audio:audio_inst|audio_codec:codec_inst|bclk ; audio:audio_inst|audio_codec:codec_inst|bclk ; 26       ; 0        ; 40       ; 34       ;
 ; CLOCK_50                                     ; audio:audio_inst|audio_codec:codec_inst|bclk ; 0        ; 0        ; 9        ; 0        ;
-; clk_div                                      ; clk_div                                      ; 571      ; 0        ; 0        ; 0        ;
+; clk_div                                      ; clk_div                                      ; 574      ; 0        ; 0        ; 0        ;
 ; audio:audio_inst|audio_codec:codec_inst|bclk ; CLOCK_50                                     ; 1        ; 1        ; 0        ; 0        ;
 ; clk_div                                      ; CLOCK_50                                     ; 1        ; 1        ; 0        ; 0        ;
-; CLOCK_50                                     ; CLOCK_50                                     ; 17122    ; 0        ; 0        ; 0        ;
+; CLOCK_50                                     ; CLOCK_50                                     ; 19033    ; 0        ; 0        ; 0        ;
 +----------------------------------------------+----------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -841,7 +841,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; CLOCK_50   ; CLOCK_50 ; 180      ; 0        ; 0        ; 0        ;
+; CLOCK_50   ; CLOCK_50 ; 190      ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -851,7 +851,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; CLOCK_50   ; CLOCK_50 ; 180      ; 0        ; 0        ; 0        ;
+; CLOCK_50   ; CLOCK_50 ; 190      ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -876,9 +876,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 6     ; 6    ;
-; Unconstrained Input Port Paths  ; 498   ; 498  ;
+; Unconstrained Input Port Paths  ; 543   ; 543  ;
 ; Unconstrained Output Ports      ; 56    ; 56   ;
-; Unconstrained Output Port Paths ; 2087  ; 2087 ;
+; Unconstrained Output Port Paths ; 2355  ; 2355 ;
 +---------------------------------+-------+------+
 
 
@@ -1055,7 +1055,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Wed Dec 10 23:23:31 2025
+    Info: Processing started: Thu Dec 11 15:49:38 2025
 Info: Command: quartus_sta ECE287-Final-Project -c ECE287-Final-Project
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -1074,32 +1074,32 @@ Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -4.888
+Info (332146): Worst-case setup slack is -4.971
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.888            -892.179 CLOCK_50 
-    Info (332119):    -2.506             -32.555 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):    -2.270             -61.445 clk_div 
-Info (332146): Worst-case hold slack is 0.357
+    Info (332119):    -4.971           -1028.867 CLOCK_50 
+    Info (332119):    -4.400             -34.039 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):    -2.024             -54.762 clk_div 
+Info (332146): Worst-case hold slack is 0.374
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.357               0.000 CLOCK_50 
-    Info (332119):     0.510               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):     0.578               0.000 clk_div 
-Info (332146): Worst-case recovery slack is -1.244
+    Info (332119):     0.374               0.000 CLOCK_50 
+    Info (332119):     0.651               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):     0.694               0.000 clk_div 
+Info (332146): Worst-case recovery slack is -1.372
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.244            -153.184 CLOCK_50 
-Info (332146): Worst-case removal slack is 1.031
+    Info (332119):    -1.372            -187.930 CLOCK_50 
+Info (332146): Worst-case removal slack is 0.794
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.031               0.000 CLOCK_50 
-Info (332146): Worst-case minimum pulse width slack is -0.828
+    Info (332119):     0.794               0.000 CLOCK_50 
+Info (332146): Worst-case minimum pulse width slack is -0.858
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.828            -193.470 CLOCK_50 
-    Info (332119):    -0.510             -13.772 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):    -0.394             -15.639 clk_div 
+    Info (332119):    -0.858            -200.367 CLOCK_50 
+    Info (332119):    -0.394             -14.687 clk_div 
+    Info (332119):    -0.394              -8.974 audio:audio_inst|audio_codec:codec_inst|bclk 
 Info (332114): Report Metastability: Found 4 synchronizer chains.
     Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info: Analyzing Slow 1100mV 0C Model
@@ -1108,32 +1108,32 @@ Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -4.938
+Info (332146): Worst-case setup slack is -5.146
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -4.938            -871.895 CLOCK_50 
-    Info (332119):    -2.796             -32.479 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):    -2.207             -59.922 clk_div 
-Info (332146): Worst-case hold slack is 0.375
+    Info (332119):    -5.146           -1000.458 CLOCK_50 
+    Info (332119):    -4.524             -33.726 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):    -2.114             -53.177 clk_div 
+Info (332146): Worst-case hold slack is 0.390
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.375               0.000 CLOCK_50 
-    Info (332119):     0.453               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):     0.576               0.000 clk_div 
-Info (332146): Worst-case recovery slack is -1.161
+    Info (332119):     0.390               0.000 CLOCK_50 
+    Info (332119):     0.633               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):     0.679               0.000 clk_div 
+Info (332146): Worst-case recovery slack is -1.272
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.161            -139.649 CLOCK_50 
-Info (332146): Worst-case removal slack is 0.967
+    Info (332119):    -1.272            -173.945 CLOCK_50 
+Info (332146): Worst-case removal slack is 0.749
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.967               0.000 CLOCK_50 
-Info (332146): Worst-case minimum pulse width slack is -0.843
+    Info (332119):     0.749               0.000 CLOCK_50 
+Info (332146): Worst-case minimum pulse width slack is -0.882
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.843            -213.590 CLOCK_50 
-    Info (332119):    -0.490             -14.077 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):    -0.394             -15.422 clk_div 
+    Info (332119):    -0.882            -220.631 CLOCK_50 
+    Info (332119):    -0.394             -14.577 clk_div 
+    Info (332119):    -0.394              -8.760 audio:audio_inst|audio_codec:codec_inst|bclk 
 Info (332114): Report Metastability: Found 4 synchronizer chains.
     Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info: Analyzing Fast 1100mV 85C Model
@@ -1142,72 +1142,72 @@ Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -3.207
+Info (332146): Worst-case setup slack is -4.044
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.207            -382.564 CLOCK_50 
-    Info (332119):    -1.238             -14.704 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):    -0.959             -24.933 clk_div 
-Info (332146): Worst-case hold slack is 0.163
+    Info (332119):    -4.044            -468.193 CLOCK_50 
+    Info (332119):    -2.387             -16.525 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):    -0.945             -23.174 clk_div 
+Info (332146): Worst-case hold slack is 0.182
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.163               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):     0.177               0.000 CLOCK_50 
-    Info (332119):     0.273               0.000 clk_div 
-Info (332146): Worst-case recovery slack is -0.423
+    Info (332119):     0.182               0.000 CLOCK_50 
+    Info (332119):     0.349               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):     0.358               0.000 clk_div 
+Info (332146): Worst-case recovery slack is -0.612
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.423             -29.132 CLOCK_50 
-Info (332146): Worst-case removal slack is 0.572
+    Info (332119):    -0.612             -54.937 CLOCK_50 
+Info (332146): Worst-case removal slack is 0.429
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.572               0.000 CLOCK_50 
-Info (332146): Worst-case minimum pulse width slack is -0.758
+    Info (332119):     0.429               0.000 CLOCK_50 
+Info (332146): Worst-case minimum pulse width slack is -0.772
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.758             -30.770 CLOCK_50 
-    Info (332119):    -0.205              -3.106 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):     0.061               0.000 clk_div 
+    Info (332119):    -0.772             -32.624 CLOCK_50 
+    Info (332119):     0.059               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):     0.082               0.000 clk_div 
 Info (332114): Report Metastability: Found 4 synchronizer chains.
     Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info: Analyzing Fast 1100mV 0C Model
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -2.751
+Info (332146): Worst-case setup slack is -3.466
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.751            -328.318 CLOCK_50 
-    Info (332119):    -1.293             -13.328 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):    -0.836             -21.636 clk_div 
-Info (332146): Worst-case hold slack is 0.159
+    Info (332119):    -3.466            -400.276 CLOCK_50 
+    Info (332119):    -2.323             -14.915 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):    -0.784             -19.896 clk_div 
+Info (332146): Worst-case hold slack is 0.172
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.159               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):     0.167               0.000 CLOCK_50 
-    Info (332119):     0.241               0.000 clk_div 
-Info (332146): Worst-case recovery slack is -0.305
+    Info (332119):     0.172               0.000 CLOCK_50 
+    Info (332119):     0.318               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):     0.322               0.000 clk_div 
+Info (332146): Worst-case recovery slack is -0.458
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.305             -13.750 CLOCK_50 
-Info (332146): Worst-case removal slack is 0.513
+    Info (332119):    -0.458             -36.653 CLOCK_50 
+Info (332146): Worst-case removal slack is 0.387
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     0.513               0.000 CLOCK_50 
-Info (332146): Worst-case minimum pulse width slack is -0.730
+    Info (332119):     0.387               0.000 CLOCK_50 
+Info (332146): Worst-case minimum pulse width slack is -0.746
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -0.730             -31.366 CLOCK_50 
-    Info (332119):    -0.156              -2.486 audio:audio_inst|audio_codec:codec_inst|bclk 
-    Info (332119):     0.090               0.000 clk_div 
+    Info (332119):    -0.746             -33.045 CLOCK_50 
+    Info (332119):     0.079               0.000 audio:audio_inst|audio_codec:codec_inst|bclk 
+    Info (332119):     0.099               0.000 clk_div 
 Info (332114): Report Metastability: Found 4 synchronizer chains.
     Info (332114): Design MTBF is not calculated because the design doesn't meet its timing requirements.
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 6 warnings
-    Info: Peak virtual memory: 5323 megabytes
-    Info: Processing ended: Wed Dec 10 23:23:35 2025
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:04
+    Info: Peak virtual memory: 5333 megabytes
+    Info: Processing ended: Thu Dec 11 15:49:41 2025
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
 
 

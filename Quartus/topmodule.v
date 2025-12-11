@@ -42,6 +42,7 @@ module topmodule(
 	 //Define Current and Next State
     reg [3:0] game_state = STATE_START_MENU;
     reg [3:0] next_state;
+	 reg gurt;
     
     // Assign Pertinent Buttons on FPGA
     wire reset_n = SW[9];       // Set SW9 to rst
@@ -72,6 +73,21 @@ module topmodule(
         else
             game_state <= next_state;       // Assign next_state
     end
+	 
+	
+	 always @(posedge CLOCK_50 or negedge reset_n) begin
+		  if (!reset_n) begin
+			  gurt <= 0;
+		  end else begin
+			   // Latch gurt once wait_done goes high
+			   if (wait_done)
+					 gurt <= 1;
+			   // Clear gurt when leaving GAME_WON or GAME_OVER
+			   else if (game_state == STATE_START_MENU)
+			 		 gurt <= 0;
+		  end
+	 end
+
     
 	 // FSM Next State Logic
     always @(*) begin
@@ -82,10 +98,9 @@ module topmodule(
 		  
 				// Start Menu
             STATE_START_MENU: begin
-                if (any_button_pressed)
+					 if (any_button_pressed)
                     next_state = START_WAIT_3;
             end
-				
 				// Countdown 3
 				START_WAIT_3: begin
 					waiting = 1;
@@ -117,14 +132,16 @@ module topmodule(
             
 				// Game Won State
             STATE_GAME_WON: begin
-                if (any_button_pressed)
-                    next_state = STATE_START_MENU;
+               waiting = 1;
+					if (gurt && any_button_pressed)
+						next_state = STATE_START_MENU;
             end
 				
 				// Game Over State
             STATE_GAME_OVER: begin
-                if (any_button_pressed)
-                    next_state = STATE_START_MENU;
+               waiting = 1;
+					if (gurt && any_button_pressed)
+						next_state = STATE_START_MENU;
             end
 				
             // Default Case

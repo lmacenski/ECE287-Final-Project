@@ -160,17 +160,29 @@ module game(
     
 	 // Score tracking - add on hit, subtract on miss
     always @(posedge clk or negedge reset_n) begin
-        if (!reset_n)
-            score <= 8'd0;
-        else begin
-            // Add point for hits
-            if (hit_0 || hit_1 || hit_2 || hit_3)
-                score <= score + 1;
-            // Subtract point for misses
-            else if (miss_0 || miss_1 || miss_2 || miss_3)
-               score <= score - 8'd1;
-        end
-    end
+		if (!reset_n)
+			score <= 8'd0;
+		else begin  
+        // HIT
+        if (hit_0 || hit_1 || hit_2 || hit_3)
+            score <= score + 1;
+
+        // MISS (tile reached end without press)
+        else if (miss_0 || miss_1 || miss_2 || miss_3)
+            score <= score - 1;
+
+        // FALSE PRESS (button press with no tile in zone)
+        else if (button_pressed[3] && !in_zone_0)  // Column 0
+            score <= score - 1;
+        else if (button_pressed[2] && !in_zone_1)  // Column 1
+            score <= score - 1;
+        else if (button_pressed[1] && !in_zone_2)  // Column 2
+            score <= score - 1;
+        else if (button_pressed[0] && !in_zone_3)  // Column 3
+            score <= score - 1;
+		end
+	end
+
     
     // Determine which column the current pixel is in
     wire [1:0] current_col = (x < COL_WIDTH) ? 2'd0 :
