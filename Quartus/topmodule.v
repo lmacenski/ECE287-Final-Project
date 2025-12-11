@@ -37,7 +37,7 @@ module topmodule(
     localparam STATE_PLAYING = 4'd4;      // Playing state (vga control is handed off to game.v)
 	 localparam STATE_GAME_WON = 4'd5;     // Win State (Score > 10)
 	 localparam STATE_GAME_OVER = 4'd6;    // Lose State (Score < -10)
-	 localparam STATE_GAME_PAUSED = 4'd7;  // Paused Game State
+	 //localparam STATE_GAME_PAUSED = 4'd7;  // Paused Game State
     
 	 //Define Current and Next State
     reg [3:0] game_state = STATE_START_MENU;
@@ -52,8 +52,6 @@ module topmodule(
 	 reg [25:0] wait_counter = 0;
 	 reg wait_done = 0;
 	 reg waiting;
-
-    
 	 
     // Button Edge Detection 
     reg [3:0] buttons_prev = 0;                           // Create Register that will Hold the Previous Cycles Button States
@@ -111,10 +109,18 @@ module topmodule(
             
 				// Game Begins
             STATE_PLAYING: begin
-                if (score < -10)
+                if (score < -9)
 						next_state = STATE_GAME_OVER;
+					 if (score > 9)
+						next_state = STATE_GAME_WON;
             end
             
+				// Game Won State
+            STATE_GAME_WON: begin
+                if (any_button_pressed)
+                    next_state = STATE_START_MENU;
+            end
+				
 				// Game Over State
             STATE_GAME_OVER: begin
                 if (any_button_pressed)
@@ -625,6 +631,59 @@ module topmodule(
                 blue_out = blue_game;
             end
             
+				STATE_GAME_WON: begin
+				    // Default background: black
+                red_out   = 8'h00;
+                green_out = 8'h00;
+                blue_out  = 8'h00;
+
+                // Trophy base - brown
+                if ((y >= 360 && y <= 380 && x >= 280 && x <= 560)) begin
+                    red_out   = 8'h8B;  // brown
+                    green_out = 8'h45;
+                    blue_out  = 8'h00;
+                end
+
+                // Trophy stem - gold
+                if ((y >= 220 && y <= 360 && x >= 360 && x <= 480)) begin
+                    red_out   = 8'hFF;  // gold
+                    green_out = 8'hD7;
+                    blue_out  = 8'h00;
+                end
+
+                // Trophy cup - gold with handles
+                if (
+                    (y >= 100 && y <= 220 && x >= 320 && x <= 520) || // main cup
+                    (y >= 120 && y <= 200 && x >= 280 && x <= 320) || // left handle
+                    (y >= 120 && y <= 200 && x >= 520 && x <= 560)    // right handle
+                ) begin
+                    red_out   = 8'hFF;  // gold
+                    green_out = 8'hD7;
+                    blue_out  = 0;
+                end
+
+                // Decorations - red jewel
+                if ((y >= 160 && y <= 180 && x >= 390 && x <= 410)) begin
+                    red_out   = 8'hFF;
+                    green_out = 8'h00;
+                    blue_out  = 8'h00;
+                end
+
+                // Decorations - blue jewel
+                if ((y >= 160 && y <= 180 && x >= 430 && x <= 450)) begin
+                    red_out   = 0;
+                    green_out = 0;
+                    blue_out  = 8'hFF;
+                end
+
+                // Decorations - green jewel
+                if ((y >= 200 && y <= 220 && x >= 410 && x <= 430)) begin
+                    red_out   = 0;
+                    green_out = 8'hFF;
+                    blue_out  = 0;
+                end
+				end
+				
             STATE_GAME_OVER: begin
                 // Game Over Screen Drawing Block
 

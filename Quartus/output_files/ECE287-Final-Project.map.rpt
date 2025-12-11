@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ECE287-Final-Project
-Wed Dec 10 21:51:07 2025
+Wed Dec 10 23:21:34 2025
 Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
 
 
@@ -68,13 +68,13 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +---------------------------------+------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Dec 10 21:51:07 2025          ;
+; Analysis & Synthesis Status     ; Successful - Wed Dec 10 23:21:34 2025          ;
 ; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
 ; Revision Name                   ; ECE287-Final-Project                           ;
 ; Top-level Entity Name           ; topmodule                                      ;
 ; Family                          ; Cyclone V                                      ;
 ; Logic utilization (in ALMs)     ; N/A                                            ;
-; Total registers                 ; 318                                            ;
+; Total registers                 ; 323                                            ;
 ; Total pins                      ; 80                                             ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 0                                              ;
@@ -192,9 +192,7 @@ https://fpgasoftware.intel.com/eula.
 ;     Processor 3            ;   0.0%      ;
 ;     Processor 4            ;   0.0%      ;
 ;     Processor 5            ;   0.0%      ;
-;     Processor 6            ;   0.0%      ;
-;     Processor 7            ;   0.0%      ;
-;     Processors 8-16        ;   0.0%      ;
+;     Processors 6-16        ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -233,25 +231,25 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 1068           ;
+; Estimate of Logic utilization (ALMs needed) ; 1084           ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 1845           ;
-;     -- 7 input functions                    ; 5              ;
-;     -- 6 input functions                    ; 283            ;
-;     -- 5 input functions                    ; 326            ;
-;     -- 4 input functions                    ; 424            ;
-;     -- <=3 input functions                  ; 807            ;
+; Combinational ALUT usage for logic          ; 1891           ;
+;     -- 7 input functions                    ; 8              ;
+;     -- 6 input functions                    ; 267            ;
+;     -- 5 input functions                    ; 346            ;
+;     -- 4 input functions                    ; 446            ;
+;     -- <=3 input functions                  ; 824            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 318            ;
+; Dedicated logic registers                   ; 323            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 80             ;
 ;                                             ;                ;
 ; Total DSP Blocks                            ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 283            ;
-; Total fan-out                               ; 8499           ;
-; Average fan-out                             ; 3.65           ;
+; Maximum fan-out                             ; 288            ;
+; Total fan-out                               ; 8666           ;
+; Average fan-out                             ; 3.64           ;
 +---------------------------------------------+----------------+
 
 
@@ -260,19 +258,19 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
 ; Compilation Hierarchy Node                  ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                               ; Entity Name              ; Library Name ;
 +---------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
-; |topmodule                                  ; 1845 (1068)         ; 318 (38)                  ; 0                 ; 0          ; 80   ; 0            ; |topmodule                                                                                                                                        ; topmodule                ; work         ;
+; |topmodule                                  ; 1891 (1114)         ; 323 (39)                  ; 0                 ; 0          ; 80   ; 0            ; |topmodule                                                                                                                                        ; topmodule                ; work         ;
 ;    |audio:audio_inst|                       ; 176 (60)            ; 131 (41)                  ; 0                 ; 0          ; 0    ; 0            ; |topmodule|audio:audio_inst                                                                                                                       ; audio                    ; work         ;
 ;       |audio_and_video_config:cfg_inst|     ; 88 (88)             ; 65 (65)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst                                                                                       ; audio_and_video_config   ; work         ;
 ;       |audio_codec:codec_inst|              ; 28 (28)             ; 25 (25)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|audio:audio_inst|audio_codec:codec_inst                                                                                                ; audio_codec              ; work         ;
-;    |game:game|                              ; 345 (124)           ; 127 (79)                  ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game                                                                                                                              ; game                     ; work         ;
-;       |column:col0|                         ; 41 (41)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col0                                                                                                                  ; column                   ; work         ;
-;       |column:col1|                         ; 43 (43)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col1                                                                                                                  ; column                   ; work         ;
-;       |column:col2|                         ; 37 (37)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col2                                                                                                                  ; column                   ; work         ;
-;       |column:col3|                         ; 57 (57)             ; 12 (12)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col3                                                                                                                  ; column                   ; work         ;
-;       |lpm_divide:Mod0|                     ; 43 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0                                                                                                              ; lpm_divide               ; work         ;
-;          |lpm_divide_l3m:auto_generated|    ; 43 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated                                                                                ; lpm_divide_l3m           ; work         ;
-;             |sign_div_unsign_olh:divider|   ; 43 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated|sign_div_unsign_olh:divider                                                    ; sign_div_unsign_olh      ; work         ;
-;                |alt_u_div_mve:divider|      ; 43 (43)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated|sign_div_unsign_olh:divider|alt_u_div_mve:divider                              ; alt_u_div_mve            ; work         ;
+;    |game:game|                              ; 343 (117)           ; 131 (75)                  ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game                                                                                                                              ; game                     ; work         ;
+;       |column:col0|                         ; 44 (44)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col0                                                                                                                  ; column                   ; work         ;
+;       |column:col1|                         ; 44 (44)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col1                                                                                                                  ; column                   ; work         ;
+;       |column:col2|                         ; 44 (44)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col2                                                                                                                  ; column                   ; work         ;
+;       |column:col3|                         ; 50 (50)             ; 14 (14)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|column:col3                                                                                                                  ; column                   ; work         ;
+;       |lpm_divide:Mod0|                     ; 44 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0                                                                                                              ; lpm_divide               ; work         ;
+;          |lpm_divide_l3m:auto_generated|    ; 44 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated                                                                                ; lpm_divide_l3m           ; work         ;
+;             |sign_div_unsign_olh:divider|   ; 44 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated|sign_div_unsign_olh:divider                                                    ; sign_div_unsign_olh      ; work         ;
+;                |alt_u_div_mve:divider|      ; 44 (44)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|game:game|lpm_divide:Mod0|lpm_divide_l3m:auto_generated|sign_div_unsign_olh:divider|alt_u_div_mve:divider                              ; alt_u_div_mve            ; work         ;
 ;    |three_decimal_vals_w_neg:score_display| ; 208 (13)            ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display                                                                                                 ; three_decimal_vals_w_neg ; work         ;
 ;       |lpm_divide:Div0|                     ; 49 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Div0                                                                                 ; lpm_divide               ; work         ;
 ;          |lpm_divide_5am:auto_generated|    ; 49 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|lpm_divide:Div0|lpm_divide_5am:auto_generated                                                   ; lpm_divide_5am           ; work         ;
@@ -297,24 +295,25 @@ https://fpgasoftware.intel.com/eula.
 ;       |seven_segment:u0|                    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|seven_segment:u0                                                                                ; seven_segment            ; work         ;
 ;       |seven_segment:u1|                    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|seven_segment:u1                                                                                ; seven_segment            ; work         ;
 ;       |seven_segment:u2|                    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |topmodule|three_decimal_vals_w_neg:score_display|seven_segment:u2                                                                                ; seven_segment            ; work         ;
-;    |vga_controller:vga|                     ; 48 (48)             ; 22 (22)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|vga_controller:vga                                                                                                                     ; vga_controller           ; work         ;
+;    |vga_controller:vga|                     ; 50 (50)             ; 22 (22)                   ; 0                 ; 0          ; 0    ; 0            ; |topmodule|vga_controller:vga                                                                                                                     ; vga_controller           ; work         ;
 +---------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------------------------------------------------------------------------------------------------------------------------------------+--------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
 Encoding Type:  One-Hot
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |topmodule|game_state                                                                                                                                                           ;
-+-----------------------------+----------------------------+--------------------------+-------------------------+-------------------------+-------------------------+-----------------------------+
-; Name                        ; game_state.STATE_GAME_OVER ; game_state.STATE_PLAYING ; game_state.START_WAIT_1 ; game_state.START_WAIT_2 ; game_state.START_WAIT_3 ; game_state.STATE_START_MENU ;
-+-----------------------------+----------------------------+--------------------------+-------------------------+-------------------------+-------------------------+-----------------------------+
-; game_state.STATE_START_MENU ; 0                          ; 0                        ; 0                       ; 0                       ; 0                       ; 0                           ;
-; game_state.START_WAIT_3     ; 0                          ; 0                        ; 0                       ; 0                       ; 1                       ; 1                           ;
-; game_state.START_WAIT_2     ; 0                          ; 0                        ; 0                       ; 1                       ; 0                       ; 1                           ;
-; game_state.START_WAIT_1     ; 0                          ; 0                        ; 1                       ; 0                       ; 0                       ; 1                           ;
-; game_state.STATE_PLAYING    ; 0                          ; 1                        ; 0                       ; 0                       ; 0                       ; 1                           ;
-; game_state.STATE_GAME_OVER  ; 1                          ; 0                        ; 0                       ; 0                       ; 0                       ; 1                           ;
-+-----------------------------+----------------------------+--------------------------+-------------------------+-------------------------+-------------------------+-----------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |topmodule|game_state                                                                                                                                                                                       ;
++-----------------------------+----------------------------+---------------------------+--------------------------+-------------------------+-------------------------+-------------------------+-----------------------------+
+; Name                        ; game_state.STATE_GAME_OVER ; game_state.STATE_GAME_WON ; game_state.STATE_PLAYING ; game_state.START_WAIT_1 ; game_state.START_WAIT_2 ; game_state.START_WAIT_3 ; game_state.STATE_START_MENU ;
++-----------------------------+----------------------------+---------------------------+--------------------------+-------------------------+-------------------------+-------------------------+-----------------------------+
+; game_state.STATE_START_MENU ; 0                          ; 0                         ; 0                        ; 0                       ; 0                       ; 0                       ; 0                           ;
+; game_state.START_WAIT_3     ; 0                          ; 0                         ; 0                        ; 0                       ; 0                       ; 1                       ; 1                           ;
+; game_state.START_WAIT_2     ; 0                          ; 0                         ; 0                        ; 0                       ; 1                       ; 0                       ; 1                           ;
+; game_state.START_WAIT_1     ; 0                          ; 0                         ; 0                        ; 1                       ; 0                       ; 0                       ; 1                           ;
+; game_state.STATE_PLAYING    ; 0                          ; 0                         ; 1                        ; 0                       ; 0                       ; 0                       ; 1                           ;
+; game_state.STATE_GAME_WON   ; 0                          ; 1                         ; 0                        ; 0                       ; 0                       ; 0                       ; 1                           ;
+; game_state.STATE_GAME_OVER  ; 1                          ; 0                         ; 0                        ; 0                       ; 0                       ; 0                       ; 1                           ;
++-----------------------------+----------------------------+---------------------------+--------------------------+-------------------------+-------------------------+-------------------------+-----------------------------+
 
 
 Encoding Type:  One-Hot
@@ -382,12 +381,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 318   ;
-; Number of registers using Synchronous Clear  ; 208   ;
+; Total registers                              ; 323   ;
+; Number of registers using Synchronous Clear  ; 204   ;
 ; Number of registers using Synchronous Load   ; 10    ;
-; Number of registers using Asynchronous Clear ; 310   ;
+; Number of registers using Asynchronous Clear ; 315   ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 136   ;
+; Number of registers using Clock Enable       ; 138   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -406,33 +405,39 @@ Encoding Type:  One-Hot
 +------------------------------------------------------------------+---------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                         ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                               ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
-; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |topmodule|game:game|column:col0|tile_y[6]                               ;
-; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |topmodule|game:game|column:col1|tile_y[4]                               ;
-; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |topmodule|game:game|column:col2|tile_y[2]                               ;
-; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |topmodule|game:game|column:col3|tile_y[3]                               ;
-; 3:1                ; 26 bits   ; 52 LEs        ; 0 LEs                ; 52 LEs                 ; Yes        ; |topmodule|wait_counter[5]                                               ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |topmodule|audio:audio_inst|audio_codec:codec_inst|shift_count[4]        ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |topmodule|audio:audio_inst|tone_counter[11]                             ;
-; 5:1                ; 18 bits   ; 54 LEs        ; 18 LEs               ; 36 LEs                 ; Yes        ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|bit_count[2] ;
-; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|shift_reg[9] ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|blue_out                                                      ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|game:game|current_col.10                                      ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|game:game|blue[1]                                             ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|game:game|green[6]                                            ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|green_out                                                     ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |topmodule|red_out                                                       ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |topmodule|Selector28                                                    ;
-; 8:1                ; 3 bits    ; 15 LEs        ; 15 LEs               ; 0 LEs                  ; No         ; |topmodule|Selector13                                                    ;
-; 10:1               ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |topmodule|green_out                                                     ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|Selector6    ;
-; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |topmodule|Selector0                                                     ;
-; 29:1               ; 2 bits    ; 38 LEs        ; 38 LEs               ; 0 LEs                  ; No         ; |topmodule|red_out                                                       ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                          ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
+; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |topmodule|game:game|column:col0|tile_y[9]                                ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |topmodule|game:game|column:col1|tile_y[2]                                ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |topmodule|game:game|column:col2|tile_y[3]                                ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 0 LEs                ; 18 LEs                 ; Yes        ; |topmodule|game:game|column:col3|tile_y[2]                                ;
+; 3:1                ; 26 bits   ; 52 LEs        ; 0 LEs                ; 52 LEs                 ; Yes        ; |topmodule|wait_counter[5]                                                ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |topmodule|audio:audio_inst|audio_codec:codec_inst|shift_count[4]         ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |topmodule|audio:audio_inst|tone_counter[17]                              ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |topmodule|game:game|column:col0|miss_pulse                               ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |topmodule|game:game|column:col1|miss_pulse                               ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |topmodule|game:game|column:col2|miss_pulse                               ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |topmodule|game:game|column:col3|miss_pulse                               ;
+; 5:1                ; 18 bits   ; 54 LEs        ; 18 LEs               ; 36 LEs                 ; Yes        ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|bit_count[4]  ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 0 LEs                ; 30 LEs                 ; Yes        ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|shift_reg[10] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|game:game|current_col.10                                       ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|green_out                                                      ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|game:game|blue[1]                                              ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|game:game|green[6]                                             ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |topmodule|green_out                                                      ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |topmodule|red_out                                                        ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |topmodule|red_out                                                        ;
+; 5:1                ; 3 bits    ; 9 LEs         ; 9 LEs                ; 0 LEs                  ; No         ; |topmodule|Selector29                                                     ;
+; 10:1               ; 2 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |topmodule|red_out                                                        ;
+; 9:1                ; 3 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |topmodule|Selector14                                                     ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|Selector6     ;
+; 7:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |topmodule|Selector6                                                      ;
+; 9:1                ; 2 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |topmodule|Selector1                                                      ;
+; 29:1               ; 2 bits    ; 38 LEs        ; 38 LEs               ; 0 LEs                  ; No         ; |topmodule|green_out                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------------------------------+
 
 
 +-----------------------------------------------------------------+
@@ -764,39 +769,39 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 318                         ;
-;     CLR               ; 44                          ;
-;     CLR SCLR          ; 130                         ;
-;     ENA CLR           ; 48                          ;
+; arriav_ff             ; 323                         ;
+;     CLR               ; 51                          ;
+;     CLR SCLR          ; 126                         ;
+;     ENA CLR           ; 50                          ;
 ;     ENA CLR SCLR      ; 78                          ;
 ;     ENA CLR SLD       ; 10                          ;
 ;     plain             ; 8                           ;
 ; arriav_io_obuf        ; 4                           ;
-; arriav_lcell_comb     ; 1853                        ;
+; arriav_lcell_comb     ; 1899                        ;
 ;     arith             ; 697                         ;
 ;         0 data inputs ; 67                          ;
-;         1 data inputs ; 315                         ;
+;         1 data inputs ; 316                         ;
 ;         2 data inputs ; 53                          ;
 ;         3 data inputs ; 75                          ;
-;         4 data inputs ; 176                         ;
+;         4 data inputs ; 175                         ;
 ;         5 data inputs ; 11                          ;
-;     extend            ; 5                           ;
-;         7 data inputs ; 5                           ;
-;     normal            ; 1141                        ;
+;     extend            ; 8                           ;
+;         7 data inputs ; 8                           ;
+;     normal            ; 1184                        ;
 ;         0 data inputs ; 2                           ;
-;         1 data inputs ; 22                          ;
-;         2 data inputs ; 130                         ;
-;         3 data inputs ; 141                         ;
-;         4 data inputs ; 248                         ;
-;         5 data inputs ; 315                         ;
-;         6 data inputs ; 283                         ;
+;         1 data inputs ; 18                          ;
+;         2 data inputs ; 146                         ;
+;         3 data inputs ; 145                         ;
+;         4 data inputs ; 271                         ;
+;         5 data inputs ; 335                         ;
+;         6 data inputs ; 267                         ;
 ;     shared            ; 10                          ;
 ;         0 data inputs ; 6                           ;
 ;         1 data inputs ; 4                           ;
 ; boundary_port         ; 80                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 14.60                       ;
-; Average LUT depth     ; 7.76                        ;
+; Average LUT depth     ; 7.77                        ;
 +-----------------------+-----------------------------+
 
 
@@ -805,7 +810,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:03     ;
 +----------------+--------------+
 
 
@@ -815,7 +820,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
-    Info: Processing started: Wed Dec 10 21:50:59 2025
+    Info: Processing started: Wed Dec 10 23:21:26 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ECE287-Final-Project -c ECE287-Final-Project
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 20 processors detected
@@ -826,33 +831,36 @@ Info (12021): Found 1 design units, including 1 entities, in source file topmodu
 Info (12021): Found 1 design units, including 1 entities, in source file vga.v
     Info (12023): Found entity 1: vga_controller File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v Line: 1
 Info (12127): Elaborating entity "topmodule" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at topmodule.v(159): truncated value with size 32 to match size of target (26) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 159
-Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:vga" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 180
+Warning (10230): Verilog HDL assignment warning at topmodule.v(165): truncated value with size 32 to match size of target (26) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 165
+Info (12128): Elaborating entity "vga_controller" for hierarchy "vga_controller:vga" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 186
 Warning (10230): Verilog HDL assignment warning at vga.v(35): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v Line: 35
 Warning (10230): Verilog HDL assignment warning at vga.v(46): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/vga.v Line: 46
 Warning (12125): Using design file game.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: game File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 1
-Info (12128): Elaborating entity "game" for hierarchy "game:game" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 194
+Info (12128): Elaborating entity "game" for hierarchy "game:game" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 200
 Warning (10230): Verilog HDL assignment warning at game.v(53): truncated value with size 32 to match size of target (2) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 53
 Warning (10230): Verilog HDL assignment warning at game.v(168): truncated value with size 32 to match size of target (8) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 168
 Warning (12125): Using design file column.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: column File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 2
 Info (12128): Elaborating entity "column" for hierarchy "game:game|column:col0" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/game.v Line: 101
 Warning (10230): Verilog HDL assignment warning at column.v(25): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 25
-Warning (10230): Verilog HDL assignment warning at column.v(64): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 64
+Warning (10230): Verilog HDL assignment warning at column.v(26): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 26
+Warning (10230): Verilog HDL assignment warning at column.v(27): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 27
+Warning (10230): Verilog HDL assignment warning at column.v(28): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 28
+Warning (10230): Verilog HDL assignment warning at column.v(91): truncated value with size 32 to match size of target (10) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/column.v Line: 91
 Warning (12125): Using design file audio.v, which is not specified as a design file for the current project, but contains definitions for 4 design units and 4 entities in project
     Info (12023): Found entity 1: audio File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 4
     Info (12023): Found entity 2: audio_pll File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 125
     Info (12023): Found entity 3: audio_and_video_config File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 136
     Info (12023): Found entity 4: audio_codec File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 283
-Info (12128): Elaborating entity "audio" for hierarchy "audio:audio_inst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 209
+Info (12128): Elaborating entity "audio" for hierarchy "audio:audio_inst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 215
 Warning (10034): Output port "AUD_ADCDAT" at audio.v(8) has no driver File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 8
 Info (12128): Elaborating entity "audio_pll" for hierarchy "audio:audio_inst|audio_pll:pll_inst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 24
 Info (12128): Elaborating entity "audio_and_video_config" for hierarchy "audio:audio_inst|audio_and_video_config:cfg_inst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 111
 Info (12128): Elaborating entity "audio_codec" for hierarchy "audio:audio_inst|audio_codec:codec_inst" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/audio.v Line: 120
 Warning (12125): Using design file three_decimal_vals_w_neg.v, which is not specified as a design file for the current project, but contains definitions for 1 design units and 1 entities in project
     Info (12023): Found entity 1: three_decimal_vals_w_neg File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 3
-Info (12128): Elaborating entity "three_decimal_vals_w_neg" for hierarchy "three_decimal_vals_w_neg:score_display" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 218
+Info (12128): Elaborating entity "three_decimal_vals_w_neg" for hierarchy "three_decimal_vals_w_neg:score_display" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 224
 Warning (10230): Verilog HDL assignment warning at three_decimal_vals_w_neg.v(24): truncated value with size 32 to match size of target (4) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 24
 Warning (10230): Verilog HDL assignment warning at three_decimal_vals_w_neg.v(25): truncated value with size 32 to match size of target (4) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 25
 Warning (10230): Verilog HDL assignment warning at three_decimal_vals_w_neg.v(26): truncated value with size 32 to match size of target (4) File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/three_decimal_vals_w_neg.v Line: 26
@@ -945,15 +953,15 @@ Warning (21074): Design contains 9 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
     Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
     Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/macenslh/Documents/GitHub/ECE287-Final-Project/Quartus/topmodule.v Line: 5
-Info (21057): Implemented 1935 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1981 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 15 input pins
     Info (21059): Implemented 61 output pins
     Info (21060): Implemented 4 bidirectional pins
-    Info (21061): Implemented 1855 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 48 warnings
-    Info: Peak virtual memory: 4916 megabytes
-    Info: Processing ended: Wed Dec 10 21:51:07 2025
+    Info (21061): Implemented 1901 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 51 warnings
+    Info: Peak virtual memory: 4910 megabytes
+    Info: Processing ended: Wed Dec 10 23:21:34 2025
     Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:06
+    Info: Total CPU time (on all processors): 00:00:05
 
 
