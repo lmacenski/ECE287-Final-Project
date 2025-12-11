@@ -1,52 +1,58 @@
-// topmodule.v - Top-level module for Piano Tiles with FSM
 module topmodule(
+	 //Basic Input Output Devices
     input CLOCK_50,           // 50 MHz clock
-    input [3:0] KEY,          // Push buttons (active low)
-    input [9:0] SW,           // Switches
-    //output [9:0] LEDR,        // Red LEDs for score
-    output [6:0] HEX0,        // 7-segment display 0
-    output [6:0] HEX1,        // 7-segment display 1
-    output [6:0] HEX2,        // 7-segment display 2
-    output [6:0] HEX3,        // 7-segment display 3 (neg sign)
+    input [3:0] KEY,          // Input Keys for Tile Columns
+    input [9:0] SW,           // Input Switches for rst and Testing
+    output [6:0] HEX0,        // 7-segment display ones
+    output [6:0] HEX1,        // 7-segment display tens
+    output [6:0] HEX2,        // 7-segment display hundreds
+    output [6:0] HEX3,        // 7-segment display negative
 
-    //Ins and outs required for VGA
-    output VGA_CLK,           // VGA clock
-    output VGA_HS,            // VGA horizontal sync
-    output VGA_VS,            // VGA vertical sync
-    output VGA_BLANK_N,       // VGA blank
-    output VGA_SYNC_N,        // VGA sync
-    output [7:0] VGA_R,       // VGA red
-    output [7:0] VGA_G,       // VGA green
-    output [7:0] VGA_B,        // VGA blue
+    //Outputs Required for VGA Module
+    output VGA_CLK,           // Clock
+    output VGA_HS,            // Horizontal sync
+    output VGA_VS,            // Vertical sync
+    output VGA_BLANK_N,       // Blank
+    output VGA_SYNC_N,        // Sync
+    output [7:0] VGA_R,       // Red
+    output [7:0] VGA_G,       // Green
+    output [7:0] VGA_B,       // Blue
 
-	// Ins and Outs required for audio
+	 // Ins and Outs Required for Audio Module
     output AUD_ADCDAT,
     inout AUD_BCLK,
-	inout AUD_ADCLRCK,
-	inout AUD_DACLRCK,
-	output AUD_DACDAT,
-	output AUD_XCK,
-	inout FPGA_I2C_SDAT,
-	output FPGA_I2C_SCLK
+	 inout AUD_ADCLRCK,
+	 inout AUD_DACLRCK,
+	 output AUD_DACDAT,
+	 output AUD_XCK,
+	 inout FPGA_I2C_SDAT,
+	 output FPGA_I2C_SCLK
 );
-    // -------------------------------
-    // FSM States
-    // -------------------------------
-    localparam STATE_START_MENU = 2'b00;
-    localparam STATE_PLAYING    = 2'b01;
-    localparam STATE_GAME_OVER  = 2'b10;
     
-    reg [1:0] game_state = STATE_START_MENU;
-    reg [1:0] next_state;
+	 //Define FSM States
+    localparam STATE_START_MENU = 4'd0;   // Start Menu (Initial State)
+	 localparam START_WAIT_3 = 4'd1;       // Begin Countdown timer, Show 3 on screen
+	 localparam START_WAIT_2 = 4'd2;       // Continue Countdown timer, Show 2 on screen
+	 localparam START_WAIT_1 = 4'd3;       // Finish Countdown timer, Show 1 on screen and transition to playing
+    localparam STATE_PLAYING = 4'd4;      // Playing state (vga control is handed off to game.v)
+	 localparam STATE_GAME_WON = 4'd5;     // Win State (Score > 10)
+	 localparam STATE_GAME_OVER = 4'd6;    // Lose State (Score < -10)
+	 localparam STATE_GAME_PAUSED = 4'd7;  // Paused Game State
     
-    // Reset and buttons
-    wire reset_n = SW[9];
-    wire [3:0] buttons = ~KEY;  // Invert because keys are active low
+	 //Define Current and Next State
+    reg [3:0] game_state = STATE_START_MENU;
+    reg [3:0] next_state;
     
-    // Button edge detection for any key press
-    reg [3:0] buttons_prev = 0;
-    wire any_button_pressed = |(buttons & ~buttons_prev); // Any button pressed
+    // Assign Pertinent Buttons on FPGA
+    wire reset_n = SW[9];       // Set SW9 to rst
+    wire [3:0] buttons = ~KEY;  // Invert buttons for ease of code
     
+	 
+    // Button Edge Detection 
+    reg [3:0] buttons_prev = 0;                           // Create Register that will Hold the Previous Cycles Button States
+    wire any_button_pressed = |(buttons & ~buttons_prev); // Any button pressed (for use in transition to START_MENU to START_WAIT)
+    
+	 // Either Reset or Assign the Values from buttons to buttons_prev
     always @(posedge CLOCK_50 or negedge reset_n) begin
         if (!reset_n)
             buttons_prev <= 0;
@@ -54,45 +60,58 @@ module topmodule(
             buttons_prev <= buttons;
     end
     
-    // -------------------------------
-    // FSM State Register
-    // -------------------------------
+	 // FSM State Register
     always @(posedge CLOCK_50 or negedge reset_n) begin
         if (!reset_n)
-            game_state <= STATE_START_MENU;
+            game_state <= STATE_START_MENU; // Assign First State After Reset
         else
-            game_state <= next_state;
+            game_state <= next_state;       // Assign next_state
     end
     
-    // -------------------------------
-    // FSM Next State Logic
-    // -------------------------------
+	 // FSM Next State Logic
     always @(*) begin
         next_state = game_state;
         
         case (game_state)
+		  
+				// Start Menu
             STATE_START_MENU: begin
                 if (any_button_pressed)
-                    next_state = STATE_PLAYING;
+                    next_state = START_WAIT_3;
             end
+				
+				// Countdown 3
+				START_WAIT_3: begin
+					next_state = START_WAIT_2;
+				end
+				
+				// Countdown 2
+				START_WAIT_2: begin
+					next_state = START_WAIT_1;
+				end
+				
+				// Countdown 1
+				START_WAIT_1: begin
+					next_state = STATE_PLAYING;
+				end
             
+				// Game Begins
             STATE_PLAYING: begin
-                // Add game over condition here
-                // if (game_over_condition)
-                //     next_state = STATE_GAME_OVER;
-					 if (SW[8])
-                    next_state = STATE_GAME_OVER;
+                if (score < -10)
+						next_state = STATE_GAME_OVER;
             end
             
+				// Game Over State
             STATE_GAME_OVER: begin
                 if (any_button_pressed)
                     next_state = STATE_START_MENU;
             end
-            
+				
+            // Default Case
             default: next_state = STATE_START_MENU;
         endcase
-    end
-    
+    end	 
+	 
     // Control signal for game - only active during playing state
     wire game_active = (game_state == STATE_PLAYING);
     
@@ -104,7 +123,6 @@ module topmodule(
     
     // Score
     wire signed [7:0] score;
-    //assign LEDR = score;
     
     // 25 MHz clock divider
     reg clk_div;
@@ -117,7 +135,7 @@ module topmodule(
     assign clk_25MHz = clk_div;
     assign VGA_CLK = clk_25MHz;
     
-    // VGA controller
+    // VGA controller signals
     vga_controller vga(
         .clk(clk_25MHz),
         .reset_n(reset_n),
@@ -128,7 +146,7 @@ module topmodule(
         .y(y)
     );
     
-	// Game logic (only active when playing)
+	// Game logic
     game game(
         .clk(CLOCK_50),
         .reset_n(reset_n && game_active), // Reset game when not playing
@@ -142,7 +160,7 @@ module topmodule(
         .score(score)
     );
 	 
-	// Audio controller
+	 // Audio controller instantiation
     audio audio_inst(
     .CLOCK_50(CLOCK_50),
     .reset_n(reset_n),
@@ -159,14 +177,15 @@ module topmodule(
     
     // 7-segment display for score
     three_decimal_vals_w_neg score_display(
-        .val(score[7:0]),
+        .val(score),
         .seg7_dig0(HEX0),
         .seg7_dig1(HEX1),
         .seg7_dig2(HEX2),
         .seg7_neg_sign(HEX3)
     );
     
-    // VGA Output Multiplexer
+    
+	 // VGA Output Multiplexer
     reg [7:0] red_out, green_out, blue_out;
     
     always @(*) begin
@@ -496,6 +515,25 @@ module topmodule(
                 // START MENU CODE END =======================================================================================
             end				
             
+				
+				START_WAIT_3: begin
+					red_out = red_game;
+                green_out = green_game;
+                blue_out = blue_game;
+				end
+				
+				START_WAIT_2: begin
+					 red_out = red_game;
+                green_out = green_game;
+                blue_out = blue_game;
+				end
+				
+				START_WAIT_1: begin
+					 red_out = red_game;
+                green_out = green_game;
+                blue_out = blue_game;
+				end
+				
             STATE_PLAYING: begin
                 // Display game
                 red_out = red_game;

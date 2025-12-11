@@ -8,7 +8,7 @@ module game(
     output reg [7:0] red,
     output reg [7:0] green,
     output reg [7:0] blue,
-    output reg [7:0] score
+    output reg signed [7:0] score
 );
 
     parameter COL_WIDTH = 160;  // 640/4 = 160
@@ -157,7 +157,8 @@ module game(
         .in_hit_zone(in_zone_3)
     );
     
-    // Score tracking - add on hit, subtract on miss
+    
+	 // Score tracking - add on hit, subtract on miss
     always @(posedge clk or negedge reset_n) begin
         if (!reset_n)
             score <= 8'd0;
@@ -167,7 +168,7 @@ module game(
                 score <= score + 1;
             // Subtract point for misses
             else if (miss_0 || miss_1 || miss_2 || miss_3)
-                score <= score - 1;
+               score <= score - 8'd1;
         end
     end
     

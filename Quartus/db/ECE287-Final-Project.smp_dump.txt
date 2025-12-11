@@ -1,9 +1,12 @@
 
 State Machine - |topmodule|game_state
-Name game_state.STATE_START_MENU game_state.STATE_GAME_OVER game_state.STATE_PLAYING 
-game_state.STATE_START_MENU 0 0 0 
-game_state.STATE_PLAYING 1 0 1 
-game_state.STATE_GAME_OVER 1 1 0 
+Name game_state.STATE_GAME_OVER game_state.STATE_PLAYING game_state.START_WAIT_1 game_state.START_WAIT_2 game_state.START_WAIT_3 game_state.STATE_START_MENU 
+game_state.STATE_START_MENU 0 0 0 0 0 0 
+game_state.START_WAIT_3 0 0 0 0 1 1 
+game_state.START_WAIT_2 0 0 0 1 0 1 
+game_state.START_WAIT_1 0 0 1 0 0 1 
+game_state.STATE_PLAYING 0 1 0 0 0 1 
+game_state.STATE_GAME_OVER 1 0 0 0 0 1 
 
 State Machine - |topmodule|audio:audio_inst|audio_and_video_config:cfg_inst|state
 Name state.DONE state.STOP state.ACK state.WRITE state.ADDR state.START state.IDLE 

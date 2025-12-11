@@ -14,6 +14,7 @@ module three_decimal_vals_w_neg (
 
     always @(*) begin
         is_negative = val[7];
+		  
         if (is_negative) begin
             abs_value = -val;
         end else begin

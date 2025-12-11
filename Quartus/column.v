@@ -27,57 +27,63 @@ module column(
                          tile_bottom >= (SCREEN_HEIGHT - TILE_HEIGHT - 20) &&
                          tile_bottom <= (SCREEN_HEIGHT - TILE_HEIGHT + 20);
     
-    // Detect miss - tile goes past the hit zone without being hit
+        // Detect miss - tile goes past the hit zone without being hit
     reg was_in_zone;
-    reg miss_detected;
-    assign miss = miss_detected;
-    
+    reg miss_pulse;
+
+    assign miss = miss_pulse;
+
     // Tile logic
     always @(posedge clk or negedge reset_n) begin
         if (!reset_n) begin
             tile_y <= 10'd0;
             active <= 0;
             was_in_zone <= 0;
-            miss_detected <= 0;
+            miss_pulse <= 0;
         end
-        else if (frame_tick) begin
-            // Clear miss signal after one frame
-            miss_detected <= 0;
+        else begin
+            miss_pulse <= 0;  // Always clear pulse every clock cycle
             
-            // Spawn new tile
-            if (spawn && !active) begin
-                tile_y <= 10'd0;
-                active <= 1;
-                was_in_zone <= 0;
-            end
-            // Move tile down
-            else if (active) begin
-                tile_y <= tile_y + FALL_SPEED;
-                
-                // Detect the moment we leave the hit zone after being in it
-                if (was_in_zone && !in_hit_zone) begin
-                    miss_detected <= 1;  // Trigger miss for one frame only
+            if (frame_tick) begin
+                // Spawn new tile
+                if (spawn && !active) begin
+                    tile_y <= 10'd0;
+                    active <= 1;
+                    was_in_zone <= 0;
+                end
+                // Move tile down
+                else if (active) begin
+                    // Detect miss BEFORE moving
+                    if (was_in_zone && !in_hit_zone) begin
+                        miss_pulse <= 1;  // Pulse for one cycle
+                        active <= 0;      // Deactivate immediately
+                        was_in_zone <= 0;
+                    end
+                    else begin
+                        // Only move if not missed
+                        tile_y <= tile_y + FALL_SPEED;
+                        
+                        // Track if tile is currently in the hit zone
+                        if (in_hit_zone)
+                            was_in_zone <= 1;
+                        
+                        // Reset when off screen
+                        if (tile_y >= SCREEN_HEIGHT) begin
+                            active <= 0;
+                            was_in_zone <= 0;
+                        end
+                    end
                 end
                 
-                // Track if tile is currently in the hit zone
-                if (in_hit_zone)
-                    was_in_zone <= 1;
-                
-                // Reset when off screen
-                if (tile_y >= SCREEN_HEIGHT) begin
+                // Handle button press (successful hit)
+                if (button_press && in_hit_zone && active) begin
                     active <= 0;
                     was_in_zone <= 0;
                 end
             end
-            
-            // Handle button press (successful hit)
-            if (button_press && in_hit_zone) begin
-                active <= 0;
-                was_in_zone <= 0;
-            end
         end
     end
-    
+	 
     // Hit detection
     assign hit = button_press && in_hit_zone;
     
