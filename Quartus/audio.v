@@ -1,6 +1,3 @@
-// piano_tiles_audio.v - Audio module for Piano Tiles game
-// Plays a different tone for each of the 4 columns when button is pressed
-
 module audio(
     input CLOCK_50,
     input reset_n,
@@ -65,11 +62,7 @@ module audio(
     // Set tone periods for each note
     always @(*) begin
         case(note_sel)
-            //2'b00: tone_period = 32'd95557;  // C4: 261.63Hz
-            //2'b01: tone_period = 32'd75828;  // E4: 329.63Hz
-            //2'b10: tone_period = 32'd63776;  // G4: 392.00Hz
-            //2'b11: tone_period = 32'd47778;  // C5: 523.25Hz
-				2'b00: tone_period = 32'd75844;  // E4
+			2'b00: tone_period = 32'd75844;  // E4
             2'b01: tone_period = 32'd60199;  // G#4
             2'b10: tone_period = 32'd50621;  // B4
             2'b11: tone_period = 32'd45097;  // C#5
@@ -93,9 +86,6 @@ module audio(
             tone_out <= 1'b0;
         end
     end
-
-    // Convert tone to audio samples
-    // When no button pressed, output silence (0x0000), not a signal
     wire signed [15:0] audio_sample;
     assign audio_sample = any_button_pressed ? (tone_out ? 16'h4000 : 16'hC000) : 16'h0000;
 
